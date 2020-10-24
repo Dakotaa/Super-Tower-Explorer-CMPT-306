@@ -8,6 +8,8 @@ public class CameraZoom : MonoBehaviour
     private float size;
     private float zoomFactor = 3f;
     private float zoomLerpSpeed = 10f;
+    public float minZoom = 4.5f;
+    public float maxZoom = 8f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,7 @@ public class CameraZoom : MonoBehaviour
         // zooms in or out based on it
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         size -= scroll * zoomFactor;
-        size = Mathf.Clamp(size, 4.5f, 8f);
+        size = Mathf.Clamp(size, minZoom, maxZoom);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, size, Time.deltaTime * zoomLerpSpeed);
 
         // Old version
