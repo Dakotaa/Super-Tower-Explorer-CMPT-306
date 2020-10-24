@@ -34,7 +34,7 @@ public class RoomTemplates : MonoBehaviour
     {
         if (Input.GetKeyDown("r"))
         {
-            SceneManager.LoadScene("Game"); //Load scene called Games
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Games
         }
     }
 
@@ -56,7 +56,7 @@ public class RoomTemplates : MonoBehaviour
         //Reset the game by pressing 'r' or if the number of rooms isn't in the given range
         if (done && ((RoomCount > RoomHigh) || (RoomCount < RoomLow)))
         { 
-            SceneManager.LoadScene("Game"); //Load scene called Game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Game
         }
     }
 }
