@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseObjectMove : MonoBehaviour
+public class MouseTowerMove : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -15,7 +15,7 @@ public class MouseObjectMove : MonoBehaviour
             float y = Input.mousePosition.y;
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10));
         }
-    }
+    }*/
 
     void OnMouseDrag()
     {
