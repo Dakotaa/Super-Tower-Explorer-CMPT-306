@@ -5,7 +5,8 @@ using UnityEngine;
 public class MouseTowerCreate : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    private GameObject obj = null;
+    public GameObject obj = null;
+    //public CellGrid cellGrid;
 
     void OnMouseDown()
     {
@@ -25,4 +26,11 @@ public class MouseTowerCreate : MonoBehaviour
             obj.transform.position = curPosition;
         }
     }
+
+    /*private void OnMouseUp()
+    {
+        Destroy(obj);
+        obj = null;
+        cellGrid.OnMouseUp();
+    }*/
 }

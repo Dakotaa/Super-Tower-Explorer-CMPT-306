@@ -111,3 +111,5 @@ MonoBehaviour:
   size: 15
   emptyTile: {fileID: 3477373119277170553, guid: 2e6b65e7c2c46b044a8495ffa5f1356a, type: 3}
   wallTile: {fileID: 8269899188136154339, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
+  TowerTile: {fileID: -8532511313928176029, guid: 71b27d00208994e44952e7c2f24f768b, type: 3}
+  overCell: 0

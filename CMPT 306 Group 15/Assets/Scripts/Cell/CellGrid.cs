@@ -7,6 +7,8 @@ public class CellGrid : MonoBehaviour {
 	public CellTile[,] grid;	// array of tiles
 	public CellTile emptyTile;  // prefab of default tile
 	public CellTile wallTile;
+	public CellTile TowerTile;	// prefab of the tower tile
+	private GameObject DraggedTower; // the tower that is being taken from inventory
 	private GameObject currentTile;	// the tile the mouse is currently over
 	private float cellSize; // the size of the cell
 	private float tileSize;
@@ -24,7 +26,7 @@ public class CellGrid : MonoBehaviour {
 
 		tileScale = cellSize / size;    // calculate the scale of each tile
 
-		CreateTiles();	// create default tiles
+		CreateTiles();  // create default tiles
 	}
 
 	private void CreateTiles() {
@@ -75,6 +77,23 @@ public class CellGrid : MonoBehaviour {
 	}
 
 	void Update() {
+		// Code to get Towers components
+		if (Input.GetMouseButtonUp(0))
+		{
+			GameObject tower = GameObject.Find("UITower");
+			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
+			if (overCell && (towerCreate.obj != null))
+			{
+				print(towerCreate.obj);
+				PlaceTile(GetPosAtCursor(), TowerTile);
+				Destroy(towerCreate.obj);
+				towerCreate.obj = null;
+			}
+			if (towerCreate.obj != null)
+            {
+				Destroy(towerCreate.obj);
+			}
+		}
 	}
 
 	private void OnMouseEnter() {
@@ -90,5 +109,4 @@ public class CellGrid : MonoBehaviour {
 			PlaceTile(GetPosAtCursor(), wallTile);
 		}
 	}
-
 }
