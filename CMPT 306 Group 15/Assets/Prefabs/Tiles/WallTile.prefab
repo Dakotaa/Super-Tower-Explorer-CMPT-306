@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4472120874672189020}
   - component: {fileID: 7265051656177121037}
   - component: {fileID: 8553037025211674207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 201645063412664029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2508148236399200503}
   - component: {fileID: 8269899188136154339}
   - component: {fileID: 3795063372632382964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallTile
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7508960076562752758}
   - component: {fileID: 4824633301355381669}
   - component: {fileID: 3729407705833667926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563055435200378626}
   - component: {fileID: 6837525613179337822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: brick-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
