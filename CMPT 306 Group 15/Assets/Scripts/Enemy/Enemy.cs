@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MainController
 {
     // Start is called before the first frame update
     void Start()
