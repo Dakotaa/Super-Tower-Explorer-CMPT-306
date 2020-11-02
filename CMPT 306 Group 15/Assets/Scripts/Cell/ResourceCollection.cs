@@ -9,5 +9,6 @@ public class ResourceCollection : MonoBehaviour
     void OnMouseDown()
     {
         resourceCounter += 1;
+        print(resourceCounter);
     }
 }

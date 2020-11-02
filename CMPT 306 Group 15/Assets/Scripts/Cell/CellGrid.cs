@@ -7,8 +7,8 @@ public class CellGrid : MonoBehaviour {
 	public CellTile[,] grid;	// array of tiles
 	public CellTile emptyTile;  // prefab of default tile
 	public CellTile wallTile;
-	public CellTile TowerTile;	// prefab of the tower tile
-	private GameObject DraggedTower; // the tower that is being taken from inventory
+	public CellTile TowerTile;  // prefab of the tower tile
+	public CellTile ResourceTile; // prefab of the resource tile
 	private GameObject currentTile;	// the tile the mouse is currently over
 	private float cellSize; // the size of the cell
 	private float tileSize;
