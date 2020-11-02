@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8621317396687422481}
   - component: {fileID: 6391622982831517067}
   - component: {fileID: 5371945168743837031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3477373119277170553}
   - component: {fileID: 7635603353872736866}
   - component: {fileID: 1738508163918523492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 4903831898080618102}
   - component: {fileID: 6697660608182558622}
   - component: {fileID: 5419719610699897283}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7798551183571571734}
-  m_Layer: 0
+  - component: {fileID: 5659864274234232568}
+  m_Layer: 8
   m_Name: GridSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,6 +304,32 @@ Transform:
   m_Father: {fileID: 2041188334951891412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5659864274234232568
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606463107304905955}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0015890896, y: 0.011123538}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8252012, y: 0.8442702}
+  m_EdgeRadius: 0
 --- !u!1 &5355521793500301364
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +342,7 @@ GameObject:
   - component: {fileID: 7757474683586691126}
   - component: {fileID: 2766248821297807821}
   - component: {fileID: 4251227646033446556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +437,7 @@ GameObject:
   - component: {fileID: 4912852183865685360}
   - component: {fileID: 3013626523693271602}
   - component: {fileID: 1531502334140047855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

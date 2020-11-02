@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
@@ -10,34 +11,51 @@ public class WaveSpawner : MonoBehaviour
 
     public float timeBetweenWaves = 5f;
 
+    public Text waveCountdownText;
+
     private float countdown = 2f; //seconds
 
-    private int waveNumber = 1;
+    private int waveNumber = 0;
+
+    private int maxWaveNumber = 5;
 
     private void Update()
     {
         if (countdown <= 0f) //if coundown up spawn enemies
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+
 
         }
         countdown -= Time.deltaTime; //time passed snce last frame(reduce by 1 every second)
+
+        waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
-    void SpawnWave()
+    IEnumerator SpawnWave()
     {
-        Debug.Log("WAVE incoming");
-        for (int i = 0; i < waveNumber; i++)
+        if (waveNumber != maxWaveNumber)
         {
-            SpawnEnemy();
+            Debug.Log("WAVE incoming");
+            for (int i = 0; i < waveNumber; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(0.5f);
+            }
+            waveNumber++;
         }
-        waveNumber++;
+        else { //just loop through as a test
+            SpawnEnemy();
+            waveNumber = 1;
+        }
+        
     }
 
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+       
     }
 
 

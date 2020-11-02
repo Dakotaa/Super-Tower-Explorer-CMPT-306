@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,9 +26,21 @@ public class Tower : MonoBehaviour {
 		enemies = new List<GameObject>();
 		StartCoroutine("DoSearch"); // search coroutine starts on creation, loops forever
 		StartCoroutine("DoShoot"); // shoot coroutine starts on creation, loops forever
+		var bounds = GetComponent<SphereCollider>().bounds;
+		// Expand the bounds along the Z axis
+		bounds.Expand(Vector3.forward * 1000);
+		var guo = new GraphUpdateObject(bounds);
+		Debug.Log("update");
+		// change some settings on the object
+		AstarPath.active.UpdateGraphs(guo);
+
+
+
 	}
 
-	void Update() { 
+	void Update() {
+		
+
 		/* 
 		 * Tower rotation. Didn't have time to get this properly working
 		if (target) {
