@@ -36,6 +36,7 @@ public class RoomTemplates : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Games
         }
+
     }
 
     private void ReBuild()
@@ -59,4 +60,7 @@ public class RoomTemplates : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Game
         }
     }
+
+
+
 }
