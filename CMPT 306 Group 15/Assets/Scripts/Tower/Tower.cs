@@ -83,7 +83,7 @@ public class Tower : MonoBehaviour {
 			Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRange);
 			// set target to first enemy in range
 			foreach (Collider hitCollider in hitColliders) {
-				if (hitCollider.tag.Equals("Tower")) {
+				if (hitCollider.tag.Equals("Enemy")) {
 					print("NEW TARGET: " + hitCollider.gameObject.name);
 					SetTarget(hitCollider.gameObject);
 					break;

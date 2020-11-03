@@ -20,9 +20,11 @@ public class Enemy : MainController
         if (gameObject.GetComponent<AIPath>().reachedEndOfPath)
         {
             Debug.Log("DIE");
-            Debug.Log("DIE");
-            Debug.Log("DIE");
             Enemy.Destroy(this.gameObject,2);
         }
     }
+
+	public void Kill() {
+		Destroy(this.gameObject);
+	}
 }

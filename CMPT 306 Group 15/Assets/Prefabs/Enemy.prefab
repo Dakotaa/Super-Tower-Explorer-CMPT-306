@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 666750287146047907}
   - component: {fileID: 666750287146047906}
   - component: {fileID: 1534384089525474764}
-  - component: {fileID: 2802116514111568380}
+  - component: {fileID: 5320492790021436043}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,19 +177,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391b46cddd60f114db808ed6a0ac1ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &2802116514111568380
-CircleCollider2D:
+--- !u!135 &5320492790021436043
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666750287146047904}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0014765959}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09852341
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}

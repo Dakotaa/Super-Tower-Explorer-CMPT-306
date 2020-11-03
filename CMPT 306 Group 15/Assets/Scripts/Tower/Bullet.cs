@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 	private Vector3 direction;	
 	public void Setup(Vector3 direction) {
 		this.direction = direction;
+		Destroy(gameObject, 3);	// destroy bullets if they don't hit anything in 3 seconds
 	}
 
 	private void Update() {
@@ -14,6 +15,13 @@ public class Bullet : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter(Collision collision) {
+		if (collision.collider.tag.Equals("Tower")) { // don't destroy when hitting a tower. Will be improved.
+			return;
+		}
+		if (collision.collider.tag.Equals("Enemy")) {	// damage/kill enemies
+			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
+			victim.Kill();
+		}
 		Destroy(gameObject);
 	}
 
