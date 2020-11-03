@@ -17,11 +17,9 @@ public class Tower : MonoBehaviour {
 	private GameObject target;  // enemy currently being targeted
 	private Vector3 targetLastPos = Vector3.zero; // last known position of current target
 	Quaternion targetTrackRot;  // rotation of tower
-	private GameObject gun; // the gun component of the tower
 	public List<GameObject> enemies;	// list of existing enemies
 
 	void Start() {
-		//gun = transform.Find("Pivot").gameObject;
 		target = null; // no initial target
 		enemies = new List<GameObject>();
 		StartCoroutine("DoSearch"); // search coroutine starts on creation, loops forever
@@ -38,29 +36,9 @@ public class Tower : MonoBehaviour {
 
 	}
 
-	void Update() {
-		
-
-		/* 
-		 * Tower rotation. Didn't have time to get this properly working
-		if (target) {
-			if (targetLastPos != target.transform.position) {
-				targetLastPos = target.transform.position;
-				targetTrackRot = Quaternion.LookRotation(targetLastPos - gun.transform.position);
-			}
-			// rotate the tower to the enemy
-			if (gun.transform.rotation != targetTrackRot) {
-				gun.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetTrackRot, trackingSpeed * Time.deltaTime);
-			} else {
-				
-			}
-		}
-		*/
-	}
-
 	// shoot at an enemy
 	private void ShootAt(Vector3 targetPos) {
-		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z - 0.1f);
+		Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
 		Vector3 direction = (targetPos - transform.position);
 		shotBullet.Setup(direction);
