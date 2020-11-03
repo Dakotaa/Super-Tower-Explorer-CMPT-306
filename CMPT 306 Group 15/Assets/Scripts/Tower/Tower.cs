@@ -28,7 +28,7 @@ public class Tower : MonoBehaviour {
 		// Expand the bounds along the Z axis
 		bounds.Expand(Vector3.forward * 1000);
 		var guo = new GraphUpdateObject(bounds);
-		Debug.Log("update");
+		//Debug.Log("update");
 		// change some settings on the object
 		AstarPath.active.UpdateGraphs(guo);
 
