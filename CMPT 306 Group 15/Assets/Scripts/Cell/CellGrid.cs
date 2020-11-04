@@ -82,18 +82,12 @@ public class CellGrid : MonoBehaviour {
 		// Code to get Towers components
 		if (Input.GetMouseButtonUp(0))
 		{
-			GameObject tower = GameObject.Find("UITower");
+			GameObject tower = GameObject.Find("Tower");
 			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-			if (overCell && (towerCreate.obj != null))
+			if (overCell && (towerCreate.isTowerDragged))
 			{
-				print(towerCreate.obj);
-				PlaceTile(GetPosAtCursor(), TowerTile);
-				Destroy(towerCreate.obj);
-				towerCreate.obj = null;
-			}
-			if (towerCreate.obj != null)
-            {
-				Destroy(towerCreate.obj);
+				PlaceTile(GetPosAtCursor(), wallTile);
+				towerCreate.isTowerDragged = false;
 			}
 		}
 	}
@@ -106,9 +100,9 @@ public class CellGrid : MonoBehaviour {
 		overCell = false;
 	}
 
-	private void OnMouseDown() {
+	/*private void OnMouseDown() {
 		if (overCell) {
 			PlaceTile(GetPosAtCursor(), wallTile);
 		}
-	}
+	}*/
 }

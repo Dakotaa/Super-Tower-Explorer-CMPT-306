@@ -1,36 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MouseTowerCreate : MonoBehaviour
+public class MouseTowerCreate : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    private Rigidbody2D rb2d;
-    public GameObject obj = null;
-    //public CellGrid cellGrid;
+    public bool isTowerDragged = false;
 
-    void OnMouseDown()
+    public void OnDrag(PointerEventData eventData)
     {
-        obj = (GameObject)Instantiate(Resources.Load("Tower", typeof(GameObject)));
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-        // transform.position = curPosition;
-        obj.transform.position = curPosition;
+        transform.position = Input.mousePosition;
+        isTowerDragged = true;
     }
 
-    void OnMouseDrag()
+    public void OnEndDrag(PointerEventData eventData)
     {
-        if (obj != null)
-        {
-            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
-            Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-            obj.transform.position = curPosition;
-        }
+        transform.localPosition = new Vector3(27.5f, -27.5f);
     }
-
-    /*private void OnMouseUp()
-    {
-        Destroy(obj);
-        obj = null;
-        cellGrid.OnMouseUp();
-    }*/
 }
