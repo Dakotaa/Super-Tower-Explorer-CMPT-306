@@ -113,12 +113,8 @@ public class CellGrid : MonoBehaviour {
 				wallCreate.isTowerDragged = false;
 				return;
 			}
-
-			if (GetTileAtCursor().GetType() != typeof(EmptyTile))
-			{
-				towerCreate.isTowerDragged = false;
-				wallCreate.isTowerDragged = false;
-			}
+			towerCreate.isTowerDragged = false;
+			wallCreate.isTowerDragged = false;
 		}
 	}
 
