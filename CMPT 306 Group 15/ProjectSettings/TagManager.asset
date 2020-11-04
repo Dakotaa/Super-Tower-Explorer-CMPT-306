@@ -7,6 +7,8 @@ TagManager:
   - Rooms
   - Spawn Point
   - Tile
+  - Tower
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Wall
   - 
   - 
   - 

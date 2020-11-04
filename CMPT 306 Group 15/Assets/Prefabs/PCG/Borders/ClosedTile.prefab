@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 268550757002044714}
   - component: {fileID: 176090040253125074}
   - component: {fileID: -5599292178763362811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ClosedTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
