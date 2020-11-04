@@ -348,8 +348,9 @@ GameObject:
   - component: {fileID: 367102384}
   - component: {fileID: 367102386}
   - component: {fileID: 367102385}
+  - component: {fileID: 367102387}
   m_Layer: 5
-  m_Name: Image
+  m_Name: WallTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,11 +363,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367102383}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2032717059}
+  m_Father: {fileID: 942133057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -394,7 +395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0028f8b7e8f53b04f98a2adb8004a072, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9af215c245924f4e9f04c358e5cf56c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -412,6 +413,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367102383}
   m_CullTransparentMesh: 0
+--- !u!114 &367102387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367102383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83cad03d885c0148b689474c992191c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTowerDragged: 0
 --- !u!1 &375158666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1482,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1184543987}
+  - {fileID: 367102384}
   m_Father: {fileID: 1759591620}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1851,11 +1865,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184543986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 942133057}
+  m_Father: {fileID: 2032717059}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1913,7 +1927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83cad03d885c0148b689474c992191c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  isTowerDragged: 0
 --- !u!1 &1331819992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,7 +3121,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 367102384}
+  - {fileID: 1184543987}
   m_Father: {fileID: 1759591620}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3474,6 +3488,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3d1d30c41a09fc542b27e2f7b9cae14f, type: 3}
+    - target: {fileID: 2771057266375863121, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
+      propertyPath: m_Name
+      value: Count0
+      objectReference: {fileID: 0}
     - target: {fileID: 5065279633979906808, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.699997

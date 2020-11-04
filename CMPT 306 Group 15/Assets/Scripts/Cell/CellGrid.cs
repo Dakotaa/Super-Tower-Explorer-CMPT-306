@@ -2,20 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CellGrid : MonoBehaviour {
 	public int size;	// the dimensions of the grid
 	public CellTile[,] grid;	// array of tiles
 	public CellTile emptyTile;  // prefab of default tile
-	public CellTile wallTile;
-	public CellTile TowerTile;  // prefab of the tower tile
-	public CellTile ResourceTile; // prefab of the resource tile
+	public CellTile wallTile;	// prefab of wall tile
+	public CellTile towerTile;	// prefab of tower tile
 	private GameObject currentTile;	// the tile the mouse is currently over
 	private float cellSize; // the size of the cell
 	private float tileSize;
 	private float tileScale;    // the scale of each tile
 	private bool overCell;
-	private Vector3 origin;	// the position of the bottom left corner of the cell
+	private Vector3 origin; // the position of the bottom left corner of the cell
+	private GameObject canvas;
 
 	void Start() {
 		grid = new CellTile[size, size];
@@ -28,6 +29,8 @@ public class CellGrid : MonoBehaviour {
 		tileScale = cellSize / size;    // calculate the scale of each tile
 
 		CreateTiles();  // create default tiles
+
+		canvas = GameObject.Find("Canvas"); // Finds Canvas GameObject
 	}
 
 	private void CreateTiles() {
@@ -78,16 +81,31 @@ public class CellGrid : MonoBehaviour {
 		return null;
 	}
 
-	void Update() {
-		// Code to get Towers components
-		if (Input.GetMouseButtonUp(0))
+	private void Update() {
+		if (Input.GetMouseButtonUp(0)) // Code to drop/place tower tile
 		{
+			// For when dragged tile is tower
 			GameObject tower = GameObject.Find("Tower");
 			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-			if (overCell && (towerCreate.isTowerDragged))
+			int ironCount = canvas.GetComponent<Inventory>().GetResourceCount("Iron");
+			if (overCell && (towerCreate.isTowerDragged) && (ironCount > 0)) // Checks if tower is being dragged from menu and over cell
+			{
+				PlaceTile(GetPosAtCursor(), towerTile);
+				canvas.GetComponent<Inventory>().DecreaseResource("Iron", 1);
+				towerCreate.isTowerDragged = false;
+				return;
+			}
+
+			// For when dragged tile is wall
+			GameObject wall = GameObject.Find("WallTile");
+			MouseTowerCreate wallCreate = wall.GetComponent<MouseTowerCreate>();
+			int stoneCount = canvas.GetComponent<Inventory>().GetResourceCount("Stone");
+			if (overCell && (wallCreate.isTowerDragged) && (stoneCount > 0)) // Checks if wall is being dragged from menu and over cell
 			{
 				PlaceTile(GetPosAtCursor(), wallTile);
-				towerCreate.isTowerDragged = false;
+				canvas.GetComponent<Inventory>().DecreaseResource("Stone", 1);
+				wallCreate.isTowerDragged = false;
+				return;
 			}
 		}
 	}
@@ -100,9 +118,17 @@ public class CellGrid : MonoBehaviour {
 		overCell = false;
 	}
 
-	/*private void OnMouseDown() {
+    /*private void OnMouseDown() {
 		if (overCell) {
 			PlaceTile(GetPosAtCursor(), wallTile);
 		}
 	}*/
+
+    /*private void OnMouseDown()
+    {
+		if (overCell && (GetTileAtCursor().GetType() == typeof(towerTile)))
+        {
+			canvas.GetComponent<Inventory>().IncreaseResource("Iron", 3);
+		}
+    }*/
 }
