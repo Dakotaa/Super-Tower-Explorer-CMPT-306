@@ -90,6 +90,11 @@ public class CellGrid : MonoBehaviour {
 	private void Update() {
 		if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
 		{
+			if (GetTileAtCursor() == null)
+            {
+				return;
+            }
+
 			// For when dragged tile is tower
 			GameObject tower = GameObject.Find("Tower");
 			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
@@ -113,6 +118,7 @@ public class CellGrid : MonoBehaviour {
 				wallCreate.isTowerDragged = false;
 				return;
 			}
+
 			if (GetTileAtCursor().GetType() != typeof(EmptyTile))
 			{
 				towerCreate.isTowerDragged = false;
