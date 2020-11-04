@@ -24,7 +24,8 @@ public class Tower : MonoBehaviour {
 		enemies = new List<GameObject>();
 		StartCoroutine("DoSearch"); // search coroutine starts on creation, loops forever
 		StartCoroutine("DoShoot"); // shoot coroutine starts on creation, loops forever
-		var bounds = GetComponent<SphereCollider>().bounds;
+
+		var bounds = GetComponent<SphereCollider>().bounds; //update the graph
 		// Expand the bounds along the Z axis
 		bounds.Expand(Vector3.forward * 1000);
 		var guo = new GraphUpdateObject(bounds);
