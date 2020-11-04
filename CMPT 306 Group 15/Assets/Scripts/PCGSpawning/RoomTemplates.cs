@@ -17,6 +17,8 @@ public class RoomTemplates : MonoBehaviour
 
     public GameObject ClosedRoom;
 
+    public GameObject HideRoom;
+
     public int RoomLow; 
     public int RoomHigh;
 
