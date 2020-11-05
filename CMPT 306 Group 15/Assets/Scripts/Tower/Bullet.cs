@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	public float velocity = 50.0f;
+	public float velocity = 5.0f;
 	private Vector3 direction;	
 	public void Setup(Vector3 direction) {
 		this.direction = direction;
-		Destroy(gameObject, 3);	// destroy bullets if they don't hit anything in 3 seconds
+		Destroy(gameObject, 2);	// destroy bullets if they don't hit anything in 2 seconds
 	}
 
 	private void Update() {
@@ -21,8 +21,8 @@ public class Bullet : MonoBehaviour {
 		if (collision.collider.tag.Equals("Enemy")) {	// damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
 			victim.Kill();
+			Destroy(gameObject);
 		}
-		Destroy(gameObject);
 	}
 
 

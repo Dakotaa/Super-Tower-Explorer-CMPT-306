@@ -5,22 +5,16 @@ using Pathfinding;
 
 public class Enemy : MainController
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+	private HealthBar healthBar;
 
-        
-    }
+	private void Start() {
+		healthBar = FindObjectOfType<HealthBar>();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-        if (gameObject.GetComponent<AIPath>().reachedEndOfPath)
-        {
-            //Debug.Log("DIE");
-            Enemy.Destroy(this.gameObject,1);
+	void Update() {
+        if (gameObject.GetComponent<AIPath>().reachedEndOfPath) {
+			healthBar.DecreaseHealth(5);
+            Enemy.Destroy(this.gameObject);
         }
     }
 
