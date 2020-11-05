@@ -21,7 +21,7 @@ public class RevealTile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (up.GetComponent<IsHidden>().revealed ||
+        if (true || up.GetComponent<IsHidden>().revealed ||
             right.GetComponent<IsHidden>().revealed ||
             down.GetComponent<IsHidden>().revealed ||
             left.GetComponent<IsHidden>().revealed)
