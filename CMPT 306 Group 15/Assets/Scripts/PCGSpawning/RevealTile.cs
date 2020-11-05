@@ -7,33 +7,27 @@ public class RevealTile : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public GameObject cell;
-    public GameObject up;
-    public GameObject right;
-    public GameObject down;
-    public GameObject left;
-    public GameObject reveal;
+
+    public GameObject mytile;
+
+    private bool rev;
 
     // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        rev = false;
     }
 
     void OnMouseDown()
     {
-        if (true || up.GetComponent<IsHidden>().revealed ||
-            right.GetComponent<IsHidden>().revealed ||
-            down.GetComponent<IsHidden>().revealed ||
-            left.GetComponent<IsHidden>().revealed)
+        if (rev)
         {
             // this object was clicked
             Instantiate(cell, transform.position, Quaternion.identity);
-            Instantiate(reveal, transform.position, Quaternion.identity);
             Spawn();
             Destroy(this.gameObject);
-
         }
-
     }
 
     private void Spawn()
@@ -42,4 +36,11 @@ public class RevealTile : MonoBehaviour
         Instantiate(templates.Terrains[rand], transform.position, Quaternion.identity);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("CanOpen"))
+        {
+            rev = true;
+        }
+    }
 }

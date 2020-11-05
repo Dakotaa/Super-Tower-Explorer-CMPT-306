@@ -13,6 +13,8 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     private bool spawned = false;
+    private GameObject myHide;
+    private GameObject canOpen;
 
     void Start()
     {
@@ -29,26 +31,31 @@ public class RoomSpawner : MonoBehaviour
                 //Spawn Bottom
                 rand = Random.Range(0, templates.DownRooms.Length);
                 Instantiate(templates.DownRooms[rand], transform.position, Quaternion.identity);
+                canOpen = templates.DownOpen[rand];
             }
             else if (openingDirection == 2)
             {
                 //Spawn Left
                 rand = Random.Range(0, templates.LeftRooms.Length);
                 Instantiate(templates.LeftRooms[rand], transform.position, Quaternion.identity);
+                canOpen = templates.LeftOpen[rand];
             }
             else if (openingDirection == 3)
             {
                 //Spawn Up
                 rand = Random.Range(0, templates.UpRooms.Length);
                 Instantiate(templates.UpRooms[rand], transform.position, Quaternion.identity);
+                canOpen = templates.UpOpen[rand];
             }
             else if (openingDirection == 4)
             {
                 //Spawn Right
                 rand = Random.Range(0, templates.RightRooms.Length);
                 Instantiate(templates.RightRooms[rand], transform.position, Quaternion.identity);
+                canOpen = templates.RightOpen[rand];
             }
-            Instantiate(templates.HideRoom, transform.position, Quaternion.identity);
+            myHide = Instantiate(templates.HideRoom, transform.position, Quaternion.identity);
+            myHide.GetComponent<RevealTile>().mytile = canOpen;
             spawned = true;
         }
     }

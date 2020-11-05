@@ -9,6 +9,9 @@ TagManager:
   - Tile
   - Tower
   - Enemy
+  - HideTile
+  - Terrain
+  - Revealed
   layers:
   - Default
   - TransparentFX
