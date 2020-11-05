@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour {
 	private float width; // current width
 	private RectTransform bar;	// red bar image
 	private Text text;  // HP display text
+	private GameControl gameControl;
 
 	private void Update() {
 		if (Input.GetKeyDown("1")) {
@@ -19,6 +20,7 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	void Start() {
+		gameControl = FindObjectOfType<GameControl>();
 		this.bar = this.gameObject.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
 		this.text = this.gameObject.transform.GetChild(0).GetChild(1).GetComponent<Text>();
 		this.health = this.baseHealth;
@@ -27,8 +29,8 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	public void DecreaseHealth(int amt) {
-		if (this.health - amt <= 0) {	// check if new health <= 0
-			// TODO: HANDLE 0 HP
+		if (this.health - amt <= 0) {   // check if new health <= 0
+			gameControl.EndGame();
 			return;
 		}
 		this.health -= amt;	// update health
