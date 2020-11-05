@@ -27,9 +27,8 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	public void DecreaseHealth(int amt) {
-		if (this.health - amt <= 0) {	// check if new health <= 0
-			// TODO: HANDLE 0 HP
-			return;
+		if (this.health - amt <= 0) {   // check if new health <= 0
+			FindObjectOfType<GameControl>().EndGame();
 		}
 		this.health -= amt;	// update health
 		this.text.text = "HP: " + this.health + "/" + this.maxHealth;	// update health text
