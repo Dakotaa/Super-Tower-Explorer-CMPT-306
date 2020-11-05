@@ -12,8 +12,8 @@ public class TerrainSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Spawn();
+       templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+       Spawn();
     }
 
     private void Spawn()

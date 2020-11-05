@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4978831178193407130}
   m_Layer: 8
   m_Name: CoverTile
-  m_TagString: Untagged
+  m_TagString: HideTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eeed2e7dc33a4b6699e03bf99c9dc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cell: {fileID: 768236566367080346, guid: 2a378ac2a0d344053bd03432d3c9c4eb, type: 3}
