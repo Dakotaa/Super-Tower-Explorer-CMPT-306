@@ -11,7 +11,7 @@ TagManager:
   - Enemy
   - HideTile
   - Terrain
-  - Revealed
+  - CanOpen
   layers:
   - Default
   - TransparentFX
