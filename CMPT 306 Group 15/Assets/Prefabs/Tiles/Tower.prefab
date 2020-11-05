@@ -146,7 +146,7 @@ MonoBehaviour:
   trackingSpeed: 5
   cooldown: 2
   damage: 1
-  bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
+  bullet: {fileID: 34886204373862371, guid: caa3e26139e3c1a44bb1c916160c6779, type: 3}
   enemies: []
 --- !u!135 &3875407611529380097
 SphereCollider:

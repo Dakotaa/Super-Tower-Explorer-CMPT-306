@@ -39,9 +39,9 @@ public class Tower : MonoBehaviour {
 
 	// shoot at an enemy
 	private void ShootAt(Vector3 targetPos) {
-		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
+		Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
-		Vector2 direction = (targetPos - transform.position);
+		Vector3 direction = (targetPos - transform.position);
 		shotBullet.Setup(direction);
 	}
 
