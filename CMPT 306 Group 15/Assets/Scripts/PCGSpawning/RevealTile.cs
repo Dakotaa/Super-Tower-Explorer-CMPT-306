@@ -7,6 +7,11 @@ public class RevealTile : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public GameObject cell;
+    public GameObject up;
+    public GameObject right;
+    public GameObject down;
+    public GameObject left;
+    public GameObject reveal;
 
     // Start is called before the first frame update
     void Start()
@@ -14,18 +19,21 @@ public class RevealTile : MonoBehaviour
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnMouseDown()
     {
-        // this object was clicked
-        Destroy(this.gameObject);
-        Instantiate(cell, transform.position, Quaternion.identity);
-        Spawn();
+        if (up.GetComponent<IsHidden>().revealed ||
+            right.GetComponent<IsHidden>().revealed ||
+            down.GetComponent<IsHidden>().revealed ||
+            left.GetComponent<IsHidden>().revealed)
+        {
+            // this object was clicked
+            Instantiate(cell, transform.position, Quaternion.identity);
+            Instantiate(reveal, transform.position, Quaternion.identity);
+            Spawn();
+            Destroy(this.gameObject);
+
+        }
+
     }
 
     private void Spawn()
