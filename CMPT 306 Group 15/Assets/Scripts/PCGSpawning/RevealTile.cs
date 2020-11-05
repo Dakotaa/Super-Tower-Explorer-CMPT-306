@@ -25,6 +25,7 @@ public class RevealTile : MonoBehaviour
         {
             // this object was clicked
             Instantiate(cell, transform.position, Quaternion.identity);
+            Instantiate(mytile, transform.position, Quaternion.identity);
             Spawn();
             Destroy(this.gameObject);
         }
