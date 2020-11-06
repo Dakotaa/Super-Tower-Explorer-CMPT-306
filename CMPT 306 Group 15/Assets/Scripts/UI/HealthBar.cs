@@ -21,21 +21,35 @@ public class HealthBar : MonoBehaviour {
 
 	void Start() {
 		gameControl = FindObjectOfType<GameControl>();
-		this.bar = this.gameObject.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
-		this.text = this.gameObject.transform.GetChild(0).GetChild(1).GetComponent<Text>();
+		this.bar = GameObject.Find("Health Bar").GetComponent<RectTransform>();
+		this.text = GameObject.Find("Health Text").GetComponent<Text>();
 		this.health = this.baseHealth;
 		this.baseWidth = this.bar.rect.width;
 		this.width = this.baseWidth;
 	}
 
 	public void DecreaseHealth(int amt) {
+		this.health -= amt;	// update health
+		this.text.text = "HP: " + this.health + "/" + this.maxHealth;	// update health text
+		float newWidth = this.baseWidth * ((float) this.health / (float) this.maxHealth);   // get new width
+		StartCoroutine(DecreaseBar(newWidth));	// animate health decrease
+
 		if (this.health - amt <= 0) {   // check if new health <= 0
 			gameControl.EndGame();
 			return;
 		}
-		this.health -= amt;	// update health
-		this.text.text = "HP: " + this.health + "/" + this.maxHealth;	// update health text
-		this.width = this.baseWidth * ((float) this.health / (float) this.maxHealth);	// get new width
-		this.bar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, this.width);	// reduce width of bar
+	}
+
+	private IEnumerator DecreaseBar(float newWidth) {
+		int frames = 30; // the number of frames to animate health bar decrease. Greater number means smoother animation
+		float diff = (this.width - newWidth) / (float) frames; // the amount to decrease the bar by each frame
+		float w;
+		for (int i = 1; i < frames + 1; i++) {
+			w = this.width - (diff * i);
+			this.bar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);  // reduce width of bar
+			yield return null;
+		}
+		this.width = newWidth; // update newWidth once animation is complete
+		yield return null;
 	}
 }

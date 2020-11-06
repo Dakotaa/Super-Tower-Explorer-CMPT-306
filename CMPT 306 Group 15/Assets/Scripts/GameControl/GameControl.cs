@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameControl : MonoBehaviour
-{
+public class GameControl : MonoBehaviour {
 
+	#region Singleton
 
-    private List<string> enemies = new List<string>(); //empty list for enemies, add enemies to list
+	void Awake() {
+		if (instance != null) {
+			Debug.LogWarning("More than one instance of GameControl found!");
+			return;
+		}
+		instance = this;
+	}
+
+	#endregion
+	public static GameControl instance;
+
+	private List<string> enemies = new List<string>(); //empty list for enemies, add enemies to list
 
     bool gameHasEnded = false; //current game state when starting
 
