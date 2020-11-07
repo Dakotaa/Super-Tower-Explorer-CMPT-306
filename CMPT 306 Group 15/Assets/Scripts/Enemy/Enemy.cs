@@ -6,14 +6,16 @@ using Pathfinding;
 public class Enemy : MainController
 {
 	private HealthBar healthBar;
+	private GameControl gameControl;
 
 	private void Start() {
+		gameControl = GameControl.instance;
 		healthBar = FindObjectOfType<HealthBar>();
 	}
 
 	void Update() {
         if (gameObject.GetComponent<AIPath>().reachedEndOfPath) {
-			healthBar.DecreaseHealth(5);
+			gameControl.ChangeHealth(-5);
             Enemy.Destroy(this.gameObject);
         }
     }

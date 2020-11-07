@@ -1503,8 +1503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f8761687f9be943ba9c28b763e79f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  maxHealth: 100
 --- !u!1 &1184042370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1
+  maxHealth: 100
 --- !u!1 &1908313766
 GameObject:
   m_ObjectHideFlags: 0
