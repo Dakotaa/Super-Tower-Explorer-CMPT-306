@@ -3,9 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class WaveSpawner : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
-    public Transform enemyPrefab;
+
+	#region Singleton
+
+	public static WaveManager instance;
+
+	void Awake() {
+		if (instance != null) {
+			Debug.LogWarning("More than one instance of WaveManager found!");
+			return;
+		}
+		instance = this;
+	}
+
+	#endregion
+
+	public Transform enemyPrefab;
 
     public Transform spawnPoint; //change this
 
@@ -17,10 +32,9 @@ public class WaveSpawner : MonoBehaviour
 
     private int waveNumber = 0;
 
-    private int maxWaveNumber = 5;
+    private int maxWaveNumber = 10;
 
     private bool scan = true; //scan once game starts hopefully
-
 
     private void Update()
     {
@@ -34,17 +48,24 @@ public class WaveSpawner : MonoBehaviour
         waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
-    IEnumerator SpawnWave()
+	public delegate void OnWaveStarted();
+	public OnWaveStarted onWaveStartedCallback;
+
+	IEnumerator SpawnWave()
     {
-        if (scan)
+		// Trigger callback
+		if (onWaveStartedCallback != null) onWaveStartedCallback.Invoke();
+		if (scan)
         {
             AstarPath.active.Scan();//This was needed to resan once the PG is done generating, maybe should change
+            Debug.Log("Scanned");
             scan = false;
         }
         
 
         if (waveNumber != maxWaveNumber)
         {
+            Debug.Log("WAVE incoming");
             
             for (int i = 0; i < waveNumber; i++)
             {
@@ -66,6 +87,9 @@ public class WaveSpawner : MonoBehaviour
        
     }
 
+	public int GetWaveNumber() {
+		return this.waveNumber;
+	}
 
 }
 
