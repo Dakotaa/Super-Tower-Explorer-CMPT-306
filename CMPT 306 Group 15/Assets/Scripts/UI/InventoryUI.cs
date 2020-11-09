@@ -12,7 +12,6 @@ public class InventoryUI : MonoBehaviour
 	}
 
 	void UpdateUI() {
-		print("UPDATING UI");
 		// update each slot by getting the resource of that slot, then checking the
 		// resource count of that resource in the inventory manager
 		foreach (ResourceSlot slot in resourceSlots) {

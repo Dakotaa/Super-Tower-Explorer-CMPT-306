@@ -12,6 +12,7 @@ TagManager:
   - HideTile
   - Terrain
   - CanOpen
+  - Wall
   layers:
   - Default
   - TransparentFX

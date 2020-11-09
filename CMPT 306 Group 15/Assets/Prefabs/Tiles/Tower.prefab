@@ -141,11 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8c4440144f8ec4e86cedeaae3166a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchInterval: 1
-  searchRange: 5
+  searchInterval: 0.75
+  searchRange: 10
   trackingSpeed: 5
-  cooldown: 2
+  cooldown: 1.25
   damage: 1
+  bulletVelocity: 12
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
   enemies: []
 --- !u!135 &3875407611529380097

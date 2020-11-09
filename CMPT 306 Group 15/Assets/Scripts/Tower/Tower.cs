@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour {
 	public float trackingSpeed = 5.0f;
 	public float cooldown = 1.0f;	// shot cooldown, seconds
 	public float damage = 1.0f; // shot damage
+	public float bulletVelocity = 5.0f;
 	public Bullet bullet;
 	// public GameController controller;
 	private GameObject target;  // enemy currently being targeted
@@ -32,17 +33,14 @@ public class Tower : MonoBehaviour {
 		//Debug.Log("update");
 		// change some settings on the object
 		AstarPath.active.UpdateGraphs(guo);
-
-
-
 	}
 
 	// shoot at an enemy
 	private void ShootAt(Vector3 targetPos) {
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
-		Vector2 direction = (targetPos - transform.position);
-		shotBullet.Setup(direction);
+		Vector3 direction = (targetPos - transform.position).normalized;
+		shotBullet.Setup(direction, bulletVelocity);
 	}
 
 	// set the current target enemy
@@ -59,9 +57,9 @@ public class Tower : MonoBehaviour {
 				ProximityCheck();
 			}
 		} else {
-			Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, searchRange);
+			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(this.transform.position, searchRange);
 			// set target to first enemy in range
-			foreach (Collider hitCollider in hitColliders) {
+			foreach (Collider2D hitCollider in hitColliders) {
 				if (hitCollider.tag.Equals("Enemy")) {
 					print("NEW TARGET: " + hitCollider.gameObject.name);
 					SetTarget(hitCollider.gameObject);

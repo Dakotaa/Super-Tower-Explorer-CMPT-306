@@ -62,7 +62,6 @@ public class CellGrid : MonoBehaviour {
 	private void PlaceTile(int[] pos, CellTile tileType) {
 		CellTile replaced = grid[pos[0], pos[1]];
 		if (replaced.GetType() == typeof(EmptyTile)) {  // new tiles can only be placed on empty tiles
-			print(grid[pos[0], pos[1]].name);
 			Destroy(grid[pos[0], pos[1]].gameObject);
 			CreateTile(pos[0], pos[1], tileType);
 
