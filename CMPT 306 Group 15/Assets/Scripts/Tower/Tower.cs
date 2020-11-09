@@ -61,7 +61,6 @@ public class Tower : MonoBehaviour {
 			// set target to first enemy in range
 			foreach (Collider2D hitCollider in hitColliders) {
 				if (hitCollider.tag.Equals("Enemy")) {
-					print("NEW TARGET: " + hitCollider.gameObject.name);
 					SetTarget(hitCollider.gameObject);
 					break;
 				}
