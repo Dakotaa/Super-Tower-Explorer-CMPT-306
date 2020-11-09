@@ -35,7 +35,6 @@ public class WaveUI : MonoBehaviour {
 			fadeAmount = textColor.a + (fadeSpeed * Time.deltaTime);
 			text.color = new Color(textColor.r, textColor.g, textColor.b, fadeAmount);
 			background.color = new Color(backgroundColor.r, backgroundColor.g, backgroundColor.b, fadeAmount);
-			print("Alpha: " + fadeAmount);
 			yield return null;
 		}
 		yield return new WaitForSeconds(hold);
@@ -45,7 +44,6 @@ public class WaveUI : MonoBehaviour {
 			fadeAmount = textColor.a - (fadeSpeed * Time.deltaTime);
 			text.color = new Color(textColor.r, textColor.g, textColor.b, fadeAmount);
 			background.color = new Color(backgroundColor.r, backgroundColor.g, backgroundColor.b, fadeAmount);
-			print("Alpha: " + fadeAmount);
 			yield return null;
 		}
 		text.gameObject.SetActive(false);
