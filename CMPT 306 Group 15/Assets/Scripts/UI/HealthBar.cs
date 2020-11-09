@@ -51,7 +51,8 @@ public class HealthBar : MonoBehaviour {
 	private IEnumerator DecreaseBar(float newWidth, int frames) {
 		float diff = (this.width - newWidth) / (float) frames; // the amount to decrease the bar by each frame
 		float w;
-		textPanel.GetComponent<Image>().color = new Color(255, 0, 0);
+		if (diff > 0) textPanel.GetComponent<Image>().color = new Color(255, 0, 0);
+		else textPanel.GetComponent<Image>().color = new Color(0, 255, 0);
 		for (int i = 1; i < frames + 1; i++) {
 			w = this.width - (diff * i);
 			this.bar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);  // reduce width of bar
