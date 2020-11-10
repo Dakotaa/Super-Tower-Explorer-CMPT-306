@@ -9,10 +9,12 @@ public class GameControl : MonoBehaviour {
 
 	/* game management variables */
 	private bool gameHasEnded = false; //current game state when starting
+	public int waveNumber = 0;
+	private int gameState = 0; // games state - 0 = waiting to start wave, 1 = wave starting, 2 = wave in progress
 	public float restartDelay = 1f;
 
 	/* enemy management variables */
-	private List<string> enemies = new List<string>(); //empty list for enemies, add enemies to list
+	private List<Enemy> enemies = new List<Enemy>(); // list of active enemies
 
 	/* health management variables */
 	public int maxHealth; // maximum (starting) health - unchangeable after start
@@ -58,22 +60,53 @@ public class GameControl : MonoBehaviour {
 		}
 	}
 
-   void Restart() {
+	void Restart() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
+	public int GetGameState() {
+		return this.gameState;
+	}
+
+	public void SetGameState(int state) {
+		if (state >= 0 && state <= 2) {
+			this.gameState = state;
+		}
+	}
+
+	public int GetWaveNumber() {
+		return this.waveNumber;
+	}
+
+	public void SetWaveNumber(int w) {
+		if (w >= 0) {
+			this.waveNumber = w;
+		}
+	}
+
+	public void IncreaseWaveNumber() {
+		this.waveNumber++;
+	}
 
 
    /*
 	*  Enemy management
 	*/
 
-	public List<string> GetEnemies() {
+	public List<Enemy> GetEnemies() {
 		return enemies;
 	}
 
-	public void SetEnemies(List<string> value) {
-		enemies = value;
+	public void AddEnemy(Enemy enemy) {
+		enemies.Add(enemy);
+	}
+
+	public void RemoveEnemy(Enemy enemy) {
+		enemies.Remove(enemy);
+	}
+
+	public int GetEnemyCount() {
+		return enemies.Count;
 	}
 
 

@@ -6,26 +6,28 @@ using UnityEngine.UI;
 public class WaveUI : MonoBehaviour {
 	private Text text;
 	private Image background;
-	private WaveManager waveManager;
+	private WaveControl waveControl;
+	private GameControl gameControl;
 	public float fadeSpeed = 50.0f;
 	public float fadeHold = 3.0f;
 
     void Start() {
 		text = GameObject.Find("WaveBanner Text").GetComponent<Text>();
 		background = GameObject.Find("WaveBanner Background").GetComponent<Image>();
-		waveManager = WaveManager.instance;
-		waveManager.onWaveStartedCallback += WaveUpdate;
+		waveControl = WaveControl.instance;
+		gameControl = GameControl.instance;
+		waveControl.onWaveStartedCallback += WaveStart;
     }
 
-
-	private void WaveUpdate() {
-		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold));
+	private void WaveStart() {
+		print(gameControl.GetGameState());
+		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold, gameControl.GetWaveNumber()));
 	}
 
-	private IEnumerator DisplayBanner(float fadeSpeed, float hold) {
+	private IEnumerator DisplayBanner(float fadeSpeed, float hold, int wave) {
 		text.gameObject.SetActive(true);
 		background.gameObject.SetActive(true);
-		text.text = "WAVE " + waveManager.GetWaveNumber();
+		text.text = "WAVE " + wave;
 		Color textColor = text.color;
 		Color backgroundColor = background.color;
 		float fadeAmount;
