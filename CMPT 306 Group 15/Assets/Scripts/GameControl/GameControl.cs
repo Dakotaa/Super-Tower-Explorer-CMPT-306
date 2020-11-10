@@ -32,6 +32,13 @@ public class GameControl : MonoBehaviour {
 		if (Input.GetKeyDown("1")) {
 			ChangeHealth(-5);
 		}
+
+		if (Input.GetKeyDown("3")) {
+			ChangeEXP(1);
+		}
+		if (Input.GetKeyDown("4")) {
+			ChangeEXP(-1);
+		}
 	}
 
 
