@@ -9,7 +9,7 @@ using UnityEngine.UI;
  * Callback functions depend on an instane of GameControl.
  */
 
-public class HealthBar : MonoBehaviour {
+public class HealthBarUI : MonoBehaviour {
 	private int maxHealth;  // max health
 	private int health; // current health
 	private float baseWidth; // starting width of the health bar image

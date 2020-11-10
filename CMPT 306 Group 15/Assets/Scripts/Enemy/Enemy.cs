@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy : MainController
-{
-	private HealthBar healthBar;
+public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
 
 	private void Start() {
 		gameControl = GameControl.instance;
 		waveControl = WaveControl.instance;
-		healthBar = FindObjectOfType<HealthBar>();
 	}
 
 	void Update() {

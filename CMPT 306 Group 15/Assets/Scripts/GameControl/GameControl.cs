@@ -88,7 +88,6 @@ public class GameControl : MonoBehaviour {
 		this.waveNumber++;
 	}
 
-
    /*
 	*  Enemy management
 	*/

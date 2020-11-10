@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveUI : MonoBehaviour {
+public class WaveBannerUI : MonoBehaviour {
 	private Text text;
 	private Image background;
 	private WaveControl waveControl;
@@ -17,17 +17,24 @@ public class WaveUI : MonoBehaviour {
 		waveControl = WaveControl.instance;
 		gameControl = GameControl.instance;
 		waveControl.onWaveStartedCallback += WaveStart;
+		waveControl.onWaveFinishedCallback += WaveFinish;
     }
 
 	private void WaveStart() {
+		waveControl = WaveControl.instance;
+		gameControl = GameControl.instance;
 		print(gameControl.GetGameState());
-		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold, gameControl.GetWaveNumber()));
+		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold, "WAVE " + gameControl.GetWaveNumber()));
 	}
 
-	private IEnumerator DisplayBanner(float fadeSpeed, float hold, int wave) {
+	private void WaveFinish() {
+		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold, "WAVE COMPLETE"));
+	}
+
+	private IEnumerator DisplayBanner(float fadeSpeed, float hold, string message) {
 		text.gameObject.SetActive(true);
 		background.gameObject.SetActive(true);
-		text.text = "WAVE " + wave;
+		text.text = message;
 		Color textColor = text.color;
 		Color backgroundColor = background.color;
 		float fadeAmount;
