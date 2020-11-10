@@ -20,6 +20,10 @@ public class GameControl : MonoBehaviour {
 	public int maxHealth; // maximum (starting) health - unchangeable after start
 	private int health; // current health
 
+	/* experience and cell unclock variables */
+	private float EXP = 0;  // player's current EXP towards the next cell unlock
+	private float nextLevel = 5;    // required EXP for the next cell unlock
+	private bool cellUnlockAvailable = false;
 
 	private void Update() {
 		if (Input.GetKeyDown("2")) {
@@ -122,6 +126,7 @@ public class GameControl : MonoBehaviour {
 		int newHealth = this.health + amt; // get the new health
 		/* avoid going into negative health */
 		if (newHealth < 0) {
+			this.health = 0;
 		/* avoid going over maximum health */
 		} else if (newHealth > this.maxHealth) {
 			this.health = this.maxHealth;
@@ -145,5 +150,41 @@ public class GameControl : MonoBehaviour {
 
 	public int GetMaxHealth() {
 		return this.maxHealth;
+	}
+
+	/*
+	*  EXP control
+	*/
+
+	/* Callback which is triggered on health change. */
+	public delegate void OnEXPChanged();
+	public OnEXPChanged OnEXPChangedCallback;
+
+	/* change xp amount - analogous to ChangeHealth() */
+	public void ChangeEXP(float amt) {
+		/* don't increase when an unlock is already available */
+		if (cellUnlockAvailable) {
+			return;
+		}
+		float newEXP = this.EXP + amt;
+		if (newEXP < 0) {
+			this.EXP = 0;	
+		} else if (newEXP > this.nextLevel) {
+			this.EXP = nextLevel;
+		} else {
+			this.EXP = newEXP;
+		}
+		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
+		if (this.EXP >= this.nextLevel) {
+			this.cellUnlockAvailable = true;
+		}
+	}
+
+	public float GetEXP() {
+		return this.EXP;
+	}
+
+	public float GetNextLevelEXP() {
+		return this.nextLevel;
 	}
 }
