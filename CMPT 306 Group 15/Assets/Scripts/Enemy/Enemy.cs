@@ -37,7 +37,7 @@ public class Enemy : MainController {
 
         if (col.tag == "Wall")
         {
-			if (gameObject.GetComponent<AIPath>().reachedEndOfPath)
+			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
 				Debug.Log("I am Stopped");
 				Destroy(col.gameObject);
