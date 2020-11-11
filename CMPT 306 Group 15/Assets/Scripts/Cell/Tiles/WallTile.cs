@@ -16,4 +16,5 @@ public class WallTile : CellTile {
         //Change some settings on the object
         AstarPath.active.UpdateGraphs(guo);
     }
+
 }

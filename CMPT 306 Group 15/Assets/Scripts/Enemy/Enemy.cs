@@ -14,8 +14,10 @@ public class Enemy : MainController {
 	}
 
 	void Update() {
-        if (gameObject.GetComponent<AIPath>().reachedEndOfPath) {
+
+		if (gameObject.GetComponent<AIPath>().reachedDestination) {
 			gameControl.ChangeHealth(-5);
+			
 			Kill(false);
         }
     }
@@ -28,4 +30,35 @@ public class Enemy : MainController {
 		gameControl.EnemyKilled(this, rewardEXP);
 		Destroy(this.gameObject);
 	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		Debug.Log("GameObject1 collided with " + col.name);
+
+        if (col.tag == "Wall")
+        {
+			if (gameObject.GetComponent<AIPath>().reachedEndOfPath)
+			{
+				Debug.Log("I am Stopped");
+				Destroy(col.gameObject);
+
+				var bounds = GetComponent<CircleCollider2D>().bounds;
+
+				//Expand the bounds along the Z axis
+				bounds.Expand(Vector3.forward * 2000);
+				bounds.Expand(2);
+				
+				var guo = new GraphUpdateObject(bounds);
+
+				//Debug.Log("update");
+				//Change some settings on the object
+				AstarPath.active.UpdateGraphs(guo);
+			}
+		}
+		
+
+    }
+
+	
+
 }
