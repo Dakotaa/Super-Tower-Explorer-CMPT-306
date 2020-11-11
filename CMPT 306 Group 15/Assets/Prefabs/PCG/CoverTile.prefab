@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8214525274863028182}
   - component: {fileID: 4739214714503403521}
   - component: {fileID: -4978831178193407130}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoverTile
   m_TagString: HideTile
   m_Icon: {fileID: 0}
@@ -145,8 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell: {fileID: 768236566367080346, guid: 2a378ac2a0d344053bd03432d3c9c4eb, type: 3}
-  up: {fileID: 0}
-  right: {fileID: 0}
-  down: {fileID: 0}
-  left: {fileID: 0}
-  reveal: {fileID: 4790018808878553960, guid: 39a179210470a4992a9af55805b18a48, type: 3}
+  mytile: {fileID: 0}
