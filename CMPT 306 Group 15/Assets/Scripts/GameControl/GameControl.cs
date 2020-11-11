@@ -21,8 +21,9 @@ public class GameControl : MonoBehaviour {
 	private int health; // current health
 
 	/* experience and cell unclock variables */
+	private int level = 0;
 	private float EXP = 0;  // player's current EXP towards the next cell unlock
-	private float nextLevel = 5;    // required EXP for the next cell unlock
+	private float EXPForNextLevel = 5;    // required EXP for the next cell unlock
 	private bool cellUnlockAvailable = false;
 
 	private void Update() {
@@ -99,9 +100,12 @@ public class GameControl : MonoBehaviour {
 		this.waveNumber++;
 	}
 
-   /*
-	*  Enemy management
-	*/
+	/*
+	 *  Enemy management
+	 */
+
+	public delegate void OnEnemyDeath();
+	public OnEnemyDeath onEnemyDeathCallback;
 
 	public List<Enemy> GetEnemies() {
 		return enemies;
@@ -117,6 +121,14 @@ public class GameControl : MonoBehaviour {
 
 	public int GetEnemyCount() {
 		return enemies.Count;
+	}
+
+	public void EnemyKilled(Enemy enemy, bool rewardEXP) {
+		RemoveEnemy(enemy);
+		if (rewardEXP) {
+			ChangeEXP(enemy.GetEXPWorth());
+		}
+		if (onEnemyDeathCallback != null) onEnemyDeathCallback.Invoke();
 	}
 
 
@@ -176,14 +188,14 @@ public class GameControl : MonoBehaviour {
 		float newEXP = this.EXP + amt;
 		if (newEXP < 0) {
 			this.EXP = 0;	
-		} else if (newEXP > this.nextLevel) {
-			this.EXP = nextLevel;
+		} else if (newEXP > this.EXPForNextLevel) {
+			this.EXP = EXPForNextLevel;
 		} else {
 			this.EXP = newEXP;
 		}
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
-		if (this.EXP >= this.nextLevel) {
-			this.cellUnlockAvailable = true;
+		if (this.EXP >= this.EXPForNextLevel) {
+			LevelComplete();
 		}
 	}
 
@@ -192,6 +204,21 @@ public class GameControl : MonoBehaviour {
 	}
 
 	public float GetNextLevelEXP() {
-		return this.nextLevel;
+		return this.EXPForNextLevel;
+	}
+
+	private void LevelComplete() {
+		this.level++;
+		//this.cellUnlockAvailable = true;
+		this.EXP = 0;
+		this.EXPForNextLevel = CalcNextLevel();
+		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
+	}
+
+	/*
+	 * Calculates the EXP needed for the next level.
+	 */
+	private float CalcNextLevel() {
+		return this.EXPForNextLevel * 2.0f;
 	}
 }

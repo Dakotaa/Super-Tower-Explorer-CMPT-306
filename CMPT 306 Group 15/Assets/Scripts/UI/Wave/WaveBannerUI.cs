@@ -23,7 +23,6 @@ public class WaveBannerUI : MonoBehaviour {
 	private void WaveStart() {
 		waveControl = WaveControl.instance;
 		gameControl = GameControl.instance;
-		print(gameControl.GetGameState());
 		StartCoroutine(DisplayBanner(fadeSpeed, fadeHold, "WAVE " + gameControl.GetWaveNumber()));
 	}
 

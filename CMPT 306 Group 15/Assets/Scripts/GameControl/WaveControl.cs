@@ -16,6 +16,8 @@ public class WaveControl : MonoBehaviour
 			return;
 		}
 		instance = this;
+		gameControl = GameControl.instance;
+		gameControl.onEnemyDeathCallback += EnemyKilled;
 	}
 
 	#endregion
@@ -38,7 +40,7 @@ public class WaveControl : MonoBehaviour
 	public OnWaveFinished onWaveFinishedCallback;
 
 	private void Update() {
-		if (Input.GetKeyDown("3")) {
+		if (Input.GetKeyDown(KeyCode.Return)) {
 			StartCoroutine(StartWave());
 		}
 	}
@@ -64,7 +66,6 @@ public class WaveControl : MonoBehaviour
 			// TODO: Different enemies spawning based on wave
 			waveEnemyCount = gameControl.GetWaveNumber() * gameControl.GetWaveNumber();
 			waveEnemiesSpawned = 0;
-			print(gameControl.GetWaveNumber());
 			for (int i = 0; i < waveEnemyCount; i++) {
 				SpawnEnemy();
 				yield return new WaitForSeconds(enemySpawnInterval / (float) spawnPoints.Count);
@@ -79,12 +80,12 @@ public class WaveControl : MonoBehaviour
 		StartCoroutine(StartWave());
 	}
 
-	public void FinishWave() {
+	private void FinishWave() {
 		gameControl.SetGameState(0); // game state 0 - waiting to start wave
 		if (onWaveFinishedCallback != null) onWaveFinishedCallback.Invoke();
 	}
 
-    void SpawnEnemy() {
+    private void SpawnEnemy() {
 		// spawn this enemy at a random spawn point in the list
 		int index = (int) Random.Range(0, spawnPoints.Count);
 		// instantiate the enemy and add it to the enemy list
@@ -92,8 +93,8 @@ public class WaveControl : MonoBehaviour
 		waveEnemiesSpawned++;
     }
 
-	public void EnemyKilled(Enemy enemy) {
-		gameControl.RemoveEnemy(enemy);
+	private void EnemyKilled() {
+		// check if this was the last enemy for the round 
 		if (gameControl.GetEnemyCount() == 0 && waveEnemyCount == waveEnemiesSpawned) {
 			FinishWave();
 		}

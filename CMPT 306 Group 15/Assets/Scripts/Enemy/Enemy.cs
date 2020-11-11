@@ -6,6 +6,7 @@ using Pathfinding;
 public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
+	public float EXPWorth = 1.0f;
 
 	private void Start() {
 		gameControl = GameControl.instance;
@@ -15,12 +16,16 @@ public class Enemy : MainController {
 	void Update() {
         if (gameObject.GetComponent<AIPath>().reachedEndOfPath) {
 			gameControl.ChangeHealth(-5);
-			Kill();
+			Kill(false);
         }
     }
 
-	public void Kill() {
-		waveControl.EnemyKilled(this);
+	public float GetEXPWorth() {
+		return this.EXPWorth;
+	}
+
+	public void Kill(bool rewardEXP) {
+		gameControl.EnemyKilled(this, rewardEXP);
 		Destroy(this.gameObject);
 	}
 }
