@@ -91,11 +91,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: 7635603353872736866}
-  - component: {fileID: 1738508163918523492}
   - component: {fileID: 3875407611529380097}
-  - component: {fileID: 8814487609788918834}
+  - component: {fileID: 1168917106947082120}
+  - component: {fileID: -2668251879613289514}
   m_Layer: 8
-  m_Name: Tower
+  m_Name: Simple Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,26 +129,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.22
   m_Center: {x: 0.5, y: 0.5, z: 0}
---- !u!114 &1738508163918523492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990654395874869398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8c4440144f8ec4e86cedeaae3166a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  searchInterval: 0.75
-  searchRange: 10
-  trackingSpeed: 5
-  cooldown: 1.25
-  damage: 1
-  bulletVelocity: 12
-  bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
-  enemies: []
 --- !u!135 &3875407611529380097
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -162,7 +142,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0.5, y: 0.5, z: 0}
---- !u!114 &8814487609788918834
+--- !u!114 &1168917106947082120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,9 +151,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1990654395874869398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1a9e902cb47d94f912c9dab27b75e1, type: 3}
+  m_Script: {fileID: 11500000, guid: fa0f76c8adfdaf74e9a13eab8037e8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  searchInterval: 1
+  searchRange: 10
+  switchRange: 5
+  trackingSpeed: 5
+  cooldown: 1
+  damage: 1
+  bulletVelocity: 25
+  bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
+  enemies: []
+--- !u!114 &-2668251879613289514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990654395874869398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83cad03d885c0148b689474c992191c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTowerDragged: 0
 --- !u!1 &2612116779574247080
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO : Implement game controller access for getting list of enemies
-// TODO : Replace GameObject with Enemy when enemy type is ready
-
-public class Tower : MonoBehaviour {
+public class Tower : CellTile {
 	public float searchInterval = 1.0f;	// how often the tower will search for enemies
 	public float searchRange = 5.0f;   // how far the tower will search for enemies
+	public float switchRange = 2.5f; // if the current enemy is further than this, search for a closer enemy
 	public float trackingSpeed = 5.0f;
 	public float cooldown = 1.0f;	// shot cooldown, seconds
 	public float damage = 1.0f; // shot damage
@@ -20,12 +18,11 @@ public class Tower : MonoBehaviour {
 	Quaternion targetTrackRot;  // rotation of tower
 	public List<GameObject> enemies;	// list of existing enemies
 
-	void Start() {
+	public virtual void Start() {
 		target = null; // no initial target
 		enemies = new List<GameObject>();
 		StartCoroutine("DoSearch"); // search coroutine starts on creation, loops forever
 		StartCoroutine("DoShoot"); // shoot coroutine starts on creation, loops forever
-
 		var bounds = GetComponent<SphereCollider>().bounds; //update the graph
 		// Expand the bounds along the Z axis
 		bounds.Expand(Vector3.forward * 1000);
@@ -36,7 +33,7 @@ public class Tower : MonoBehaviour {
 	}
 
 	// shoot at an enemy
-	private void ShootAt(Vector3 targetPos) {
+	public virtual void ShootAt(Vector3 targetPos) {
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
 		Vector3 direction = (targetPos - transform.position).normalized;
@@ -44,32 +41,39 @@ public class Tower : MonoBehaviour {
 	}
 
 	// set the current target enemy
-	private void SetTarget(GameObject e) {
+	public virtual void SetTarget(GameObject e) {
 		target = e;
 	}
 
 	// checks for enemies within searchRange
-	private void ProximityCheck() {
+	public virtual void ProximityCheck() {
 		// if the tower has a target, check if it's still in range, and shoot if it is
 		if (target) {
-			if (Vector3.Distance(transform.position, target.transform.position) > searchRange) {
+			if (Vector3.Distance(transform.position, target.transform.position) > switchRange) {
 				target = null;
 				ProximityCheck();
 			}
 		} else {
 			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(this.transform.position, searchRange);
-			// set target to first enemy in range
+			// set new target to closest enemy
+			GameObject closest = null;
+			float closestDistance = 999f;
 			foreach (Collider2D hitCollider in hitColliders) {
 				if (hitCollider.tag.Equals("Enemy")) {
-					SetTarget(hitCollider.gameObject);
-					break;
+					GameObject current = hitCollider.gameObject;
+					float distance = Vector3.Distance(transform.position, current.transform.position);
+					if (distance < closestDistance) {
+						closest = current;
+						closestDistance = distance;
+					}
 				}
 			}
+			SetTarget(closest);
 		}
 	}
 
 	// enemy search coroutine
-	private IEnumerator DoSearch() { 
+	public virtual IEnumerator DoSearch() { 
 		for (;;) {	// loop forever on searchInterval
 			ProximityCheck();
 			yield return new WaitForSeconds(searchInterval);
@@ -77,7 +81,7 @@ public class Tower : MonoBehaviour {
 	}
 
 	// tower shoot coroutine
-	private IEnumerator DoShoot() {
+	public virtual IEnumerator DoShoot() {
 		for (;;) { // loop forever on cooldown
 			if (target) {
 				ShootAt(target.transform.position);

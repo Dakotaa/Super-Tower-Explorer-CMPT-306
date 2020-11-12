@@ -95,7 +95,7 @@ public class CellGrid : MonoBehaviour {
             }
 
 			// For when dragged tile is tower
-			GameObject tower = GameObject.Find("Tower");
+			GameObject tower = GameObject.Find("Simple Tower");
 			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
 			int ironCount = canvas.GetComponent<Inventory>().GetResourceCount("Iron");
 			if (overCell && (towerCreate.isTowerDragged) && (ironCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
