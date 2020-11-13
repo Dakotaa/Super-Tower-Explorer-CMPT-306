@@ -30,7 +30,7 @@ public class Enemy : MainController {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		Debug.Log("GameObject1 collided with " + col.name);
+		//Debug.Log("GameObject1 collided with " + col.name);
 
         if (col.tag == "Wall Tile")
         {
