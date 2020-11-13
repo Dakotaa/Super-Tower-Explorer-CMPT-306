@@ -91,7 +91,7 @@ public class WaveControl : MonoBehaviour
 		int index = (int) Random.Range(0, spawnPoints.Count);
 		// instantiate the enemy and add it to the enemy list
 		gameControl.AddEnemy(Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation));
-		//gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
+		gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
 		waveEnemiesSpawned++;
     }
 

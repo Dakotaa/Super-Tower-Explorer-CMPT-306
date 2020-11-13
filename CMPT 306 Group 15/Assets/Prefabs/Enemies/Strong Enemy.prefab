@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3440795968876711337}
   - component: {fileID: 4758064322041555804}
   - component: {fileID: -8019605280985402890}
+  - component: {fileID: 966969566449558779}
   m_Layer: 0
   m_Name: Strong Enemy
   m_TagString: Enemy
@@ -135,7 +136,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 0.5
+  maxSpeed: 0.75
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -147,7 +148,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 2
+  pickNextWaypointDist: 0.4
   endReachedDistance: 0.8
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EXPWorth: 5
-  damage: -10
+  damage: -5
 --- !u!58 &3440795968876711337
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.11
+  m_Radius: 0.1
 --- !u!50 &4758064322041555804
 Rigidbody2D:
   serializedVersion: 4
@@ -236,7 +237,30 @@ MonoBehaviour:
   iterations: 2
   strength: 0.5
   uniformLength: 1
-  maxSegmentLength: 2
+  maxSegmentLength: 0.1
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
+--- !u!114 &966969566449558779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835553763266405173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090bec917bbe4c3bbc612ef13f7c4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  useRaycasting: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  thickRaycast: 1
+  thickRaycastRadius: 1
+  use2DPhysics: 1
+  raycastOffset: {x: 0, y: 0, z: 0}
+  useGraphRaycasting: 1
+  quality: 3
