@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48f8534ebf6129f41927acb4dfa8d1ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
   m_Color: {r: 0.50980395, g: 0.50980395, b: 0.50980395, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,6 +164,18 @@ MonoBehaviour:
   trackingSpeed: 5
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
   enemies: []
+  levelup_searchInterval: -0.1
+  levelup_searchRange: -1
+  levelup_cooldown: -0.1
+  levelup_damage: 0.1
+  levelup_bulletVelocity: 1
+  bodies:
+  - {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
+  - {fileID: 21300000, guid: 48f8534ebf6129f41927acb4dfa8d1ed, type: 3}
+  - {fileID: 21300000, guid: 182f368f88925b246accf43232f61f50, type: 3}
+  - {fileID: 21300000, guid: 2804a935b00723f448459db14701b98e, type: 3}
+  - {fileID: 21300000, guid: 758f9a502a3615c4fb184226a8cb65e8, type: 3}
+  body: {fileID: 0}
 --- !u!114 &-2668251879613289514
 MonoBehaviour:
   m_ObjectHideFlags: 0

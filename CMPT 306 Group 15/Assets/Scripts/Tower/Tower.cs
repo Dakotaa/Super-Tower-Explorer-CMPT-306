@@ -43,6 +43,7 @@ public class Tower : CellTile {
 
 	public virtual void Update() {
 		if (target) {
+			print("Rotating");
 			lookPos = target.transform.position - transform.position;
 			angle = (Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg) - 90.0f;
 			qTo = Quaternion.AngleAxis(angle, Vector3.forward);
