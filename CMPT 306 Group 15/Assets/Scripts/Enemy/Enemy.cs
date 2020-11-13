@@ -7,6 +7,7 @@ public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
 	public float EXPWorth = 1.0f;
+	public int damage = -5;
 
 	private void Start() {
 		gameControl = GameControl.instance;
@@ -15,11 +16,7 @@ public class Enemy : MainController {
 
 	void Update() {
 
-		if (gameObject.GetComponent<AIPath>().reachedDestination) {
-			gameControl.ChangeHealth(-5);
-			
-			Kill(false);
-        }
+		ReachedDestination();
     }
 
 	public float GetEXPWorth() {
@@ -35,7 +32,7 @@ public class Enemy : MainController {
 	{
 		Debug.Log("GameObject1 collided with " + col.name);
 
-        if (col.tag == "Wall")
+        if (col.tag == "Wall Tile")
         {
 			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
@@ -58,6 +55,16 @@ public class Enemy : MainController {
 		
 
     }
+
+	public void ReachedDestination()
+    {
+		if (gameObject.GetComponent<AIPath>().reachedDestination)
+		{
+			gameControl.ChangeHealth(damage);
+
+			Kill(false);
+		}
+	}
 
 	
 

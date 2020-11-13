@@ -13,6 +13,7 @@ TagManager:
   - Terrain
   - CanOpen
   - Wall
+  - Wall Tile
   layers:
   - Default
   - TransparentFX
