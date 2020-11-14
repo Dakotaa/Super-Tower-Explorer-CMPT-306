@@ -8,9 +8,11 @@ public class ToolTipController : MonoBehaviour{
 	/* instance variables */
 	public static ToolTipController instance;
 	private GameObject tooltip;
+	private RectTransform tooltipBackground;
 	private Text tooltipText;
 	private string text;
 	private bool visible = false;
+	TextGenerator textGen = new TextGenerator();
 
 	#region Singleton
 
@@ -23,6 +25,7 @@ public class ToolTipController : MonoBehaviour{
 		instance = this;
 
 		this.tooltip = GameObject.Find("Tooltip");
+		this.tooltipBackground = GameObject.Find("Tooltip Background").GetComponent<RectTransform>();
 		this.tooltipText = GameObject.Find("Tooltip Text").GetComponent<Text>();
 		tooltipText.supportRichText = true;
 		this.Hide();
@@ -40,11 +43,10 @@ public class ToolTipController : MonoBehaviour{
 	public void Set(string text) {
 		this.text = text;
 		this.tooltipText.text = text;
-		/* for some reason, the size of the background doesn't get changed properly 
-		 * until the gameobject is disabled/enabled */
-		this.Hide();
-		this.Show();
-		this.Hide();
+		TextGenerationSettings generationSettings = tooltipText.GetGenerationSettings(tooltipText.rectTransform.rect.size);
+		float width = textGen.GetPreferredWidth(text, generationSettings);
+		float height = textGen.GetPreferredHeight(text, generationSettings);
+		this.tooltipBackground.sizeDelta = new Vector2(width, height);
 	}
 
 	/* makes the tooltip visible with the current text */

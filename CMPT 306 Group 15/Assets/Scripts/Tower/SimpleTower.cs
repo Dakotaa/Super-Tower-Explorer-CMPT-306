@@ -5,10 +5,10 @@ using UnityEngine;
 public class SimpleTower : Tower {
 	// change in values for each subsequent level
 	public float levelup_searchInterval = -0.1f;
-	public float levelup_searchRange = +1.0f;
+	public float levelup_searchRange = 1.0f;
 	public float levelup_cooldown = -0.1f;
-	public float levelup_damage = +0.1f;
-	public float levelup_bulletVelocity = +1.0f;
+	public float levelup_damage = 0.1f;
+	public float levelup_bulletVelocity = 1.0f;
 	public List<Sprite> bodies = new List<Sprite>();
 	private SpriteRenderer body;
 
