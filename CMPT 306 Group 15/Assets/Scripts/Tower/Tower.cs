@@ -12,6 +12,9 @@ public class Tower : CellTile {
 	public float damage = 1.0f; // shot damage
 	public float bulletVelocity = 5.0f;
 	public float trackingSpeed = 5.0f;
+	protected bool upgradable = false;
+	protected int level = 1;
+	protected int maxLevel = 5;
 
 	// prefabs and objects
 	public Bullet bullet;
@@ -34,7 +37,7 @@ public class Tower : CellTile {
 		barrel = transform.GetChild(0).GetChild(0);
 		StartCoroutine("DoSearch"); // search coroutine starts on creation, loops forever
 		StartCoroutine("DoShoot"); // shoot coroutine starts on creation, loops forever
-		var bounds = GetComponent<SphereCollider>().bounds; //update the graph
+		var bounds = GetComponent<BoxCollider2D>().bounds; //update the graph
 		// Expand the bounds along the Z axis
 		bounds.Expand(Vector3.forward * 1000);
 		var guo = new GraphUpdateObject(bounds);
@@ -97,7 +100,7 @@ public class Tower : CellTile {
 
 	/* returns a string of information about the tower to be used for tooltips */
 	public override string GetInfo() {
-		string info = "<b>Tower<b>\n" +
+		string info =	"<b>Tower<b> \n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -105,6 +108,23 @@ public class Tower : CellTile {
 						"Bullet Velocity: " + this.bulletVelocity.ToString("n2");
 		return info;
 	}
+
+	public bool IsUpgradable() {
+		return this.upgradable;
+	}
+
+	public int GetLevel() {
+		return this.level;
+	}
+
+	public int GetMaxLevel() {
+		return this.maxLevel;
+	}
+
+	public bool IsMaxLevel() {
+		return (this.level == this.maxLevel);
+	}
+	public virtual void IncreaseLevel() {}
 
 	// enemy search coroutine
 	public virtual IEnumerator DoSearch() { 

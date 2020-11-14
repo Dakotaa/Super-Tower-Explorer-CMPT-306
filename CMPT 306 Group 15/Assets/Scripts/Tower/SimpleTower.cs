@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleTower : Tower {
-	private int level = 1;
-	private int maxLevel = 5;
 	// change in values for each subsequent level
 	public float levelup_searchInterval = -0.1f;
-	public float levelup_searchRange = 1.0f;
+	public float levelup_searchRange = +1.0f;
 	public float levelup_cooldown = -0.1f;
-	public float levelup_damage = 0.1f;
-	public float levelup_bulletVelocity = 1.0f;
+	public float levelup_damage = +0.1f;
+	public float levelup_bulletVelocity = +1.0f;
 	public List<Sprite> bodies = new List<Sprite>();
 	private SpriteRenderer body;
 
@@ -18,7 +16,10 @@ public class SimpleTower : Tower {
 		base.Start();
 		body = transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>();
 		body.sprite = bodies[0];
-    }
+		this.level = 1;
+		this.maxLevel = 5;
+		this.upgradable = true;
+	}
 
 	public override void Update() {
 		base.Update();
@@ -28,7 +29,7 @@ public class SimpleTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info = "<b>Level " + this.level + " Tower<b>\n" +
+		string info =	"<b>Level " + this.level + " Tower<b> \n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -43,18 +44,9 @@ public class SimpleTower : Tower {
 		return info;
 	}
 
-	public int GetLevel() {
-		return this.level;
-	}
-
-	public int GetMaxLevel() {
-		return this.maxLevel;
-	}
-
-	public void IncreaseLevel() {
-		if (this.level >= this.maxLevel) return;
+	public override void IncreaseLevel() {
+		if (this.IsMaxLevel()) return;
 		this.level++;
-		print("Now level " + this.level);
 		this.searchInterval += this.levelup_searchInterval;
 		this.searchRange += this.levelup_searchRange;
 		this.cooldown += this.levelup_cooldown;

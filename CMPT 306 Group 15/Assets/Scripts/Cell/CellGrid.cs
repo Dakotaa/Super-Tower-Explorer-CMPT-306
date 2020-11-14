@@ -22,6 +22,7 @@ public class CellGrid : MonoBehaviour {
 	private Vector3 origin; // the position of the bottom left corner of the cell
 	private GameObject canvas;
 	private ToolTipController tooltip;
+	private Inventory inventory;
 
 	void Start() {
 		grid = new CellTile[size, size];
@@ -43,6 +44,7 @@ public class CellGrid : MonoBehaviour {
         }
 
 		tooltip = ToolTipController.instance;
+		inventory = Inventory.instance;
 	}
 
 	private void CreateTiles() {
@@ -108,11 +110,11 @@ public class CellGrid : MonoBehaviour {
 			// For when dragged tile is tower
 			GameObject tower = GameObject.Find("Simple Tower");
 			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-			int ironCount = canvas.GetComponent<Inventory>().GetResourceCount("Iron");
+			int ironCount = inventory.GetResourceCount("Iron");
 			if (overCell && (towerCreate.isTowerDragged) && (ironCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
 			{
 				PlaceTile(GetPosAtCursor(), towerTile);
-				canvas.GetComponent<Inventory>().DecreaseResource("Iron", 1);
+				inventory.DecreaseResource("Iron", 1);
 				towerCreate.isTowerDragged = false;
 				return;
 			}
@@ -120,11 +122,11 @@ public class CellGrid : MonoBehaviour {
 			// For when dragged tile is wall
 			GameObject wall = GameObject.Find("WallTile");
 			MouseTowerCreate wallCreate = wall.GetComponent<MouseTowerCreate>();
-			int stoneCount = canvas.GetComponent<Inventory>().GetResourceCount("Stone");
+			int stoneCount = inventory.GetResourceCount("Stone");
 			if (overCell && (wallCreate.isTowerDragged) && (stoneCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if wall is being dragged from menu and over cell
 			{
 				PlaceTile(GetPosAtCursor(), wallTile);
-				canvas.GetComponent<Inventory>().DecreaseResource("Stone", 1);
+				inventory.DecreaseResource("Stone", 1);
 				wallCreate.isTowerDragged = false;
 				return;
 			}
@@ -161,16 +163,30 @@ public class CellGrid : MonoBehaviour {
 		overCell = false;
 	}
 
-    private void OnMouseDown()
-    {
-		if (overCell && (GetTileAtCursor().GetType() == typeof(ResourceTile)))
-        {
-			canvas.GetComponent<Inventory>().IncreaseResource("Iron", 3);
-			canvas.GetComponent<Inventory>().IncreaseResource("Wood", 3);
-			canvas.GetComponent<Inventory>().IncreaseResource("Stone", 3);
-			int[] pos = GetPosAtCursor();
-			Destroy(grid[pos[0], pos[1]].gameObject);
-			CreateTile(pos[0], pos[1], emptyTile);
-		}
+	private void OnMouseDown() {
+		if (overCell) {
+
+			if (currentTile is ResourceTile) {
+				inventory.IncreaseResource("Iron", 3);
+				inventory.IncreaseResource("Wood", 3);
+				inventory.IncreaseResource("Stone", 3);
+				int[] pos = GetPosAtCursor();
+				Destroy(grid[pos[0], pos[1]].gameObject);
+				CreateTile(pos[0], pos[1], emptyTile);
+			}
+			if (currentTile is Tower) {
+				print("1");
+				Tower towerTile = (Tower) currentTile;
+				if (towerTile.IsUpgradable()) {
+					print("2");
+					if (!towerTile.IsMaxLevel()) {
+						if (inventory.GetResourceCount("Iron") >= 1) {
+							inventory.DecreaseResource("Iron", 1);
+							towerTile.IncreaseLevel();
+						}
+					}
+				}
+			}
+	}
 	}
 }
