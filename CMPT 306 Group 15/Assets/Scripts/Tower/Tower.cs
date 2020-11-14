@@ -86,11 +86,13 @@ public class Tower : CellTile {
 			float closestDistance = 999f;
 			foreach (Collider2D hitCollider in hitColliders) {
 				if (hitCollider.tag.Equals("Enemy")) {
-					GameObject current = hitCollider.gameObject;
-					float distance = Vector3.Distance(transform.position, current.transform.position);
-					if (distance < closestDistance) {
-						closest = current;
-						closestDistance = distance;
+					if (!Physics.Linecast(transform.position, hitCollider.transform.position)) {
+						GameObject current = hitCollider.gameObject;
+						float distance = Vector3.Distance(transform.position, current.transform.position);
+						if (distance < closestDistance) {
+							closest = current;
+							closestDistance = distance;
+						}
 					}
 				}
 			}
