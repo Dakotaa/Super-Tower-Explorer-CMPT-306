@@ -1,4 +1,5 @@
 ﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,16 @@ public class CellGrid : MonoBehaviour {
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile towerTile;  // prefab of tower tile
 	public CellTile resourceTile; // prefab of resource tile
-	private GameObject currentTile;	// the tile the mouse is currently over
+	private CellTile currentTile;   // the tile the mouse is currently over
+	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
 	private float tileSize;
 	private float tileScale;    // the scale of each tile
 	private bool overCell;
+	private bool overTower;
 	private Vector3 origin; // the position of the bottom left corner of the cell
 	private GameObject canvas;
+	private ToolTipController tooltip;
 
 	void Start() {
 		grid = new CellTile[size, size];
@@ -35,8 +39,10 @@ public class CellGrid : MonoBehaviour {
 
 		for (int x = 1; x < size - 1; x = x + 4) // Places resource nodes randomly
         {
-			PlaceTile(new int[] { Random.Range(1, x - 1), Random.Range(1, x - 1) }, resourceTile);
+			PlaceTile(new int[] { UnityEngine.Random.Range(1, x - 1), UnityEngine.Random.Range(1, x - 1) }, resourceTile);
         }
+
+		tooltip = ToolTipController.instance;
 	}
 
 	private void CreateTiles() {
@@ -81,12 +87,17 @@ public class CellGrid : MonoBehaviour {
 	CellTile GetTileAtCursor() {
 		if (overCell) { // cursor must be over the current cell
 			int[] tilePos = GetPosAtCursor();
-			return grid[tilePos[0], tilePos[1]];
+			// extra check to avoid index errors
+			if (tilePos[0] >= 0 && tilePos[0] < size && tilePos[1] >= 0 && tilePos[1] < size) {
+				return grid[tilePos[0], tilePos[1]];
+			}
 		}
 		return null;
 	}
 
 	private void Update() {
+
+		currentTile = GetTileAtCursor();
 		if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
 		{
 			if (GetTileAtCursor() == null)
@@ -122,6 +133,22 @@ public class CellGrid : MonoBehaviour {
 			{
 				towerCreate.isTowerDragged = false;
 				wallCreate.isTowerDragged = false;
+			}
+		}
+
+		// handling checking which type of tile the cursor is over
+		if (currentTile != null) {
+			// check if this is a different tile
+			if (lastTile != currentTile) {
+				// new tile - update lasttile to this
+				lastTile = currentTile;
+				// hide the old tooltip
+				tooltip.Hide();
+				Type tileType = currentTile.GetType();
+				// if the current tile is not empty, show a tooltip with info
+				if (tileType != typeof(EmptyTile)) {
+					tooltip.SetAndShow(currentTile.GetInfo());
+				}
 			}
 		}
 	}

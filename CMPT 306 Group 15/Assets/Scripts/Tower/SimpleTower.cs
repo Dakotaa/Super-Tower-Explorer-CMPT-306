@@ -14,17 +14,33 @@ public class SimpleTower : Tower {
 	public List<Sprite> bodies = new List<Sprite>();
 	private SpriteRenderer body;
 
-    void Start() {
+    public override void Start() {
 		base.Start();
 		body = transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>();
 		body.sprite = bodies[0];
     }
 
-	public void Update() {
+	public override void Update() {
 		base.Update();
 		if (Input.GetKeyDown("5")) {
 			IncreaseLevel();
 		}
+	}
+
+	public override string GetInfo() {
+		string info = "<b>Level " + this.level + " Tower<b>\n" +
+						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
+						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
+						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
+						"Damage: " + this.damage.ToString("n2") + "\n" +
+						"Bullet Velocity: " + this.bulletVelocity.ToString("n2");
+
+		if (this.level < this.maxLevel) {
+			info += "\n" +
+					"<i>Click to upgrade (1 metal)</i>";
+		}
+
+		return info;
 	}
 
 	public int GetLevel() {
@@ -45,6 +61,7 @@ public class SimpleTower : Tower {
 		this.damage += this.levelup_damage;
 		this.bulletVelocity += this.levelup_bulletVelocity;
 		body.sprite = bodies[this.level - 1];
+		tooltip.Refresh();
 	}
 
 

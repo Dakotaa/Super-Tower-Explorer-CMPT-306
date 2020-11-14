@@ -24,6 +24,7 @@ public class ToolTipController : MonoBehaviour{
 
 		this.tooltip = GameObject.Find("Tooltip");
 		this.tooltipText = GameObject.Find("Tooltip Text").GetComponent<Text>();
+		tooltipText.supportRichText = true;
 		this.Hide();
 	}
 
@@ -73,5 +74,12 @@ public class ToolTipController : MonoBehaviour{
 
 	public bool GetVisible() {
 		return this.visible;
+	}
+
+	public void Refresh() {
+		if (this.visible) {
+			this.Hide();
+			this.Show();
+		}
 	}
 }

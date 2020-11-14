@@ -25,6 +25,8 @@ public class Tower : CellTile {
 	private float angle;
 	private Quaternion qTo;
 
+	public ToolTipController tooltip;
+
 
 	public virtual void Start() {
 		target = null; // no initial target
@@ -39,6 +41,7 @@ public class Tower : CellTile {
 		//Debug.Log("update");
 		// change some settings on the object
 		AstarPath.active.UpdateGraphs(guo);
+		tooltip = ToolTipController.instance;
 	}
 
 	public virtual void Update() {
@@ -90,6 +93,17 @@ public class Tower : CellTile {
 			}
 			SetTarget(closest);
 		}
+	}
+
+	/* returns a string of information about the tower to be used for tooltips */
+	public override string GetInfo() {
+		string info = "<b>Tower<b>\n" +
+						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
+						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
+						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
+						"Damage: " + this.damage.ToString("n2") + "\n" +
+						"Bullet Velocity: " + this.bulletVelocity.ToString("n2");
+		return info;
 	}
 
 	// enemy search coroutine
