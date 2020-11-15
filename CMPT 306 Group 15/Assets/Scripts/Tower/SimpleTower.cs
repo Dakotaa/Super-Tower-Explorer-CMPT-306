@@ -29,7 +29,7 @@ public class SimpleTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"<b>Level " + this.level + " Tower<b> \n" +
+		string info =	"Level " + this.level + " Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -38,7 +38,7 @@ public class SimpleTower : Tower {
 
 		if (this.level < this.maxLevel) {
 			info += "\n" +
-					"<i>Click to upgrade (1 metal)</i>";
+					"Click to upgrade (1 metal)";
 		}
 
 		return info;
@@ -53,7 +53,7 @@ public class SimpleTower : Tower {
 		this.damage += this.levelup_damage;
 		this.bulletVelocity += this.levelup_bulletVelocity;
 		body.sprite = bodies[this.level - 1];
-		tooltip.Refresh();
+		tooltip.Set(this.GetInfo());
 	}
 
 

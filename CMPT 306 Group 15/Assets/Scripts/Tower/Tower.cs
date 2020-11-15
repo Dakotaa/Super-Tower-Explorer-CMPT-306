@@ -49,7 +49,6 @@ public class Tower : CellTile {
 
 	public virtual void Update() {
 		if (target) {
-			print("Rotating");
 			lookPos = target.transform.position - transform.position;
 			angle = (Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg) - 90.0f;
 			qTo = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -102,7 +101,7 @@ public class Tower : CellTile {
 
 	/* returns a string of information about the tower to be used for tooltips */
 	public override string GetInfo() {
-		string info =	"<b>Tower<b> \n" +
+		string info =	"Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +

@@ -175,10 +175,8 @@ public class CellGrid : MonoBehaviour {
 				CreateTile(pos[0], pos[1], emptyTile);
 			}
 			if (currentTile is Tower) {
-				print("1");
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
-					print("2");
 					if (!towerTile.IsMaxLevel()) {
 						if (inventory.GetResourceCount("Iron") >= 1) {
 							inventory.DecreaseResource("Iron", 1);

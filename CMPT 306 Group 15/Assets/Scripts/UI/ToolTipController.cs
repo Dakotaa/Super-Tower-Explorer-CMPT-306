@@ -43,10 +43,14 @@ public class ToolTipController : MonoBehaviour{
 	public void Set(string text) {
 		this.text = text;
 		this.tooltipText.text = text;
+		// resize
 		TextGenerationSettings generationSettings = tooltipText.GetGenerationSettings(tooltipText.rectTransform.rect.size);
 		float width = textGen.GetPreferredWidth(text, generationSettings);
 		float height = textGen.GetPreferredHeight(text, generationSettings);
-		this.tooltipBackground.sizeDelta = new Vector2(width, height);
+		this.tooltipBackground.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+		this.tooltipBackground.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+		this.tooltipBackground.ForceUpdateRectTransforms();
+		Canvas.ForceUpdateCanvases();
 	}
 
 	/* makes the tooltip visible with the current text */
