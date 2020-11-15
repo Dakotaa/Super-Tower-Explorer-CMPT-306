@@ -5,6 +5,7 @@ public class CameraPanKeys : MonoBehaviour
     public float panSpeed = 5f;
     private Vector3 lastPosition;
     private Camera cam;
+    public Vector2 panLimit;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,9 @@ public class CameraPanKeys : MonoBehaviour
         {
             lastPosition.x += panSpeed * Time.deltaTime * cam.orthographicSize;
         }
+
+        lastPosition.x = Mathf.Clamp(lastPosition.x, -panLimit.x, panLimit.x);
+        lastPosition.y = Mathf.Clamp(lastPosition.y, -panLimit.y, panLimit.y);
 
         transform.position = lastPosition;
     }
