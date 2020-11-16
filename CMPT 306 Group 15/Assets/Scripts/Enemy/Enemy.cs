@@ -10,9 +10,11 @@ public class Enemy : MainController {
 	public float EXPWorth = 1.0f;
 	public int damage = -5;
 	public float health = 1;
+	private float maxHealth;
+	
 
 	private void Start() {
-		health = 1;
+		maxHealth = health;
 		gameControl = GameControl.instance;
 		waveControl = WaveControl.instance;
 	}
@@ -30,6 +32,11 @@ public class Enemy : MainController {
     {
 		//Debug.Log("My Health is: " + health);
 		return health;
+    }
+
+	public float GetMaxHealth()
+    {
+		return maxHealth;
     }
 
 	public void Kill(bool rewardEXP) {

@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     Vector3 localScale;
+
     void Start()
     {
         localScale = transform.localScale;
@@ -16,14 +17,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (this.GetComponentInParent<Enemy>().GetHealth() > 0)
         {
-            localScale.x = this.GetComponentInParent<Enemy>().GetHealth() / 5;
+            //Debug.Log("HEALTH = " + this.GetComponentInParent<Enemy>().GetHealth());
+            //Debug.Log("MAX HEALTH = " + this.GetComponentInParent<Enemy>().GetMaxHealth());
+            localScale.x = this.GetComponentInParent<Enemy>().GetHealth() / this.GetComponentInParent<Enemy>().GetMaxHealth();
+            localScale.x = localScale.x / 4; // make fit better
             transform.localScale = localScale;
         }
-        //if (gameObject.GetComponent<Enemy>().GetHealth() > 0)
-        //{
-        //    localScale.x = gameObject.GetComponent<Enemy>().GetHealth() / 5;
-        //    transform.localScale = localScale;
-        //}
-        
     }
 }
