@@ -20,10 +20,20 @@ public class Bullet : MonoBehaviour {
 			Destroy(impactParticle, 1);
 			Destroy(gameObject);
 		}
-		if (collision.collider.tag.Equals("Enemy")) {	// damage/kill enemies
+		if (collision.collider.tag.Equals("Enemy")) {   // damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
-			victim.Kill(true);
-			Destroy(gameObject);
+
+			victim.Hurt(0.5f);
+
+			if (victim.GetHealth() <= 0)
+            {
+				victim.Kill(true);
+				Destroy(gameObject);
+            }
+            else
+            {
+				Destroy(gameObject);
+            }	
 		}
 	}
 

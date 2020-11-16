@@ -2,31 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using System;
 
 public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
 	public float EXPWorth = 1.0f;
 	public int damage = -5;
+	public float health = 1;
 
 	private void Start() {
+		health = 1;
 		gameControl = GameControl.instance;
 		waveControl = WaveControl.instance;
 	}
 
 	void Update() {
 
-		ReachedDestination();
+		ReachedDestination(); //check if destination has been reached 
     }
 
 	public float GetEXPWorth() {
 		return this.EXPWorth;
 	}
 
+	public float GetHealth()
+    {
+		//Debug.Log("My Health is: " + health);
+		return health;
+    }
+
 	public void Kill(bool rewardEXP) {
 		gameControl.EnemyKilled(this, rewardEXP);
-		Destroy(this.gameObject);
+		Destroy(gameObject);
 	}
+
+	public void Hurt(float dam)
+    {
+		health = health - dam;
+    }
 
 	void OnTriggerEnter2D(Collider2D col)
 	{

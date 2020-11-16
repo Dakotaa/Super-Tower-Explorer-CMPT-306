@@ -94,10 +94,10 @@ public class WaveControl : MonoBehaviour
 		// instantiate the enemy and add it to the enemy list
 		gameControl.AddEnemy(Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation));
 
-		gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));//test
+		//gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));//test
 
 		waveEnemiesSpawned++;
-    }
+	}
 
 	private void EnemyKilled() {
 		// check if this was the last enemy for the round 
