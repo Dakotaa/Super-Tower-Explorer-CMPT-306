@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log("HEALTH = " + this.GetComponentInParent<Enemy>().GetHealth());
             //Debug.Log("MAX HEALTH = " + this.GetComponentInParent<Enemy>().GetMaxHealth());
             localScale.x = this.GetComponentInParent<Enemy>().GetHealth() / this.GetComponentInParent<Enemy>().GetMaxHealth();
-            localScale.x = localScale.x / 4; // make fit better
+            localScale.x = localScale.x / 4; // make bar fit better
             transform.localScale = localScale;
         }
     }

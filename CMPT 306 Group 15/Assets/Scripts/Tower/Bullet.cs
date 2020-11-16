@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour {
 		if (collision.collider.tag.Equals("Enemy")) {   // damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
 
-			victim.Hurt(0.5f);
+			victim.Hurt(0.5f); //change this when ready
 
 			if (victim.GetHealth() <= 0)
             {
