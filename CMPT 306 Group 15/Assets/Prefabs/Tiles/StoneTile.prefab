@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7256865544297760465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699997271620643817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e681f871649074eb3b2c2b2383d0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4651898467913042118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,5 +79,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneTile
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2748829452872583605, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
+--- !u!1 &2699997271620643817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7347214000865469231, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
+  m_PrefabInstance: {fileID: 4651898467913042118}
+  m_PrefabAsset: {fileID: 0}

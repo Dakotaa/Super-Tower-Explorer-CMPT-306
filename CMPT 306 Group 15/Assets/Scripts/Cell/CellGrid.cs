@@ -46,7 +46,6 @@ public class CellGrid : MonoBehaviour {
 		canvas = GameObject.Find("Canvas"); // Finds Canvas GameObject
 
 		int ResourceAmount = size / 4;
-		CellTile randomResource;
 		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
         {
 			int random = UnityEngine.Random.Range(0, 3);
@@ -188,12 +187,32 @@ public class CellGrid : MonoBehaviour {
 		if (overCell) {
 
 			if (currentTile is ResourceTile) {
-				inventory.IncreaseResource("Iron", 3);
+				print(currentTile);
+				int[] pos = GetPosAtCursor();
+				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
+                {
+					inventory.IncreaseResource("Wood", 3);
+					Destroy(grid[pos[0], pos[1]].gameObject);
+					CreateTile(pos[0], pos[1], depletedTreeTile);
+				}
+				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
+				{
+					inventory.IncreaseResource("Iron", 3);
+					Destroy(grid[pos[0], pos[1]].gameObject);
+					CreateTile(pos[0], pos[1], depletedMetalTile);
+				}
+				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
+				{
+					inventory.IncreaseResource("Stone", 3);
+					Destroy(grid[pos[0], pos[1]].gameObject);
+					CreateTile(pos[0], pos[1], depletedStoneTile);
+				}
+				/*inventory.IncreaseResource("Iron", 3);
 				inventory.IncreaseResource("Wood", 3);
 				inventory.IncreaseResource("Stone", 3);
 				int[] pos = GetPosAtCursor();
 				Destroy(grid[pos[0], pos[1]].gameObject);
-				CreateTile(pos[0], pos[1], depletedTreeTile);
+				CreateTile(pos[0], pos[1], depletedTreeTile);*/
 			}
 			if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
