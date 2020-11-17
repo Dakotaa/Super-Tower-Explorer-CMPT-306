@@ -11,8 +11,14 @@ public class CellGrid : MonoBehaviour {
 	public CellTile emptyTile;  // prefab of default tile
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile towerTile;  // prefab of tower tile
+
 	public CellTile treeTile; // prefab of tree tile
 	public CellTile depletedTreeTile; // prefab of depleted tree tile
+	public CellTile metalTile; // prefab of metal tile
+	public CellTile depletedMetalTile; // prefab of depleted metal tile
+	public CellTile stoneTile; // prefab of stone tile
+	public CellTile depletedStoneTile; // prefab of depleted stone tile
+
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
