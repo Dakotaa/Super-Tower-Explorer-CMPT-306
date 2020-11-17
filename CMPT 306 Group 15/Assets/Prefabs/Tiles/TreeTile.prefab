@@ -21,7 +21,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1752777635085768810, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
       propertyPath: m_Name
-      value: ResourceTile
+      value: TreeTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752777635085768810, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2508148236399200503, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89,11 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6837525613179337822, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.029547766
       objectReference: {fileID: 0}
     - target: {fileID: 6837525613179337822, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.7830189
       objectReference: {fileID: 0}
     - target: {fileID: 6837525613179337822, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
       propertyPath: m_Color.b

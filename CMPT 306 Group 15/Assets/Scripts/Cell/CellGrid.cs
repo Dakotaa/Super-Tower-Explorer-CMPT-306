@@ -11,7 +11,8 @@ public class CellGrid : MonoBehaviour {
 	public CellTile emptyTile;  // prefab of default tile
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile towerTile;  // prefab of tower tile
-	public CellTile resourceTile; // prefab of resource tile
+	public CellTile treeTile; // prefab of tree tile
+	public CellTile depletedTreeTile; // prefab of depleted tree tile
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
@@ -41,7 +42,7 @@ public class CellGrid : MonoBehaviour {
 		int ResourceAmount = size / 4;
 		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
         {
-			PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, resourceTile);
+			PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, treeTile);
         }
 
 		tooltip = ToolTipController.instance;
@@ -173,7 +174,7 @@ public class CellGrid : MonoBehaviour {
 				inventory.IncreaseResource("Stone", 3);
 				int[] pos = GetPosAtCursor();
 				Destroy(grid[pos[0], pos[1]].gameObject);
-				CreateTile(pos[0], pos[1], emptyTile);
+				CreateTile(pos[0], pos[1], depletedTreeTile);
 			}
 			if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
