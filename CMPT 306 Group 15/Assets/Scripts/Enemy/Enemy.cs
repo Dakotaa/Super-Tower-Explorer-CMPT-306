@@ -6,6 +6,7 @@ using Pathfinding;
 public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
+	private bool isDead;
 	public float EXPWorth = 1.0f;
 
 	private void Start() {
@@ -24,7 +25,12 @@ public class Enemy : MainController {
 		return this.EXPWorth;
 	}
 
+	public bool IsDead() {
+		return this.isDead;
+	}
+
 	public void Kill(bool rewardEXP) {
+		this.isDead = true;
 		gameControl.EnemyKilled(this, rewardEXP);
 		Destroy(this.gameObject);
 	}
