@@ -38,9 +38,10 @@ public class CellGrid : MonoBehaviour {
 
 		canvas = GameObject.Find("Canvas"); // Finds Canvas GameObject
 
-		for (int x = 1; x < size - 1; x = x + 4) // Places resource nodes randomly
+		int ResourceAmount = size / 4;
+		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
         {
-			PlaceTile(new int[] { UnityEngine.Random.Range(1, x - 1), UnityEngine.Random.Range(1, x - 1) }, resourceTile);
+			PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, resourceTile);
         }
 
 		tooltip = ToolTipController.instance;
