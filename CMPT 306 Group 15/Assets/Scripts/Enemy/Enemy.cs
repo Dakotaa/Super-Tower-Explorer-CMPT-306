@@ -7,7 +7,6 @@ using System;
 public class Enemy : MainController {
 	private GameControl gameControl;
 	private WaveControl waveControl;
-	private bool isDead;
 	public float EXPWorth = 1.0f;
 	public int damage = -5;
 	public float health = 1;
@@ -41,7 +40,6 @@ public class Enemy : MainController {
     }
 
 	public void Kill(bool rewardEXP) {
-		this.isDead = true;
 		gameControl.EnemyKilled(this, rewardEXP);
 		Destroy(gameObject);
 	}
