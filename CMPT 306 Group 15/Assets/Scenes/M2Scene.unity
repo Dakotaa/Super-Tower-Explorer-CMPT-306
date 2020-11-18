@@ -687,7 +687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 54e5fff3793158841b619dc59c5435ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9af215c245924f4e9f04c358e5cf56c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 1184543988}
   - component: {fileID: 1184543990}
   m_Layer: 5
-  m_Name: Simple Tower
+  m_Name: Shotgun Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2338,7 +2338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 526060d6de28aaf4eabfd7bf213b4f4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

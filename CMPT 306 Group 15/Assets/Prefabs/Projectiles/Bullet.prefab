@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4019080549522565384}
   - component: {fileID: 7590090142273236894}
   - component: {fileID: 194105102216191386}
+  - component: {fileID: 7911230138619026397}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticle: {fileID: 4907162991640985001, guid: 5910a11d22db1de468a3e57d407fe31e, type: 3}
+  lifetime: 2
   obstructions:
   - Tile
   - Wall
@@ -138,3 +140,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7911230138619026397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666750287146047904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f27d362aa34f2f4bbb52debb3eac67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticle: {fileID: 0}
+  lifetime: 2
+  obstructions: []

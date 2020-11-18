@@ -21,13 +21,6 @@ public class SimpleTower : Tower {
 		this.upgradable = true;
 	}
 
-	public override void Update() {
-		base.Update();
-		if (Input.GetKeyDown("5")) {
-			IncreaseLevel();
-		}
-	}
-
 	public override string GetInfo() {
 		string info =	"Level " + this.level + " Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
