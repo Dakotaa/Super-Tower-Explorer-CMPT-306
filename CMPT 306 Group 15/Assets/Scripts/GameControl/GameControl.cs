@@ -68,9 +68,12 @@ public class GameControl : MonoBehaviour {
 		if (gameHasEnded == false) {
 			gameHasEnded = true;
 			Debug.Log("Game Over");
-			StaticInfo.wavesSurvived = this.waveNumber - 1;
-			SceneManager.LoadScene("GameOver");
+			Invoke("Restart", restartDelay);
 		}
+	}
+
+	void Restart() {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public int GetGameState() {

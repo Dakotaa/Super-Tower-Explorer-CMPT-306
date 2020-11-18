@@ -9,19 +9,9 @@ public class CellGrid : MonoBehaviour {
 	public int size;	// the dimensions of the grid
 	public CellTile[,] grid;	// array of tiles
 	public CellTile emptyTile;  // prefab of default tile
-
-	// Tower tiles
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile towerTile;  // prefab of tower tile
-
-	// Resource tiles
-	public CellTile treeTile; // prefab of tree tile
-	public CellTile depletedTreeTile; // prefab of depleted tree tile
-	public CellTile metalTile; // prefab of metal tile
-	public CellTile depletedMetalTile; // prefab of depleted metal tile
-	public CellTile stoneTile; // prefab of stone tile
-	public CellTile depletedStoneTile; // prefab of depleted stone tile
-
+	public CellTile resourceTile; // prefab of resource tile
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
@@ -48,23 +38,10 @@ public class CellGrid : MonoBehaviour {
 
 		canvas = GameObject.Find("Canvas"); // Finds Canvas GameObject
 
-		int ResourceAmount = size / 4;
-		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
+		for (int x = 1; x < size - 1; x = x + 4) // Places resource nodes randomly
         {
-			int random = UnityEngine.Random.Range(0, 3);
-			if (random == 0)
-            {
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, treeTile);
-			}
-			else if (random == 1)
-			{
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, metalTile);
-			}
-			else if (random == 2)
-			{
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, stoneTile);
-			}
-		}
+			PlaceTile(new int[] { UnityEngine.Random.Range(1, x - 1), UnityEngine.Random.Range(1, x - 1) }, resourceTile);
+        }
 
 		tooltip = ToolTipController.instance;
 		inventory = Inventory.instance;
@@ -78,7 +55,7 @@ public class CellGrid : MonoBehaviour {
 		}
 	}
 
-	public void CreateTile(int x, int y, CellTile tileType) {
+	private void CreateTile(int x, int y, CellTile tileType) {
 		Vector3 pos = origin;   // get the origin point, then move to the correct spot
 		pos.x += tileScale * x;
 		pos.y += tileScale * y;
@@ -120,32 +97,6 @@ public class CellGrid : MonoBehaviour {
 		return null;
 	}
 
-	public int[] GetPosAtCoord(Vector3 coord)
-	{
-		int xTile = (int)((coord.x + 0.1 - origin.x) / tileScale);
-		int yTile = (int)((coord.y - origin.y) / tileScale);
-		return new int[] { xTile, yTile };
-	}
-
-	private void AddTower(string towerName, CellTile tile, string resource, int resourceCost)
-    {
-		// For when dragged tile is tower
-		GameObject tower = GameObject.Find(towerName);
-		MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-		int resourceCount = inventory.GetResourceCount(resource);
-		if (overCell && (towerCreate.isTowerDragged) && (resourceCount >= resourceCost) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
-		{
-			PlaceTile(GetPosAtCursor(), tile);
-			inventory.DecreaseResource(resource, resourceCost);
-			towerCreate.isTowerDragged = false;
-			return;
-		}
-		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
-		{
-			towerCreate.isTowerDragged = false;
-		}
-	}
-
 	private void Update() {
 
 		currentTile = GetTileAtCursor();
@@ -156,8 +107,35 @@ public class CellGrid : MonoBehaviour {
 				return;
             }
 
-			AddTower("Shotgun Tower", towerTile, "Iron", 1);
-			AddTower("WallTile", wallTile, "Stone", 1);
+			// For when dragged tile is tower
+			GameObject tower = GameObject.Find("Simple Tower");
+			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
+			int ironCount = inventory.GetResourceCount("Iron");
+			if (overCell && (towerCreate.isTowerDragged) && (ironCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
+			{
+				PlaceTile(GetPosAtCursor(), towerTile);
+				inventory.DecreaseResource("Iron", 1);
+				towerCreate.isTowerDragged = false;
+				return;
+			}
+
+			// For when dragged tile is wall
+			GameObject wall = GameObject.Find("WallTile");
+			MouseTowerCreate wallCreate = wall.GetComponent<MouseTowerCreate>();
+			int stoneCount = inventory.GetResourceCount("Stone");
+			if (overCell && (wallCreate.isTowerDragged) && (stoneCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if wall is being dragged from menu and over cell
+			{
+				PlaceTile(GetPosAtCursor(), wallTile);
+				inventory.DecreaseResource("Stone", 1);
+				wallCreate.isTowerDragged = false;
+				return;
+			}
+
+			if (GetTileAtCursor().GetType() != typeof(EmptyTile))
+			{
+				towerCreate.isTowerDragged = false;
+				wallCreate.isTowerDragged = false;
+			}
 		}
 
 		// handling checking which type of tile the cursor is over
@@ -189,28 +167,13 @@ public class CellGrid : MonoBehaviour {
 		if (overCell) {
 
 			if (currentTile is ResourceTile) {
+				inventory.IncreaseResource("Iron", 3);
+				inventory.IncreaseResource("Wood", 3);
+				inventory.IncreaseResource("Stone", 3);
 				int[] pos = GetPosAtCursor();
-				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
-                {
-					inventory.IncreaseResource("Wood", 3);
-					Destroy(grid[pos[0], pos[1]].gameObject);
-					CreateTile(pos[0], pos[1], depletedTreeTile);
-				}
-				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
-				{
-					inventory.IncreaseResource("Iron", 3);
-					Destroy(grid[pos[0], pos[1]].gameObject);
-					CreateTile(pos[0], pos[1], depletedMetalTile);
-				}
-				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
-				{
-					inventory.IncreaseResource("Stone", 3);
-					Destroy(grid[pos[0], pos[1]].gameObject);
-					CreateTile(pos[0], pos[1], depletedStoneTile);
-				}
-				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
+				Destroy(grid[pos[0], pos[1]].gameObject);
+				CreateTile(pos[0], pos[1], emptyTile);
 			}
-
 			if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
