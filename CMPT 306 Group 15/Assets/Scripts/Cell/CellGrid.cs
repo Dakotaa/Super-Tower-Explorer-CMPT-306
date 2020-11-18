@@ -48,6 +48,12 @@ public class CellGrid : MonoBehaviour {
 
 		canvas = GameObject.Find("Canvas"); // Finds Canvas GameObject
 
+
+		GameObject firstGrid = GameObject.Find("Cell(Clone)"); // Finds the first grid and adds 1 of each resource to it.
+		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 0, 0 }, treeTile);
+		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 1, 0 }, metalTile);
+		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 2, 0 }, stoneTile);
+
 		int ResourceAmount = size / 4;
 		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
         {
