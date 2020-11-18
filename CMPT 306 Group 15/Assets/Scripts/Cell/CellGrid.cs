@@ -75,7 +75,7 @@ public class CellGrid : MonoBehaviour {
 		}
 	}
 
-	private void CreateTile(int x, int y, CellTile tileType) {
+	public void CreateTile(int x, int y, CellTile tileType) {
 		Vector3 pos = origin;   // get the origin point, then move to the correct spot
 		pos.x += tileScale * x;
 		pos.y += tileScale * y;
@@ -115,6 +115,13 @@ public class CellGrid : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public int[] GetPosAtCoord(Vector3 coord)
+	{
+		int xTile = (int)((coord.x - origin.x) / tileScale);
+		int yTile = (int)((coord.y - origin.y) / tileScale);
+		return new int[] { xTile, yTile };
 	}
 
 	private void Update() {
@@ -187,7 +194,6 @@ public class CellGrid : MonoBehaviour {
 		if (overCell) {
 
 			if (currentTile is ResourceTile) {
-				print(currentTile);
 				int[] pos = GetPosAtCursor();
 				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
                 {
@@ -207,13 +213,9 @@ public class CellGrid : MonoBehaviour {
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
 				}
-				/*inventory.IncreaseResource("Iron", 3);
-				inventory.IncreaseResource("Wood", 3);
-				inventory.IncreaseResource("Stone", 3);
-				int[] pos = GetPosAtCursor();
-				Destroy(grid[pos[0], pos[1]].gameObject);
-				CreateTile(pos[0], pos[1], depletedTreeTile);*/
+				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
 			}
+
 			if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
