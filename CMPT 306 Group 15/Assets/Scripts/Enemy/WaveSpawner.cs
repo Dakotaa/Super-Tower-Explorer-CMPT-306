@@ -19,9 +19,6 @@ public class WaveSpawner : MonoBehaviour
 
     private int maxWaveNumber = 5;
 
-    private bool scan = true; //scan once game starts hopefully
-
-
     private void Update()
     {
         if (countdown <= 0f) //if coundown up spawn enemies
@@ -36,11 +33,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        if (scan)
-        {
-            AstarPath.active.Scan();//This was needed to resan once the PG is done generating, maybe should change
-            scan = false;
-        }
+        AstarPath.active.Scan();//This was needed to resan once the PG is done generating, maybe should change
         
 
         if (waveNumber != maxWaveNumber)
