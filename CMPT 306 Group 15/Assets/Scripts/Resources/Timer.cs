@@ -31,6 +31,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
+                // If countdown is done then make the depleted tile into a regenerated tile
                 countdown = 0;
                 isTimerRunning = false;
                 Destroy(gameObject);
