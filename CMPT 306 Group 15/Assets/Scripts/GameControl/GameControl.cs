@@ -187,9 +187,9 @@ public class GameControl : MonoBehaviour {
 		return this.EXPForNextLevel;
 	}
 
-	private void LevelComplete() {
+	public void LevelComplete() {
 		this.level++;
-		this.cellUnlockAvailable = true;
+		this.cellUnlockAvailable = false;
 		this.EXP = 0;
 		this.EXPForNextLevel = CalcNextLevel();
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();

@@ -29,7 +29,7 @@ public class RevealTile : MonoBehaviour
                 Instantiate(cell, transform.position, Quaternion.identity);
                 Instantiate(mytile, transform.position, Quaternion.identity);
                 Spawn();
-                GameControl.instance.cellUnlockAvailable = false;
+                GameControl.instance.LevelComplete();
                 Destroy(this.gameObject);
             }
         }

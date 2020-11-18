@@ -14,6 +14,8 @@ TagManager:
   - CanOpen
   - Wall
   - EnemySpawn
+  - MainCanvas
+  - LoadingScene
   layers:
   - Default
   - TransparentFX
