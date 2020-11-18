@@ -24,7 +24,7 @@ public class GameControl : MonoBehaviour {
 	private int level = 0;
 	private float EXP = 0;  // player's current EXP towards the next cell unlock
 	private float EXPForNextLevel = 5;    // required EXP for the next cell unlock
-	private bool cellUnlockAvailable = false;
+	public bool cellUnlockAvailable = false;
 
 	private void Update() {
 		if (Input.GetKeyDown("2")) {
@@ -209,7 +209,7 @@ public class GameControl : MonoBehaviour {
 
 	private void LevelComplete() {
 		this.level++;
-		//this.cellUnlockAvailable = true;
+		this.cellUnlockAvailable = true;
 		this.EXP = 0;
 		this.EXPForNextLevel = CalcNextLevel();
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();

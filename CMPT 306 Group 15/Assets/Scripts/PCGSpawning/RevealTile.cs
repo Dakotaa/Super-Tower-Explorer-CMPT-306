@@ -21,13 +21,17 @@ public class RevealTile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (rev)
+        if (GameControl.instance.cellUnlockAvailable && GameControl.instance.GetGameState() == 0)
         {
-            // this object was clicked
-            Instantiate(cell, transform.position, Quaternion.identity);
-            Instantiate(mytile, transform.position, Quaternion.identity);
-            Spawn();
-            Destroy(this.gameObject);
+            if (rev)
+            {
+                // this object was clicked
+                Instantiate(cell, transform.position, Quaternion.identity);
+                Instantiate(mytile, transform.position, Quaternion.identity);
+                Spawn();
+                GameControl.instance.cellUnlockAvailable = false;
+                Destroy(this.gameObject);
+            }
         }
     }
 
