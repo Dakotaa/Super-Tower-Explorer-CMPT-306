@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    public int minRegen;
+    public int maxRegen;
     public float countdown;
     private bool isTimerRunning;
     private CellGrid grid;
@@ -12,7 +14,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        countdown = Random.Range(1, 2);
+        countdown = Random.Range(minRegen, maxRegen);
         isTimerRunning = true;
         grid = gameObject.GetComponentInParent<CellGrid>();
         pos = grid.GetPosAtCoord(transform.position);

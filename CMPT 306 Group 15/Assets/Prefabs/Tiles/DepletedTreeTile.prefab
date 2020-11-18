@@ -36,6 +36,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0dc44285344b94f9a79bed85d3fd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRegen: 10
+  maxRegen: 30
   countdown: 0
 --- !u!1001 &5365746288266837683
 PrefabInstance:
