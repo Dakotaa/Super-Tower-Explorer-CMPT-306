@@ -119,7 +119,7 @@ public class CellGrid : MonoBehaviour {
 
 	public int[] GetPosAtCoord(Vector3 coord)
 	{
-		int xTile = (int)((coord.x - origin.x) / tileScale);
+		int xTile = (int)((coord.x + 0.1 - origin.x) / tileScale);
 		int yTile = (int)((coord.y - origin.y) / tileScale);
 		return new int[] { xTile, yTile };
 	}
