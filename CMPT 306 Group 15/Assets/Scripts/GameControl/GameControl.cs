@@ -173,10 +173,10 @@ public class GameControl : MonoBehaviour {
 		} else {
 			this.EXP = newEXP;
 		}
-		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 		if (this.EXP >= this.EXPForNextLevel) {
 			cellUnlockAvailable = true;
 		}
+		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 	}
 
 	public float GetEXP() {

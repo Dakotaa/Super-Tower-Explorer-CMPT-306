@@ -44,13 +44,13 @@ public class EXPBarUI : MonoBehaviour {
 	 * Callback function for change of EXP
 	 */
 	public void UpdateEXP() {
+		this.EXP = gameControl.GetEXP();    // get the new EXP
+		this.EXPToLevel = gameControl.GetNextLevelEXP();
 		if (this.EXP == this.EXPToLevel) {
 			fullText.SetActive(true);
 		} else {
 			fullText.SetActive(false);
 		}
-		this.EXP = gameControl.GetEXP();    // get the new EXP
-		this.EXPToLevel = gameControl.GetNextLevelEXP();
 		this.text.text = "EXP: " + this.EXP + "/" + this.EXPToLevel;	// update EXP text
 		float newWidth = this.baseWidth * ( this.EXP / this.EXPToLevel);   // calculate new width
 		StartCoroutine(ChangeBar(newWidth, 60));  // animate health decrease
