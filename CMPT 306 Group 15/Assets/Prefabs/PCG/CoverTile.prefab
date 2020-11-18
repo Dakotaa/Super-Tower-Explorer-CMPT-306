@@ -145,8 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell: {fileID: 768236566367080346, guid: 2a378ac2a0d344053bd03432d3c9c4eb, type: 3}
-  up: {fileID: 0}
-  right: {fileID: 0}
-  down: {fileID: 0}
-  left: {fileID: 0}
-  reveal: {fileID: 4790018808878553960, guid: 39a179210470a4992a9af55805b18a48, type: 3}
+  ESpawnRig: {fileID: 6671526740494203238, guid: 411af651b6dae433f83096789d0db46a, type: 3}
+  mytile: {fileID: 0}

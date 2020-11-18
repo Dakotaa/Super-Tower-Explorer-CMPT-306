@@ -7,6 +7,7 @@ public class RevealTile : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public GameObject cell;
+    public GameObject ESpawnRig;
 
     public GameObject mytile;
 
@@ -26,6 +27,7 @@ public class RevealTile : MonoBehaviour
             // this object was clicked
             Instantiate(cell, transform.position, Quaternion.identity);
             Instantiate(mytile, transform.position, Quaternion.identity);
+            Instantiate(ESpawnRig, transform.position, Quaternion.identity);
             Spawn();
             Destroy(this.gameObject);
         }

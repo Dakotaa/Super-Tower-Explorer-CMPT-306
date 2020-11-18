@@ -22,7 +22,7 @@ public class WaveControl : MonoBehaviour
 
 	#endregion
 
-	private GameControl gameControl = GameControl.instance;
+	public GameControl gameControl = GameControl.instance;
 	public Enemy enemyPrefab;
     public List<Transform> spawnPoints = new List<Transform>(); // enemy spawn points
     public int countdown = 5; // countdown from round start to enemy spawn
@@ -49,6 +49,7 @@ public class WaveControl : MonoBehaviour
 	// begin a wave. increase wave number, call callbacks, spawn enemies
 	IEnumerator StartWave() {
 		if (gameControl.GetGameState() == 0) {
+			//spawnPoints = FindGameObjects
 			gameControl.IncreaseWaveNumber();
 			gameControl.SetGameState(1); // game state 1 - wave about to start
 			// Trigger callback to start countdown
