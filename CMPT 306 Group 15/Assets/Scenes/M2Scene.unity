@@ -685,7 +685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9af215c245924f4e9f04c358e5cf56c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70fa7de6acf4d4046b2f7e778584fe2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1107,7 +1107,7 @@ PrefabInstance:
     - target: {fileID: 2185043231606067822, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f5494623ccd9b1e41a2a7e7b605df11b, type: 3}
+      objectReference: {fileID: 21300000, guid: b4e278e5e2517f24bbd3100749b87e90, type: 3}
     - target: {fileID: 5065279633979906808, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.699997
@@ -1584,7 +1584,7 @@ PrefabInstance:
     - target: {fileID: 2185043231606067822, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f319bbddb6d30fd4aa2a9e14819dfab3, type: 3}
+      objectReference: {fileID: 21300000, guid: f7f768ba7ab34bf44ad08b551ba504ea, type: 3}
     - target: {fileID: 5065279633979906808, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.699997
@@ -2538,7 +2538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 6, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1339349434
@@ -4114,7 +4114,7 @@ PrefabInstance:
     - target: {fileID: 2185043231606067822, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3d1d30c41a09fc542b27e2f7b9cae14f, type: 3}
+      objectReference: {fileID: 21300000, guid: f051a4558de98854c8249781858a6ec4, type: 3}
     - target: {fileID: 2771057266375863121, guid: d495658f285b8604bbf5eeaf257e45c4, type: 3}
       propertyPath: m_Name
       value: Count0
