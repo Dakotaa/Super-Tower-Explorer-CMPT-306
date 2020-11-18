@@ -19,14 +19,14 @@ public class Tower : CellTile {
 	// prefabs and objects
 	public Bullet bullet;
 	// public GameController controller;
-	public List<GameObject> enemies;    // list of existing enemies
+	protected List<GameObject> enemies;    // list of existing enemies
 
 	// target tracking
-	private Transform barrel;
-	private GameObject target;  // enemy currently being targeted
-	private Vector3 lookPos;
-	private float angle;
-	private Quaternion qTo;
+	protected Transform barrel;
+	protected GameObject target;  // enemy currently being targeted
+	protected Vector3 lookPos;
+	protected float angle;
+	protected Quaternion qTo;
 
 	public ToolTipController tooltip;
 
