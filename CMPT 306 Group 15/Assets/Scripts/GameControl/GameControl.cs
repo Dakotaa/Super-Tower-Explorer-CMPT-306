@@ -26,23 +26,6 @@ public class GameControl : MonoBehaviour {
 	private float EXPForNextLevel = 5;    // required EXP for the next cell unlock
 	public bool cellUnlockAvailable = false;
 
-	private void Update() {
-		if (Input.GetKeyDown("2")) {
-			ChangeHealth(5);
-		}
-		if (Input.GetKeyDown("1")) {
-			ChangeHealth(-5);
-		}
-
-		if (Input.GetKeyDown("3")) {
-			ChangeEXP(1);
-		}
-		if (Input.GetKeyDown("4")) {
-			ChangeEXP(-1);
-		}
-	}
-
-
 	#region Singleton
 
 	void Awake() {
@@ -192,7 +175,7 @@ public class GameControl : MonoBehaviour {
 		}
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 		if (this.EXP >= this.EXPForNextLevel) {
-			LevelComplete();
+			cellUnlockAvailable = true;
 		}
 	}
 
