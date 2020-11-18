@@ -9,20 +9,23 @@ public class EnemySpawn : MonoBehaviour
     private void Start()
     {
         controller = WaveControl.instance;
-    }
-
-    private void Update()
-    {
         if (!controller.spawnPoints.Contains(this.transform))
         {
             controller.spawnPoints.Add(this.transform);
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("EnemySpawn"))
         {
+            controller.spawnPoints.Remove(other.transform);
+            controller.spawnPoints.Remove(this.transform);
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }

@@ -49,7 +49,6 @@ public class WaveControl : MonoBehaviour
 	// begin a wave. increase wave number, call callbacks, spawn enemies
 	IEnumerator StartWave() {
 		if (gameControl.GetGameState() == 0) {
-			//spawnPoints = FindGameObjects
 			gameControl.IncreaseWaveNumber();
 			gameControl.SetGameState(1); // game state 1 - wave about to start
 			// Trigger callback to start countdown
