@@ -198,19 +198,19 @@ public class CellGrid : MonoBehaviour {
 				int[] pos = GetPosAtCursor();
 				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
                 {
-					inventory.IncreaseResource("Wood", 3);
+					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
 				{
-					inventory.IncreaseResource("Iron", 3);
+					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
 				{
-					inventory.IncreaseResource("Stone", 3);
+					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
 				}
