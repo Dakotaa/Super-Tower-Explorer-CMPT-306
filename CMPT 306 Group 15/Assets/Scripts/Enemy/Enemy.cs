@@ -53,14 +53,23 @@ public class Enemy : MainController {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
+		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
 		//Debug.Log("GameObject1 collided with " + col.name);
 
-        if (col.tag == "Wall Tile")
+		if (col.tag == "Wall Tile")
         {
 			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
-				Debug.Log("I am Stopped");
+				
+				//Debug.Log("I am Stopped");
+				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
+				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
+				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
+
 				Destroy(col.gameObject);
+
+				emptyTile.CreateTile(x,y ,emptyTile.emptyTile);
+				
 
 				var bounds = GetComponent<CircleCollider2D>().bounds;
 
