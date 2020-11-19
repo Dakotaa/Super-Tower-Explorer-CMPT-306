@@ -9,12 +9,9 @@ public class CellGrid : MonoBehaviour {
 	public int size;	// the dimensions of the grid
 	public CellTile[,] grid;	// array of tiles
 	public CellTile emptyTile;  // prefab of default tile
-
-	// Tower tiles
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile towerTile;  // prefab of tower tile
 
-	// Resource tiles
 	public CellTile treeTile; // prefab of tree tile
 	public CellTile depletedTreeTile; // prefab of depleted tree tile
 	public CellTile metalTile; // prefab of metal tile
@@ -133,25 +130,6 @@ public class CellGrid : MonoBehaviour {
 		return new int[] { xTile, yTile };
 	}
 
-	private void AddTower(string towerName, CellTile tile, string resource, int resourceCost)
-    {
-		// For when dragged tile is tower
-		GameObject tower = GameObject.Find(towerName);
-		MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-		int resourceCount = inventory.GetResourceCount(resource);
-		if (overCell && (towerCreate.isTowerDragged) && (resourceCount >= resourceCost) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
-		{
-			PlaceTile(GetPosAtCursor(), tile);
-			inventory.DecreaseResource(resource, resourceCost);
-			towerCreate.isTowerDragged = false;
-			return;
-		}
-		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
-		{
-			towerCreate.isTowerDragged = false;
-		}
-	}
-
 	private void Update() {
 
 		currentTile = GetTileAtCursor();
@@ -162,8 +140,35 @@ public class CellGrid : MonoBehaviour {
 				return;
             }
 
-			AddTower("Shotgun Tower", towerTile, "Iron", 1);
-			AddTower("WallTile", wallTile, "Stone", 1);
+			// For when dragged tile is tower
+			GameObject tower = GameObject.Find("Shotgun Tower");
+			MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
+			int ironCount = inventory.GetResourceCount("Iron");
+			if (overCell && (towerCreate.isTowerDragged) && (ironCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
+			{
+				PlaceTile(GetPosAtCursor(), towerTile);
+				inventory.DecreaseResource("Iron", 1);
+				towerCreate.isTowerDragged = false;
+				return;
+			}
+
+			// For when dragged tile is wall
+			GameObject wall = GameObject.Find("WallTile");
+			MouseTowerCreate wallCreate = wall.GetComponent<MouseTowerCreate>();
+			int stoneCount = inventory.GetResourceCount("Stone");
+			if (overCell && (wallCreate.isTowerDragged) && (stoneCount > 0) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if wall is being dragged from menu and over cell
+			{
+				PlaceTile(GetPosAtCursor(), wallTile);
+				inventory.DecreaseResource("Stone", 1);
+				wallCreate.isTowerDragged = false;
+				return;
+			}
+
+			if (GetTileAtCursor().GetType() != typeof(EmptyTile))
+			{
+				towerCreate.isTowerDragged = false;
+				wallCreate.isTowerDragged = false;
+			}
 		}
 
 		// handling checking which type of tile the cursor is over
