@@ -2484,7 +2484,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268901557
 MonoBehaviour:
@@ -2506,7 +2506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOADING...
+  m_text: "Building \nthe \ndungeon..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c4132b8d480e6741b6b8aa0152e25e8, type: 2}
   m_sharedMaterial: {fileID: 8232542097816540439, guid: 9c4132b8d480e6741b6b8aa0152e25e8, type: 2}
