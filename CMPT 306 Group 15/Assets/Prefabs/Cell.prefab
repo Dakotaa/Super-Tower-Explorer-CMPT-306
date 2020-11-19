@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 768236566367080350}
   - component: {fileID: 768236566367080351}
   - component: {fileID: 768236566367080349}
-  - component: {fileID: 8021579979109436426}
+  - component: {fileID: 7709715516808014046}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -105,3 +105,16 @@ MonoBehaviour:
   depletedMetalTile: {fileID: 8021489893860952828, guid: 5fad907881ecfa141852689039666296, type: 3}
   stoneTile: {fileID: 3165335401898592511, guid: c23762d1db2895947b65aec238d02e8c, type: 3}
   depletedStoneTile: {fileID: 6577927611872839111, guid: 90262b869fa07b44a992ce762dfa21c9, type: 3}
+--- !u!65 &7709715516808014046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768236566367080346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
