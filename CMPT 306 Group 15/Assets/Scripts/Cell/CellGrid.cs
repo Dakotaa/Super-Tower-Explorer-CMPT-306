@@ -51,25 +51,34 @@ public class CellGrid : MonoBehaviour {
 
 
 		GameObject firstGrid = GameObject.Find("Cell(Clone)"); // Finds the first grid and adds 1 of each resource to it.
-		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 0, 0 }, treeTile);
+		/*firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 0, 0 }, treeTile);
 		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 1, 0 }, metalTile);
-		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 2, 0 }, stoneTile);
+		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 2, 0 }, stoneTile);*/
 
-		int ResourceAmount = size / 4;
-		for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
-        {
-			int random = UnityEngine.Random.Range(0, 3);
-			if (random == 0)
-            {
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, treeTile);
-			}
-			else if (random == 1)
+		if (gameObject == firstGrid)
+		{
+			PlaceTile(new int[] { 5, 6 }, treeTile);
+			PlaceTile(new int[] { 6, 6 }, metalTile);
+			PlaceTile(new int[] { 7, 6 }, stoneTile);
+		}
+		else
+		{
+			int ResourceAmount = size / 4;
+			for (int x = 0; x < ResourceAmount; x++) // Places resource nodes randomly
 			{
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, metalTile);
-			}
-			else if (random == 2)
-			{
-				PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, stoneTile);
+				int random = UnityEngine.Random.Range(0, 3);
+				if (random == 0)
+				{
+					PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, treeTile);
+				}
+				else if (random == 1)
+				{
+					PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, metalTile);
+				}
+				else if (random == 2)
+				{
+					PlaceTile(new int[] { UnityEngine.Random.Range(1, size - 1), UnityEngine.Random.Range(1, size - 1) }, stoneTile);
+				}
 			}
 		}
 
