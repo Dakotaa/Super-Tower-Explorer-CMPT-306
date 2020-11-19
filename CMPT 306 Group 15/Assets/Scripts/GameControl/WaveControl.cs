@@ -22,7 +22,7 @@ public class WaveControl : MonoBehaviour
 
 	#endregion
 
-	private GameControl gameControl = GameControl.instance;
+	public GameControl gameControl = GameControl.instance;
 	public Enemy enemyPrefab;
 
 	public Enemy strongEnemy; //test

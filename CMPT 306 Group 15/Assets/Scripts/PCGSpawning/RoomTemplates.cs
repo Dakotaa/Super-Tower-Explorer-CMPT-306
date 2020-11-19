@@ -27,6 +27,8 @@ public class RoomTemplates : MonoBehaviour
 
     public GameObject HideRoom;
 
+    private GameObject load;
+
     public int RoomLow; 
     public int RoomHigh;
 
@@ -37,16 +39,8 @@ public class RoomTemplates : MonoBehaviour
 
     void Start()
     {
+        load = GameObject.FindGameObjectWithTag("LoadingScene");
         InvokeRepeating("ReBuild", 0.1f, 0.1f);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Games
-        }
-
     }
 
     private void ReBuild()
@@ -64,10 +58,14 @@ public class RoomTemplates : MonoBehaviour
             done = true;
         }
         
-        //Reset the game by pressing 'r' or if the number of rooms isn't in the given range
+        //Reset the game if the number of rooms isn't in the given range
         if (done && ((RoomCount > RoomHigh) || (RoomCount < RoomLow)))
         { 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Game
+        }
+        else if (done)
+        {
+            Destroy(load.gameObject);
         }
     }
 
