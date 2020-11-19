@@ -136,7 +136,6 @@ MonoBehaviour:
   bulletVelocity: 25
   trackingSpeed: 10
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
-  enemies: []
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
   levelup_searchRange: 1
@@ -172,7 +171,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.5}

@@ -56,8 +56,8 @@ public class Enemy : MainController {
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
 		//Debug.Log("GameObject1 collided with " + col.name);
 
-		if (col.tag == "Wall Tile")
-        {
+		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower"))
+		{
 			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
 				
