@@ -5,8 +5,10 @@ using UnityEngine.EventSystems;
 
 // Class used to move the tower picture in build menu around on screen
 public class MouseTowerCreate : MonoBehaviour, IDragHandler, IEndDragHandler
+
 {
     public bool isTowerDragged = false;
+    public int resourceCost = 1;
 
     // Moves the tower picture when mouse button held down
     public void OnDrag(PointerEventData eventData)
