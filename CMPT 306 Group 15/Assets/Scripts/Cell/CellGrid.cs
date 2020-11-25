@@ -200,6 +200,8 @@ public class CellGrid : MonoBehaviour {
 
 	private void OnMouseExit() {
 		overCell = false;
+		tooltip.Hide();
+		currentTile = null;
 	}
 
 	private void OnMouseDown() {
