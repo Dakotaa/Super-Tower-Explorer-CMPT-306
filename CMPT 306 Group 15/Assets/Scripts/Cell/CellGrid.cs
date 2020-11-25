@@ -51,9 +51,6 @@ public class CellGrid : MonoBehaviour {
 
 
 		GameObject firstGrid = GameObject.Find("Cell(Clone)"); // Finds the first grid and adds 1 of each resource to it.
-		/*firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 0, 0 }, treeTile);
-		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 1, 0 }, metalTile);
-		firstGrid.GetComponent<CellGrid>().PlaceTile(new int[] { 2, 0 }, stoneTile);*/
 
 		if (gameObject == firstGrid)
 		{
@@ -143,17 +140,19 @@ public class CellGrid : MonoBehaviour {
 		return new int[] { xTile, yTile };
 	}
 
-	private void AddTower(string towerName, CellTile tile, string resource, int resourceCost)
+	private void AddTower(string towerName, CellTile tile, string resource, int resourceIncrease)
     {
 		// For when dragged tile is tower
 		GameObject tower = GameObject.Find(towerName);
 		MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
 		int resourceCount = inventory.GetResourceCount(resource);
+		int resourceCost = towerCreate.resourceCost;
 		if (overCell && (towerCreate.isTowerDragged) && (resourceCount >= resourceCost) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
 		{
 			PlaceTile(GetPosAtCursor(), tile);
 			inventory.DecreaseResource(resource, resourceCost);
 			towerCreate.isTowerDragged = false;
+			towerCreate.resourceCost += resourceIncrease;
 			return;
 		}
 		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
@@ -172,7 +171,7 @@ public class CellGrid : MonoBehaviour {
 				return;
             }
 
-			AddTower("WallTile", wallTile, "Stone", 1);
+			AddTower("WallTile", wallTile, "Stone", 0);
 			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
 			AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
 		}
