@@ -2,4 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeTile : CellTile { }
+public class TreeTile : ResourceTile {
+	public override string GetInfo() {
+		return "Lumber\n\nClick to collect";
+	}
+}

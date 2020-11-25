@@ -17,4 +17,8 @@ public class WallTile : CellTile {
         AstarPath.active.UpdateGraphs(guo);
     }
 
+	public override string GetInfo() {
+		return "Wall Tile";
+	}
+
 }
