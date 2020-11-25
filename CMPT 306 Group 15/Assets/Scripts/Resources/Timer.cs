@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
     public int minRegen;
     public int maxRegen;
     public float countdown;
-    private bool isTimerRunning;
+    private GameControl gameControl;
     private CellGrid grid;
     int[] pos;
 
@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         countdown = Random.Range(minRegen, maxRegen);
-        isTimerRunning = true;
+        gameControl = Camera.main.GetComponent<GameControl>();
         grid = gameObject.GetComponentInParent<CellGrid>();
         pos = grid.GetPosAtCoord(transform.position);
     }
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isTimerRunning)
+        if (gameControl.GetGameState() == 2)
         {
             if (countdown > 0)
             {
@@ -33,7 +33,6 @@ public class Timer : MonoBehaviour
             {
                 // If countdown is done then make the depleted tile into a regenerated tile
                 countdown = 0;
-                isTimerRunning = false;
                 Destroy(gameObject);
                 if (gameObject.GetComponent<TreeTile>() != null)
                 {
