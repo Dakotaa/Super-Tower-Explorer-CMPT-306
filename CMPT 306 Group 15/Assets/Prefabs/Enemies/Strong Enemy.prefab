@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5621096384244025646}
   - component: {fileID: 3440795968876711337}
   - component: {fileID: 4758064322041555804}
-  - component: {fileID: -8019605280985402890}
   - component: {fileID: 966969566449558779}
   m_Layer: 0
   m_Name: Strong Enemy
@@ -221,28 +220,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8019605280985402890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5835553763266405173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  smoothType: 0
-  subdivisions: 2
-  iterations: 2
-  strength: 0.5
-  uniformLength: 1
-  maxSegmentLength: 0.1
-  bezierTangentLength: 0.4
-  offset: 0.2
-  factor: 0.1
 --- !u!114 &966969566449558779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,11 +238,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   thickRaycast: 1
-  thickRaycastRadius: 1
+  thickRaycastRadius: 0.2
   use2DPhysics: 1
   raycastOffset: {x: 0, y: 0, z: 0}
   useGraphRaycasting: 1
-  quality: 3
+  quality: 1
 --- !u!1001 &4452503151507297313
 PrefabInstance:
   m_ObjectHideFlags: 0
