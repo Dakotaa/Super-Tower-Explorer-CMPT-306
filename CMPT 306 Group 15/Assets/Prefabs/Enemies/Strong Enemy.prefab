@@ -261,11 +261,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   thickRaycast: 1
-  thickRaycastRadius: 1
+  thickRaycastRadius: 0.2
   use2DPhysics: 1
   raycastOffset: {x: 0, y: 0, z: 0}
   useGraphRaycasting: 1
-  quality: 3
+  quality: 1
 --- !u!1001 &4452503151507297313
 PrefabInstance:
   m_ObjectHideFlags: 0
