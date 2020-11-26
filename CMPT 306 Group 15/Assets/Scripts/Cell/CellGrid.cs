@@ -23,6 +23,10 @@ public class CellGrid : MonoBehaviour {
 	public CellTile stoneTile; // prefab of stone tile
 	public CellTile depletedStoneTile; // prefab of depleted stone tile
 
+	// Resource harvest sounds
+	public AudioClip[] harvestRockSounds;
+	public AudioClip[] harvestWoodSounds;
+
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
@@ -34,6 +38,7 @@ public class CellGrid : MonoBehaviour {
 	private GameObject canvas;
 	private ToolTipController tooltip;
 	private Inventory inventory;
+	private SoundManager sound;
 
 	void Start() {
 		grid = new CellTile[size, size];
@@ -81,6 +86,7 @@ public class CellGrid : MonoBehaviour {
 
 		tooltip = ToolTipController.instance;
 		inventory = Inventory.instance;
+		sound = SoundManager.Instance;
 	}
 
 	private void CreateTiles() {
@@ -208,20 +214,20 @@ public class CellGrid : MonoBehaviour {
 
 			if (currentTile is ResourceTile) {
 				int[] pos = GetPosAtCursor();
-				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
-                {
+				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null) {
+					sound.RandomSoundEffect(harvestWoodSounds, currentTile.transform.position);
 					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
 				}
-				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
-				{
+				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null) {
+					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
 					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
 				}
-				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
-				{
+				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null) {
+					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);

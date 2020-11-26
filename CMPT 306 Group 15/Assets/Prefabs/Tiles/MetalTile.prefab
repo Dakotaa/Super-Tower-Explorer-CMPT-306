@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05501bb940ceec04792af0a615e4ec7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroySounds:
+  - {fileID: 8300000, guid: ce1323f17129c744d8e8779babed39d0, type: 3}
+  - {fileID: 8300000, guid: 8500f330ca087174cb7ca376308891da, type: 3}
+  - {fileID: 8300000, guid: 94910d97281813642957a0052761ff36, type: 3}
 --- !u!1001 &696547587251675525
 PrefabInstance:
   m_ObjectHideFlags: 0
