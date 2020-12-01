@@ -60,7 +60,8 @@ public class Tower : CellTile {
 	public virtual bool ShootAt(Vector3 targetPos) {
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
-		Vector3 direction = (targetPos - transform.position).normalized;
+		Vector3 correctedPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z);
+		Vector3 direction = (targetPos - correctedPos).normalized;
 		shotBullet.Setup(direction, bulletVelocity);
 		return true;
 	}

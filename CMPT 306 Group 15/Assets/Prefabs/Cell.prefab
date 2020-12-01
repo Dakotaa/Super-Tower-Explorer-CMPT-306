@@ -111,7 +111,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8500f330ca087174cb7ca376308891da, type: 3}
   - {fileID: 8300000, guid: 94910d97281813642957a0052761ff36, type: 3}
   harvestWoodSounds:
-  - {fileID: 8300000, guid: 94910d97281813642957a0052761ff36, type: 3}
+  - {fileID: 8300000, guid: bdbf0a24424742249b78494a32736a7d, type: 3}
+  - {fileID: 8300000, guid: 4d4034108b67b464d9c4b2e7454ef018, type: 3}
+  - {fileID: 8300000, guid: 421d2a9b5640cd04da45b6e6b89fd884, type: 3}
+  - {fileID: 8300000, guid: 97657c91e15e1d445a4f054871369f97, type: 3}
+  - {fileID: 8300000, guid: 733c09a4887887a45b26920754d02279, type: 3}
+  towerPlaceSounds:
+  - {fileID: 8300000, guid: daba0d176dbb46c469d535d5749219e0, type: 3}
+  towerUpgradeSounds:
+  - {fileID: 8300000, guid: a1fa6d963aa492848ac2caec4d76c83c, type: 3}
 --- !u!65 &7709715516808014046
 BoxCollider:
   m_ObjectHideFlags: 0

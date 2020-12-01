@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// credit: https://blog.silentkraken.com/2010/04/06/audiomanager/
+
 public class SoundManager : MonoBehaviour {
 
 	// Random pitch adjustment range.

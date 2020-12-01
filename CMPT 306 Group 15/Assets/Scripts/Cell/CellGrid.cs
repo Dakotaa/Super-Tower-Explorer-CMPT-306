@@ -26,6 +26,8 @@ public class CellGrid : MonoBehaviour {
 	// Resource harvest sounds
 	public AudioClip[] harvestRockSounds;
 	public AudioClip[] harvestWoodSounds;
+	public AudioClip[] towerPlaceSounds;
+	public AudioClip[] towerUpgradeSounds;
 
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
@@ -159,6 +161,7 @@ public class CellGrid : MonoBehaviour {
 			inventory.DecreaseResource(resource, resourceCost);
 			towerCreate.isTowerDragged = false;
 			towerCreate.resourceCost += resourceIncrease;
+			sound.RandomSoundEffect(towerPlaceSounds, tile.transform.position);
 			return;
 		}
 		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
@@ -242,6 +245,7 @@ public class CellGrid : MonoBehaviour {
 						if (inventory.GetResourceCount("Iron") >= 1) {
 							inventory.DecreaseResource("Iron", 1);
 							towerTile.IncreaseLevel();
+							sound.RandomSoundEffect(towerUpgradeSounds, currentTile.transform.position);
 						}
 					}
 				}
