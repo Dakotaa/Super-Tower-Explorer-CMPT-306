@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CellGrid : MonoBehaviour {
@@ -205,6 +206,11 @@ public class CellGrid : MonoBehaviour {
 
 	private void OnMouseDown() {
 		if (overCell) {
+			
+			if (EventSystem.current.IsPointerOverGameObject())
+            {
+				return;
+            }
 
 			if (currentTile is ResourceTile) {
 				int[] pos = GetPosAtCursor();
