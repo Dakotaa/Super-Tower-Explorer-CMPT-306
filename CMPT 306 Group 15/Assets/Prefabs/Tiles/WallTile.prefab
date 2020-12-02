@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 2601153253187102488}
   m_Layer: 8
   m_Name: WallTile
-  m_TagString: Wall
+  m_TagString: Wall Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.5}

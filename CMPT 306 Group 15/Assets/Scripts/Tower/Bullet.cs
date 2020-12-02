@@ -5,12 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 	private Vector3 direction;
 	public GameObject impactParticle;
+	public float lifetime = 2.0f;
 	private Vector3 impactNormal;
 	public List<string> obstructions; // tags that will block and destroy the bullet
 	public void Setup(Vector3 direction, float velocity) {
 		direction.z = 0.0f;
 		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * velocity, direction.y * velocity); // add force to the bullet
-		Destroy(gameObject, 2);	// destroy bullets if they don't hit anything in 2 seconds
+		Destroy(gameObject, this.lifetime);	// destroy bullets if they don't hit anything in 2 seconds
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
@@ -20,10 +21,20 @@ public class Bullet : MonoBehaviour {
 			Destroy(impactParticle, 1);
 			Destroy(gameObject);
 		}
-		if (collision.collider.tag.Equals("Enemy")) {	// damage/kill enemies
+		if (collision.collider.tag.Equals("Enemy")) {   // damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
-			victim.Kill(true);
-			Destroy(gameObject);
+
+			victim.Hurt(0.5f); //change this when ready
+
+			if (victim.GetHealth() <= 0)
+            {
+				victim.Kill(true);
+				Destroy(gameObject);
+            }
+            else
+            {
+				Destroy(gameObject);
+            }	
 		}
 	}
 

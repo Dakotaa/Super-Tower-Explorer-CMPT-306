@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 768236566367080353}
   - component: {fileID: 768236566367080350}
   - component: {fileID: 768236566367080351}
-  - component: {fileID: 768236566367080348}
   - component: {fileID: 768236566367080349}
+  - component: {fileID: 7709715516808014046}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &768236566367080348
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768236566367080346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 50}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &768236566367080349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,5 +98,24 @@ MonoBehaviour:
   size: 13
   emptyTile: {fileID: 3477373119277170553, guid: 2e6b65e7c2c46b044a8495ffa5f1356a, type: 3}
   wallTile: {fileID: 8269899188136154339, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
-  towerTile: {fileID: 1168917106947082120, guid: 68f9261bb5666044ab90c873897d62af, type: 3}
-  resourceTile: {fileID: -1485243647832735687, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
+  simpleTowerTile: {fileID: 1168917106947082120, guid: 68f9261bb5666044ab90c873897d62af, type: 3}
+  shotgunTowerTile: {fileID: 6626792943795252599, guid: 749311edd770b544794efb8c0402509b, type: 3}
+  treeTile: {fileID: -1342249949091001366, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
+  depletedTreeTile: {fileID: 877797395330513186, guid: d474b41f25d252f4989cf280db1799d7, type: 3}
+  metalTile: {fileID: -8826561369553729732, guid: ea8c6dde36d9b30429c6b28c298de6a5, type: 3}
+  depletedMetalTile: {fileID: 8021489893860952828, guid: 5fad907881ecfa141852689039666296, type: 3}
+  stoneTile: {fileID: 7256865544297760465, guid: c23762d1db2895947b65aec238d02e8c, type: 3}
+  depletedStoneTile: {fileID: 6577927611872839111, guid: 90262b869fa07b44a992ce762dfa21c9, type: 3}
+--- !u!65 &7709715516808014046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768236566367080346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -22,9 +22,12 @@ public class WaveControl : MonoBehaviour
 
 	#endregion
 
-	private GameControl gameControl = GameControl.instance;
+	public GameControl gameControl = GameControl.instance;
 	public Enemy enemyPrefab;
-    public List<Transform> spawnPoints = new List<Transform>(); // enemy spawn points
+
+	public Enemy strongEnemy; //test
+	
+	public List<Transform> spawnPoints = new List<Transform>(); // enemy spawn points
     public int countdown = 5; // countdown from round start to enemy spawn
 	public float enemySpawnInterval = 0.5f;
 	private int waveEnemyCount; // the total overall enemy count for this wave
@@ -90,8 +93,11 @@ public class WaveControl : MonoBehaviour
 		int index = (int) Random.Range(0, spawnPoints.Count);
 		// instantiate the enemy and add it to the enemy list
 		gameControl.AddEnemy(Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation));
+
+		gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));//test
+
 		waveEnemiesSpawned++;
-    }
+	}
 
 	private void EnemyKilled() {
 		// check if this was the last enemy for the round 

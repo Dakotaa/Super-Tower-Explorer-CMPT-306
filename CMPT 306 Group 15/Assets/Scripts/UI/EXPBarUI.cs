@@ -17,6 +17,7 @@ public class EXPBarUI : MonoBehaviour {
 	private float width; // current width
 	private RectTransform bar;	// green bar image
 	private Text text;  // HP display text
+	private GameObject fullText;
 	private GameObject textPanel;
 	private GameControl gameControl; // Game Control instance
 
@@ -29,12 +30,14 @@ public class EXPBarUI : MonoBehaviour {
 		/* EXP bar and text objects */
 		this.bar = GameObject.Find("EXP Bar").GetComponent<RectTransform>();
 		this.text = GameObject.Find("EXP Text").GetComponent<Text>();
+		this.fullText = GameObject.Find("Cell Unlocked Text");
 		this.textPanel = GameObject.Find("EXP Text Background");
 		/* EXP bar geometry */
 		this.baseWidth = this.bar.rect.width;
 		this.width = 0;
 		this.text.text = "EXP: " + this.EXP + "/" + this.EXPToLevel;    // update EXP text
 		this.bar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0);
+		fullText.SetActive(false);
 	}
 
 	/*
@@ -43,6 +46,11 @@ public class EXPBarUI : MonoBehaviour {
 	public void UpdateEXP() {
 		this.EXP = gameControl.GetEXP();    // get the new EXP
 		this.EXPToLevel = gameControl.GetNextLevelEXP();
+		if (this.EXP == this.EXPToLevel) {
+			fullText.SetActive(true);
+		} else {
+			fullText.SetActive(false);
+		}
 		this.text.text = "EXP: " + this.EXP + "/" + this.EXPToLevel;	// update EXP text
 		float newWidth = this.baseWidth * ( this.EXP / this.EXPToLevel);   // calculate new width
 		StartCoroutine(ChangeBar(newWidth, 60));  // animate health decrease

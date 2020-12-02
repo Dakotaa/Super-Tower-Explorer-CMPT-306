@@ -24,24 +24,7 @@ public class GameControl : MonoBehaviour {
 	private int level = 0;
 	private float EXP = 0;  // player's current EXP towards the next cell unlock
 	private float EXPForNextLevel = 5;    // required EXP for the next cell unlock
-	private bool cellUnlockAvailable = false;
-
-	private void Update() {
-		if (Input.GetKeyDown("2")) {
-			ChangeHealth(5);
-		}
-		if (Input.GetKeyDown("1")) {
-			ChangeHealth(-5);
-		}
-
-		if (Input.GetKeyDown("3")) {
-			ChangeEXP(1);
-		}
-		if (Input.GetKeyDown("4")) {
-			ChangeEXP(-1);
-		}
-	}
-
+	public bool cellUnlockAvailable = false;
 
 	#region Singleton
 
@@ -68,12 +51,9 @@ public class GameControl : MonoBehaviour {
 		if (gameHasEnded == false) {
 			gameHasEnded = true;
 			Debug.Log("Game Over");
-			Invoke("Restart", restartDelay);
+			StaticInfo.wavesSurvived = this.waveNumber - 1;
+			SceneManager.LoadScene("GameOver");
 		}
-	}
-
-	void Restart() {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public int GetGameState() {
@@ -193,10 +173,10 @@ public class GameControl : MonoBehaviour {
 		} else {
 			this.EXP = newEXP;
 		}
-		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 		if (this.EXP >= this.EXPForNextLevel) {
-			LevelComplete();
+			cellUnlockAvailable = true;
 		}
+		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 	}
 
 	public float GetEXP() {
@@ -207,9 +187,9 @@ public class GameControl : MonoBehaviour {
 		return this.EXPForNextLevel;
 	}
 
-	private void LevelComplete() {
+	public void LevelComplete() {
 		this.level++;
-		//this.cellUnlockAvailable = true;
+		this.cellUnlockAvailable = false;
 		this.EXP = 0;
 		this.EXPForNextLevel = CalcNextLevel();
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
