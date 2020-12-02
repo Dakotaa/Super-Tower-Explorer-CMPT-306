@@ -151,30 +151,19 @@ public class CellGrid : MonoBehaviour {
 		{
 			PlaceTile(GetPosAtCursor(), tile);
 			inventory.DecreaseResource(resource, resourceCost);
-			towerCreate.isTowerDragged = false;
+			//towerCreate.isTowerDragged = false;
 			towerCreate.resourceCost += resourceIncrease;
 			return;
 		}
 		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
 		{
-			towerCreate.isTowerDragged = false;
+			//towerCreate.isTowerDragged = false;
 		}
 	}
 
 	private void Update() {
 
 		currentTile = GetTileAtCursor();
-		if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
-		{
-			if (GetTileAtCursor() == null)
-            {
-				return;
-            }
-
-			AddTower("WallTile", wallTile, "Stone", 0);
-			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
-			AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
-		}
 
 		// handling checking which type of tile the cursor is over
 		if (currentTile != null) {
@@ -228,8 +217,7 @@ public class CellGrid : MonoBehaviour {
 				}
 				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
 			}
-
-			if (currentTile is Tower) {
+			else if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
 					if (!towerTile.IsMaxLevel()) {
@@ -240,6 +228,17 @@ public class CellGrid : MonoBehaviour {
 					}
 				}
 			}
-	}
+			else
+            {
+				if (GetTileAtCursor() == null)
+				{
+					return;
+				}
+
+				AddTower("WallTile", wallTile, "Stone", 0);
+				AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
+				AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
+			}
+		}
 	}
 }
