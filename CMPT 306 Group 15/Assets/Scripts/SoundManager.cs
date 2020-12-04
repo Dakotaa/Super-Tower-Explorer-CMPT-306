@@ -8,8 +8,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 
 	// Random pitch adjustment range.
-	public float LowPitchRange = .95f;
-	public float HighPitchRange = 1.05f;
+	public float LowPitchRange = .90f;
+	public float HighPitchRange = 1.1f;
 
 	// Singleton instance.
 	public static SoundManager Instance = null;
@@ -95,7 +95,7 @@ public class SoundManager : MonoBehaviour {
 	public void RandomSoundEffect(AudioClip[] clips, Vector3 point) {
 		int randomIndex = Random.Range(0, clips.Length);
 		float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-		this.Play(clips[randomIndex], point);
+		this.Play(clips[randomIndex], point, 0.5f, randomPitch);
 	}
 
 }

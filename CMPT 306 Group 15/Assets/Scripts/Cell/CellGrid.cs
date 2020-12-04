@@ -26,8 +26,11 @@ public class CellGrid : MonoBehaviour {
 	// Resource harvest sounds
 	public AudioClip[] harvestRockSounds;
 	public AudioClip[] harvestWoodSounds;
-	public AudioClip[] towerPlaceSounds;
+	public AudioClip[] objectPlaceSounds;
 	public AudioClip[] towerUpgradeSounds;
+
+	// Particle effects
+	public ParticleSystem stoneBreakParticle;
 
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
@@ -161,7 +164,7 @@ public class CellGrid : MonoBehaviour {
 			inventory.DecreaseResource(resource, resourceCost);
 			towerCreate.isTowerDragged = false;
 			towerCreate.resourceCost += resourceIncrease;
-			sound.RandomSoundEffect(towerPlaceSounds, tile.transform.position);
+			sound.RandomSoundEffect(objectPlaceSounds, tile.transform.position);
 			return;
 		}
 		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
@@ -231,6 +234,7 @@ public class CellGrid : MonoBehaviour {
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null) {
 					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
+					Destroy(Instantiate(stoneBreakParticle, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
