@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: 1168917106947082120}
-  - component: {fileID: -2668251879613289514}
   - component: {fileID: 5237163708006155529}
   m_Layer: 8
   m_Name: Simple Tower
@@ -148,19 +147,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 182f368f88925b246accf43232f61f50, type: 3}
   - {fileID: 21300000, guid: 2804a935b00723f448459db14701b98e, type: 3}
   - {fileID: 21300000, guid: 758f9a502a3615c4fb184226a8cb65e8, type: 3}
---- !u!114 &-2668251879613289514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990654395874869398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cad03d885c0148b689474c992191c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTowerDragged: 0
 --- !u!61 &5237163708006155529
 BoxCollider2D:
   m_ObjectHideFlags: 0
