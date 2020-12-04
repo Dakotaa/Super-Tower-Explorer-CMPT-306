@@ -121,6 +121,8 @@ MonoBehaviour:
   towerUpgradeSounds:
   - {fileID: 8300000, guid: a1fa6d963aa492848ac2caec4d76c83c, type: 3}
   stoneBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
+  woodBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
+  metalBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
 --- !u!65 &7709715516808014046
 BoxCollider:
   m_ObjectHideFlags: 0

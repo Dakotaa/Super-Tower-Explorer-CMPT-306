@@ -31,6 +31,8 @@ public class CellGrid : MonoBehaviour {
 
 	// Particle effects
 	public ParticleSystem stoneBreakParticle;
+	public ParticleSystem woodBreakParticle;
+	public ParticleSystem metalBreakParticle;
 
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
@@ -211,19 +213,21 @@ public class CellGrid : MonoBehaviour {
 				int[] pos = GetPosAtCursor();
 				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null) {
 					sound.RandomSoundEffect(harvestWoodSounds, currentTile.transform.position);
+					Destroy(Instantiate(woodBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null) {
 					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
+					Destroy(Instantiate(metalBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null) {
 					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
-					Destroy(Instantiate(stoneBreakParticle, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
+					Destroy(Instantiate(stoneBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
