@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: 6626792943795252599}
-  - component: {fileID: -2668251879613289514}
   - component: {fileID: 5237163708006155529}
   m_Layer: 8
   m_Name: Shotgun Tower
@@ -132,7 +131,7 @@ MonoBehaviour:
   searchRange: 5
   switchRange: 2.5
   cooldown: 1
-  damage: 0.1
+  damage: 0.5
   bulletVelocity: 15
   trackingSpeed: 5
   bullet: {fileID: 4019080549522565384, guid: e7adec80cd576fc498c4fbc03c059fc9, type: 3}
@@ -150,20 +149,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 758f9a502a3615c4fb184226a8cb65e8, type: 3}
   numShots: 6
   spread: 30
---- !u!114 &-2668251879613289514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990654395874869398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cad03d885c0148b689474c992191c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTowerDragged: 0
-  resourceCost: 1
 --- !u!61 &5237163708006155529
 BoxCollider2D:
   m_ObjectHideFlags: 0
