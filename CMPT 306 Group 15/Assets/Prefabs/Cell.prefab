@@ -101,7 +101,9 @@ MonoBehaviour:
   simpleTowerTile: {fileID: 1168917106947082120, guid: 68f9261bb5666044ab90c873897d62af, type: 3}
   shotgunTowerTile: {fileID: 6626792943795252599, guid: 749311edd770b544794efb8c0402509b, type: 3}
   radialTowerTile: {fileID: 1762996226091076204, guid: af9cc6f9fd99f764c9f9b31a0b97309f, type: 3}
-  marksmanTowerTile: {fileID: 0}
+  heavyTowerTile: {fileID: 2246684722986960281, guid: 4f873e3d99631c944ad14c7cae17b0be, type: 3}
+  burstTowerTile: {fileID: 489520529635320223, guid: aba272172c6621145a07abeb1466eadb, type: 3}
+  sniperTowerTile: {fileID: 2414371217808677923, guid: 5653ef584e03fd54482df784416764b5, type: 3}
   treeTile: {fileID: -1342249949091001366, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
   depletedTreeTile: {fileID: 877797395330513186, guid: d474b41f25d252f4989cf280db1799d7, type: 3}
   metalTile: {fileID: -8826561369553729732, guid: ea8c6dde36d9b30429c6b28c298de6a5, type: 3}

@@ -15,7 +15,9 @@ public class CellGrid : MonoBehaviour {
 	public CellTile simpleTowerTile;  // prefab of tower tile
 	public CellTile shotgunTowerTile;  // prefab of shotgun tile
 	public CellTile radialTowerTile;
-	public CellTile marksmanTowerTile;
+	public CellTile heavyTowerTile;
+	public CellTile burstTowerTile;
+	public CellTile sniperTowerTile;
 
 	// Resource tiles
 	public CellTile treeTile; // prefab of tree tile
@@ -269,6 +271,10 @@ public class CellGrid : MonoBehaviour {
 				AddTower("WallTile", wallTile, "Stone", 0);
 				AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
 				AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
+				AddTower("Radial Tower", radialTowerTile, "Iron", 1);
+				AddTower("Burst Tower", burstTowerTile, "Iron", 1);
+				AddTower("Heavy Tower", heavyTowerTile, "Iron", 1);
+				AddTower("Sniper Tower", sniperTowerTile, "Iron", 1);
 			}
 		}
 	}
