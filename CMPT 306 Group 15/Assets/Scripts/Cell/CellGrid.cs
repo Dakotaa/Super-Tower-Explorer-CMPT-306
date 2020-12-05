@@ -14,6 +14,8 @@ public class CellGrid : MonoBehaviour {
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile simpleTowerTile;  // prefab of tower tile
 	public CellTile shotgunTowerTile;  // prefab of shotgun tile
+	public CellTile radialTowerTile;
+	public CellTile marksmanTowerTile;
 
 	// Resource tiles
 	public CellTile treeTile; // prefab of tree tile
@@ -173,7 +175,7 @@ public class CellGrid : MonoBehaviour {
 
 			AddTower("WallTile", wallTile, "Stone", 0);
 			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
-			AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
+			AddTower("Shotgun Tower", radialTowerTile, "Iron", 1);
 		}
 
 		// handling checking which type of tile the cursor is over

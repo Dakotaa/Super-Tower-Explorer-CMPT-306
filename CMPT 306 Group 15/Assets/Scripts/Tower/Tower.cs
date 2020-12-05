@@ -61,7 +61,7 @@ public class Tower : CellTile {
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
 		Vector3 direction = (targetPos - transform.position).normalized;
-		shotBullet.Setup(direction, bulletVelocity);
+		shotBullet.Setup(direction, bulletVelocity, this.damage);
 		return true;
 	}
 

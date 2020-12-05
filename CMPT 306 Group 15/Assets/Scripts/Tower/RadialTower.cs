@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunTower : Tower {
+public class RadialTower : Tower {
 	// change in values for each subsequent level
 	public float levelup_searchInterval = -0.1f;
 	public float levelup_searchRange = 1.0f;
@@ -11,7 +11,6 @@ public class ShotgunTower : Tower {
 	public float levelup_bulletVelocity = 1.0f;
 	public List<Sprite> bodies = new List<Sprite>();
 	public int numShots = 6;
-	public float spread = 10.0f;
 	private SpriteRenderer body;
 
     public override void Start() {
@@ -24,7 +23,7 @@ public class ShotgunTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"Level " + this.level + " Shotgun Tower\n" +
+		string info =	"Level " + this.level + " Radial Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -41,13 +40,17 @@ public class ShotgunTower : Tower {
 
 	// shoot at an enemy
 	public override bool ShootAt(Vector3 targetPos) {
+		float angleStep = 360f / numShots;
+		float angle = 0f;
+		float radius = 1.0f;
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		for (int i = 0; i < numShots; i++) {
 			Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
 			Vector3 direction = (targetPos - transform.position).normalized;
-			direction.x += (Random.Range(-(spread / 2), (spread / 2)))/100;
-			direction.y += (Random.Range(-(spread / 2), (spread / 2)))/100;
+			direction.x = (Mathf.Sin((angle * Mathf.PI) / 180) * radius);
+			direction.y = (Mathf.Cos((angle * Mathf.PI) / 180) * radius);
 			shotBullet.Setup(direction, bulletVelocity, this.damage);
+			angle += angleStep;
 		}
 		return true;
 	}
