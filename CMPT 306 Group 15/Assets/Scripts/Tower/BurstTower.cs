@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleTower : Tower {
+public class BurstTower : Tower {
 	// change in values for each subsequent level
 	public float levelup_searchInterval = -0.1f;
 	public float levelup_searchRange = 1.0f;
 	public float levelup_cooldown = -0.1f;
 	public float levelup_damage = 0.1f;
 	public float levelup_bulletVelocity = 1.0f;
+	public float burstInterval = 0.05f;
 	public List<Sprite> bodies = new List<Sprite>();
+	public int numShots = 3;
 	private SpriteRenderer body;
 
     public override void Start() {
@@ -22,7 +24,7 @@ public class SimpleTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"Level " + this.level + " Simple Tower\n" +
+		string info =	"Level " + this.level + " Burst Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -35,6 +37,24 @@ public class SimpleTower : Tower {
 		}
 
 		return info;
+	}
+
+	// shoot at an enemy
+	public override bool ShootAt(Vector3 targetPos) {
+		StartCoroutine(Burst(targetPos));
+		return true;
+	}
+
+	private IEnumerator Burst(Vector3 targetPos) {
+		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
+		for (int i = 0; i < numShots; i++) {
+			Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
+			Vector3 correctedPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z);
+			Vector3 direction = (targetPos - correctedPos).normalized;
+			shotBullet.Setup(direction, bulletVelocity, this.damage);
+			yield return new WaitForSeconds(this.burstInterval);
+		}
+		yield return null;
 	}
 
 	public override void IncreaseLevel() {

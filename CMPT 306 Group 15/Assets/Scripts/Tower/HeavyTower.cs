@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleTower : Tower {
+public class HeavyTower : Tower {
 	// change in values for each subsequent level
 	public float levelup_searchInterval = -0.1f;
 	public float levelup_searchRange = 1.0f;
@@ -22,7 +22,7 @@ public class SimpleTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"Level " + this.level + " Simple Tower\n" +
+		string info =	"Level " + this.level + " Heavy Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +

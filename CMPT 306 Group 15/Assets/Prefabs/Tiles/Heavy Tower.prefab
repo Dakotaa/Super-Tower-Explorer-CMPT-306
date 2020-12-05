@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
-  m_Color: {r: 0, g: 0.25529444, b: 0.3679245, a: 1}
+  m_Color: {r: 0, g: 0.3301887, b: 0.0022462069, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: -2668251879613289514}
   - component: {fileID: 5237163708006155529}
-  - component: {fileID: 1762996226091076204}
+  - component: {fileID: 2246684722986960281}
   m_Layer: 8
-  m_Name: Radial Tower
+  m_Name: Heavy Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1762996226091076204
+--- !u!114 &2246684722986960281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,30 +165,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1990654395874869398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daab16ff8d55e6b4fa115493233a3b74, type: 3}
+  m_Script: {fileID: 11500000, guid: a3a5f3742a0965f42871d868c80e6754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   searchInterval: 1
-  searchRange: 3
+  searchRange: 5
   switchRange: 2.5
   cooldown: 2
-  damage: 0.2
-  bulletVelocity: 15
-  trackingSpeed: 0
-  bullet: {fileID: 4019080549522565384, guid: e7adec80cd576fc498c4fbc03c059fc9, type: 3}
+  damage: 5
+  bulletVelocity: 5
+  trackingSpeed: 5
+  bullet: {fileID: 4019080549522565384, guid: 19aa8442b7eace340b49cf98f4533a76, type: 3}
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
-  levelup_searchRange: 0.1
+  levelup_searchRange: 1
   levelup_cooldown: -0.1
-  levelup_damage: 0.05
-  levelup_bulletVelocity: 0.5
+  levelup_damage: 0.1
+  levelup_bulletVelocity: 1
   bodies:
   - {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
   - {fileID: 21300000, guid: 48f8534ebf6129f41927acb4dfa8d1ed, type: 3}
   - {fileID: 21300000, guid: 182f368f88925b246accf43232f61f50, type: 3}
   - {fileID: 21300000, guid: 2804a935b00723f448459db14701b98e, type: 3}
   - {fileID: 21300000, guid: 758f9a502a3615c4fb184226a8cb65e8, type: 3}
-  numShots: 24
 --- !u!1 &3606463107304905955
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,8 +414,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a8a01fd87b821a342887fa63e961f1c4, type: 3}
-  m_Color: {r: 0, g: 0.39612633, b: 0.5754717, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7503bebca9a23774c9f384517126132e, type: 3}
+  m_Color: {r: 0, g: 0.5764706, b: 0.0053677703, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
