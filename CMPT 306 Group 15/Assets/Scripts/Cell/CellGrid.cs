@@ -23,6 +23,11 @@ public class CellGrid : MonoBehaviour {
 	public CellTile stoneTile; // prefab of stone tile
 	public CellTile depletedStoneTile; // prefab of depleted stone tile
 
+	// Resource drops
+	public GameObject treeDrop; // prefab of the tree drop
+	public GameObject metalDrop; // prefab of the metal drop
+	public GameObject stoneDrop; // prefab of the stone drop
+
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
 	private float cellSize; // the size of the cell
@@ -213,18 +218,21 @@ public class CellGrid : MonoBehaviour {
 					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
+					Instantiate(treeDrop, canvas.transform);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
 				{
 					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
+					Instantiate(metalDrop, canvas.transform);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
 				{
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
+					Instantiate(stoneDrop, canvas.transform);
 				}
 				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
 			}
