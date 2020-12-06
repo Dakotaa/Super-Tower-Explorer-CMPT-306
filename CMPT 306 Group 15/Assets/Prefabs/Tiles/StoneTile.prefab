@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneTile
       objectReference: {fileID: 0}
+    - target: {fileID: 7347214000865469231, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2748829452872583605, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
     - {fileID: -1342249949091001366, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
