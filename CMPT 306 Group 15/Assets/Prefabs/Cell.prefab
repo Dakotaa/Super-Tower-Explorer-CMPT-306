@@ -100,15 +100,33 @@ MonoBehaviour:
   wallTile: {fileID: 8269899188136154339, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
   simpleTowerTile: {fileID: 1168917106947082120, guid: 68f9261bb5666044ab90c873897d62af, type: 3}
   shotgunTowerTile: {fileID: 6626792943795252599, guid: 749311edd770b544794efb8c0402509b, type: 3}
+  radialTowerTile: {fileID: 1762996226091076204, guid: af9cc6f9fd99f764c9f9b31a0b97309f, type: 3}
+  heavyTowerTile: {fileID: 2246684722986960281, guid: 4f873e3d99631c944ad14c7cae17b0be, type: 3}
+  burstTowerTile: {fileID: 489520529635320223, guid: aba272172c6621145a07abeb1466eadb, type: 3}
+  sniperTowerTile: {fileID: 2414371217808677923, guid: 5653ef584e03fd54482df784416764b5, type: 3}
   treeTile: {fileID: -1342249949091001366, guid: 2d8279f9c41b86b4698dd45b785c42d4, type: 3}
   depletedTreeTile: {fileID: 877797395330513186, guid: d474b41f25d252f4989cf280db1799d7, type: 3}
   metalTile: {fileID: -8826561369553729732, guid: ea8c6dde36d9b30429c6b28c298de6a5, type: 3}
   depletedMetalTile: {fileID: 8021489893860952828, guid: 5fad907881ecfa141852689039666296, type: 3}
   stoneTile: {fileID: 7256865544297760465, guid: c23762d1db2895947b65aec238d02e8c, type: 3}
   depletedStoneTile: {fileID: 6577927611872839111, guid: 90262b869fa07b44a992ce762dfa21c9, type: 3}
-  treeDrop: {fileID: 1132026680157506822, guid: 8a59298de8b3afd4db80b274ca23f86d, type: 3}
-  metalDrop: {fileID: 8818377574873860249, guid: 03617396ce66354409838b215938393c, type: 3}
-  stoneDrop: {fileID: 317948506411014499, guid: fd85bdc7a96dc1a4493e458561b3a062, type: 3}
+  harvestRockSounds:
+  - {fileID: 8300000, guid: ce1323f17129c744d8e8779babed39d0, type: 3}
+  - {fileID: 8300000, guid: 8500f330ca087174cb7ca376308891da, type: 3}
+  - {fileID: 8300000, guid: 94910d97281813642957a0052761ff36, type: 3}
+  harvestWoodSounds:
+  - {fileID: 8300000, guid: bdbf0a24424742249b78494a32736a7d, type: 3}
+  - {fileID: 8300000, guid: 4d4034108b67b464d9c4b2e7454ef018, type: 3}
+  - {fileID: 8300000, guid: 421d2a9b5640cd04da45b6e6b89fd884, type: 3}
+  - {fileID: 8300000, guid: 97657c91e15e1d445a4f054871369f97, type: 3}
+  - {fileID: 8300000, guid: 733c09a4887887a45b26920754d02279, type: 3}
+  objectPlaceSounds:
+  - {fileID: 8300000, guid: 9c55d6a979900074d8a0c795c51520f7, type: 3}
+  towerUpgradeSounds:
+  - {fileID: 8300000, guid: a1fa6d963aa492848ac2caec4d76c83c, type: 3}
+  stoneBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
+  woodBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
+  metalBreakParticle: {fileID: 697339318843105155, guid: 7d45b54ebdd45334b86b77ab693f5173, type: 3}
 --- !u!65 &7709715516808014046
 BoxCollider:
   m_ObjectHideFlags: 0

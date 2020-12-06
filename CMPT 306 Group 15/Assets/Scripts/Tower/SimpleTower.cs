@@ -22,7 +22,7 @@ public class SimpleTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"Level " + this.level + " Tower\n" +
+		string info =	"Level " + this.level + " Simple Tower\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +

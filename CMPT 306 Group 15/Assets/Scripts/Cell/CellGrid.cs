@@ -14,6 +14,10 @@ public class CellGrid : MonoBehaviour {
 	public CellTile wallTile;	// prefab of wall tile
 	public CellTile simpleTowerTile;  // prefab of tower tile
 	public CellTile shotgunTowerTile;  // prefab of shotgun tile
+	public CellTile radialTowerTile;
+	public CellTile heavyTowerTile;
+	public CellTile burstTowerTile;
+	public CellTile sniperTowerTile;
 
 	// Resource tiles
 	public CellTile treeTile; // prefab of tree tile
@@ -23,10 +27,16 @@ public class CellGrid : MonoBehaviour {
 	public CellTile stoneTile; // prefab of stone tile
 	public CellTile depletedStoneTile; // prefab of depleted stone tile
 
-	// Resource drops
-	public GameObject treeDrop; // prefab of the tree drop
-	public GameObject metalDrop; // prefab of the metal drop
-	public GameObject stoneDrop; // prefab of the stone drop
+	// Resource harvest sounds
+	public AudioClip[] harvestRockSounds;
+	public AudioClip[] harvestWoodSounds;
+	public AudioClip[] objectPlaceSounds;
+	public AudioClip[] towerUpgradeSounds;
+
+	// Particle effects
+	public ParticleSystem stoneBreakParticle;
+	public ParticleSystem woodBreakParticle;
+	public ParticleSystem metalBreakParticle;
 
 	private CellTile currentTile;   // the tile the mouse is currently over
 	private CellTile lastTile; // the last tile the mouse cursor was over
@@ -39,6 +49,7 @@ public class CellGrid : MonoBehaviour {
 	private GameObject canvas;
 	private ToolTipController tooltip;
 	private Inventory inventory;
+	private SoundManager sound;
 
 	void Start() {
 		grid = new CellTile[size, size];
@@ -86,6 +97,7 @@ public class CellGrid : MonoBehaviour {
 
 		tooltip = ToolTipController.instance;
 		inventory = Inventory.instance;
+		sound = SoundManager.Instance;
 	}
 
 	private void CreateTiles() {
@@ -156,13 +168,14 @@ public class CellGrid : MonoBehaviour {
 		{
 			PlaceTile(GetPosAtCursor(), tile);
 			inventory.DecreaseResource(resource, resourceCost);
-			towerCreate.isTowerDragged = false;
+			//towerCreate.isTowerDragged = false;
 			towerCreate.resourceCost += resourceIncrease;
+			sound.RandomSoundEffect(objectPlaceSounds, tile.transform.position);
 			return;
 		}
 		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
 		{
-			towerCreate.isTowerDragged = false;
+			//towerCreate.isTowerDragged = false;
 		}
 	}
 
@@ -178,7 +191,7 @@ public class CellGrid : MonoBehaviour {
 
 			AddTower("WallTile", wallTile, "Stone", 0);
 			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
-			AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
+			AddTower("Shotgun Tower", radialTowerTile, "Iron", 1);
 		}
 
 		// handling checking which type of tile the cursor is over
@@ -213,41 +226,56 @@ public class CellGrid : MonoBehaviour {
 
 			if (currentTile is ResourceTile) {
 				int[] pos = GetPosAtCursor();
-				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null)
-                {
+				if (grid[pos[0], pos[1]].GetComponent<TreeTile>() != null) {
+					sound.RandomSoundEffect(harvestWoodSounds, currentTile.transform.position);
+					Destroy(Instantiate(woodBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
-					Instantiate(treeDrop, canvas.transform);
 				}
-				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null)
-				{
+				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null) {
+					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
+					Destroy(Instantiate(metalBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
-					Instantiate(metalDrop, canvas.transform);
 				}
-				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null)
-				{
+				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null) {
+					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
+					Destroy(Instantiate(stoneBreakParticle, new Vector3(currentTile.transform.position.x + 0.5f, currentTile.transform.position.y + 0.5f, -0.3f), Quaternion.identity), 1);
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
-					Instantiate(stoneDrop, canvas.transform);
 				}
 				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
 			}
-
-			if (currentTile is Tower) {
+			else if (currentTile is Tower) {
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
 					if (!towerTile.IsMaxLevel()) {
 						if (inventory.GetResourceCount("Iron") >= 1) {
 							inventory.DecreaseResource("Iron", 1);
 							towerTile.IncreaseLevel();
+							sound.RandomSoundEffect(towerUpgradeSounds, currentTile.transform.position);
 						}
 					}
 				}
 			}
-	}
+			else
+            {
+				if (GetTileAtCursor() == null)
+				{
+					return;
+				}
+
+				AddTower("WallTile", wallTile, "Stone", 0);
+				AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
+				AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
+				AddTower("Radial Tower", radialTowerTile, "Iron", 1);
+				AddTower("Burst Tower", burstTowerTile, "Iron", 1);
+				AddTower("Heavy Tower", heavyTowerTile, "Iron", 1);
+				AddTower("Sniper Tower", sniperTowerTile, "Iron", 1);
+			}
+		}
 	}
 }

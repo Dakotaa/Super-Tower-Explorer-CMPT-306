@@ -44,10 +44,11 @@ public class ShotgunTower : Tower {
 		Vector3 bulletPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0.0f);
 		for (int i = 0; i < numShots; i++) {
 			Bullet shotBullet = Instantiate(bullet, bulletPos, Quaternion.identity);
-			Vector3 direction = (targetPos - transform.position).normalized;
+			Vector3 correctedPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z);
+			Vector3 direction = (targetPos - correctedPos).normalized;
 			direction.x += (Random.Range(-(spread / 2), (spread / 2)))/100;
 			direction.y += (Random.Range(-(spread / 2), (spread / 2)))/100;
-			shotBullet.Setup(direction, bulletVelocity);
+			shotBullet.Setup(direction, bulletVelocity, this.damage);
 		}
 		return true;
 	}

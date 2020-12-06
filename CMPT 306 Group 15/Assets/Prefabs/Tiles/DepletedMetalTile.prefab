@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DepletedMetalTile
       objectReference: {fileID: 0}
+    - target: {fileID: 3422869741681712540, guid: d474b41f25d252f4989cf280db1799d7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7579735522414049704, guid: d474b41f25d252f4989cf280db1799d7, type: 3}
       propertyPath: m_Color.r
       value: 0.22745098

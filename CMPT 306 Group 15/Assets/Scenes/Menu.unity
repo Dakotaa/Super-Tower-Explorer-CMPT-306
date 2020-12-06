@@ -530,20 +530,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Super Tower Explorer is a procedurally-generated tower defense game, this
-    means that every game map is unique.
-
-
-    Collect resources to build towers,
-    walls, and other defenses to prevent each wave from reaching your base.
-
-
-    Fill
-    up the EXP bar by killing enemies and performing well in a wave to unlock a new
-    cell and expand the map, but watch out - this will expose new enemy spawn points!
-
-
-'
+  m_text: "Super Tower Explorer is a procedurally-generated tower defense game, this
+    means that every game map is unique.\n\nCollect resources to build towers, walls,
+    and other defenses to prevent each wave from reaching your base.\n\nFill up the
+    EXP bar by killing enemies and performing well in a wave to unlock a new cell
+    and expand the map, but watch out - this will expose new enemy spawn points!\n\nControls:
+    \nPan camera: [WASD]\nChange speed: [1-3]\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1624,6 +1616,7 @@ GameObject:
   - component: {fileID: 1208121016}
   - component: {fileID: 1208121015}
   - component: {fileID: 1208121014}
+  - component: {fileID: 1208121018}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1712,6 +1705,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1208121018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208121013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6f2ff5e02558a45bddb0bf0ad33e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LowPitchRange: 0.95
+  HighPitchRange: 1.05
 --- !u!1 &1476285365
 GameObject:
   m_ObjectHideFlags: 0

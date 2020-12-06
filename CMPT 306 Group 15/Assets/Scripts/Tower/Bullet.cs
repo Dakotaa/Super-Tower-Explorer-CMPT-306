@@ -7,10 +7,12 @@ public class Bullet : MonoBehaviour {
 	public GameObject impactParticle;
 	public float lifetime = 2.0f;
 	private Vector3 impactNormal;
+	private float damage;
 	public List<string> obstructions; // tags that will block and destroy the bullet
-	public void Setup(Vector3 direction, float velocity) {
+	public void Setup(Vector3 direction, float velocity, float damage) {
 		direction.z = 0.0f;
 		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * velocity, direction.y * velocity); // add force to the bullet
+		this.damage = damage;
 		Destroy(gameObject, this.lifetime);	// destroy bullets if they don't hit anything in 2 seconds
 	}
 
@@ -24,7 +26,7 @@ public class Bullet : MonoBehaviour {
 		if (collision.collider.tag.Equals("Enemy")) {   // damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
 
-			victim.Hurt(0.5f); //change this when ready
+			victim.Hurt(this.damage); //change this when ready
 
 			if (victim.GetHealth() <= 0)
             {
