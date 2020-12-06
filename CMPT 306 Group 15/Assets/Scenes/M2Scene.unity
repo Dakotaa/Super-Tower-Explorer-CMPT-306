@@ -4319,6 +4319,7 @@ GameObject:
   - component: {fileID: 1859735129}
   - component: {fileID: 1859735132}
   - component: {fileID: 1859735133}
+  - component: {fileID: 1859735134}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4469,6 +4470,21 @@ MonoBehaviour:
   spawnPoints: []
   countdown: 5
   enemySpawnInterval: 0.75
+--- !u!114 &1859735134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859735125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba014b385637fb4aaca333f41367eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed1: {fileID: 8300000, guid: 53e4a60bf992746489db7ff8327d9e02, type: 3}
+  speed2: {fileID: 8300000, guid: 91a45137a8316014e9b90c121bb288d1, type: 3}
+  speed3: {fileID: 8300000, guid: 718a2e26eb53840478261730cbc74a46, type: 3}
 --- !u!1 &1892154826
 GameObject:
   m_ObjectHideFlags: 0
