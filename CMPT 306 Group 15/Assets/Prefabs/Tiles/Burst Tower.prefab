@@ -154,18 +154,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchInterval: 1
-  searchRange: 5
+  searchRange: 12
   switchRange: 2.5
   cooldown: 1
-  damage: 0.75
-  bulletVelocity: 10
+  damage: 0.25
+  bulletVelocity: 25
   trackingSpeed: 5
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
   levelup_searchRange: 1
   levelup_cooldown: -0.1
-  levelup_damage: 0.1
+  levelup_damage: 0.025
   levelup_bulletVelocity: 1
   burstInterval: 0.05
   bodies:

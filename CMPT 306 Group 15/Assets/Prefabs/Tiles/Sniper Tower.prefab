@@ -153,20 +153,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669e868dc0efed44db43322176ef9c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchInterval: 1
-  searchRange: 10
+  searchInterval: 0.5
+  searchRange: 25
   switchRange: 2.5
   cooldown: 2.5
   damage: 3
-  bulletVelocity: 10
-  trackingSpeed: 10
+  bulletVelocity: 50
+  trackingSpeed: 40
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
   levelup_searchRange: 1
-  levelup_cooldown: -0.1
-  levelup_damage: 0.1
-  levelup_bulletVelocity: 1
+  levelup_cooldown: -0.2
+  levelup_damage: 1
+  levelup_bulletVelocity: 1.25
   bodies:
   - {fileID: 21300000, guid: 7838cf36a75c21d4db0ae74ce4da3c98, type: 3}
   - {fileID: 21300000, guid: 48f8534ebf6129f41927acb4dfa8d1ed, type: 3}
@@ -354,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 7984609728222497542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.01}
-  m_LocalScale: {x: 0.6, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 7798551183571571734}
   m_RootOrder: 0

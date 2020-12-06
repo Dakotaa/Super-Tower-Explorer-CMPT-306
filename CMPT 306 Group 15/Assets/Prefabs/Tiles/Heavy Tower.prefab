@@ -154,11 +154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchInterval: 1
-  searchRange: 5
+  searchRange: 10
   switchRange: 2.5
   cooldown: 2
   damage: 5
-  bulletVelocity: 5
+  bulletVelocity: 7
   trackingSpeed: 5
   bullet: {fileID: 4019080549522565384, guid: 19aa8442b7eace340b49cf98f4533a76, type: 3}
   tooltip: {fileID: 0}
