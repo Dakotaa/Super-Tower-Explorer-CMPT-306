@@ -27,6 +27,11 @@ public class CellGrid : MonoBehaviour {
 	public CellTile stoneTile; // prefab of stone tile
 	public CellTile depletedStoneTile; // prefab of depleted stone tile
 
+	// Resource drops
+	public GameObject treeDrop; // prefab of the tree drop
+	public GameObject metalDrop; // prefab of the metal drop
+	public GameObject stoneDrop; // prefab of the stone drop
+
 	// Resource harvest sounds
 	public AudioClip[] harvestRockSounds;
 	public AudioClip[] harvestWoodSounds;
@@ -182,7 +187,7 @@ public class CellGrid : MonoBehaviour {
 	private void Update() {
 
 		currentTile = GetTileAtCursor();
-		if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
+		/*if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
 		{
 			if (GetTileAtCursor() == null)
             {
@@ -192,7 +197,7 @@ public class CellGrid : MonoBehaviour {
 			AddTower("WallTile", wallTile, "Stone", 0);
 			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
 			AddTower("Shotgun Tower", radialTowerTile, "Iron", 1);
-		}
+		}*/
 
 		// handling checking which type of tile the cursor is over
 		if (currentTile != null) {
@@ -232,6 +237,7 @@ public class CellGrid : MonoBehaviour {
 					inventory.IncreaseResource("Wood", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedTreeTile);
+					Instantiate(treeDrop, canvas.transform);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<MetalTile>() != null) {
 					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
@@ -239,6 +245,7 @@ public class CellGrid : MonoBehaviour {
 					inventory.IncreaseResource("Iron", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedMetalTile);
+					Instantiate(metalDrop, canvas.transform);
 				}
 				else if (grid[pos[0], pos[1]].GetComponent<StoneTile>() != null) {
 					sound.RandomSoundEffect(harvestRockSounds, currentTile.transform.position);
@@ -246,6 +253,7 @@ public class CellGrid : MonoBehaviour {
 					inventory.IncreaseResource("Stone", 1);
 					Destroy(grid[pos[0], pos[1]].gameObject);
 					CreateTile(pos[0], pos[1], depletedStoneTile);
+					Instantiate(stoneDrop, canvas.transform);
 				}
 				grid[pos[0], pos[1]].GetComponent<Timer>().countdown = UnityEngine.Random.Range(10, 25);
 			}
