@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.99215686, g: 0.9019608, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.5764706, b: 0.003921569, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -414,7 +414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 2
+  name: Shotgun Tower
+  woodCost: 1
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &171460344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.2735849, g: 0.011166731, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -697,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.39607844, b: 0.5764706, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -772,7 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -997,7 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1034,7 +1037,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: 
+  woodCost: 0
+  stoneCost: 1
+  metalCost: 0
 --- !u!1 &383558567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1599,7 +1605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5529412, g: 0, b: 0.5764706, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2058,10 +2064,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 1669206991}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2077,6 +2083,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1669206991}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2329,10 +2351,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 1159837899}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2348,6 +2370,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1159837899}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2711,6 +2749,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 367102387}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3105,7 +3159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5764706, g: 0.023529412, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3181,7 +3235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: Burst Tower
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 2
 --- !u!114 &1159837900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,7 +3253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5754717, g: 0.5231561, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3349,7 +3406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3386,7 +3443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: Simple Tower
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 1
 --- !u!1 &1246712222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,10 +3585,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 1557195662}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3544,6 +3604,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1557195662}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3738,7 +3814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.50980395, g: 0.50980395, b: 0.50980395, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3830,7 +3906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3889,7 +3965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 6, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1339349434
@@ -3920,7 +3996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4000,7 +4076,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: Radial Tower
+  woodCost: 0
+  stoneCost: 1
+  metalCost: 1
 --- !u!114 &1372029735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,7 +4094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.39607844, b: 0.5764706, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4318,7 +4397,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: Heavy Tower
+  woodCost: 0
+  stoneCost: 1
+  metalCost: 2
 --- !u!114 &1557195663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,7 +4415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.38679248, b: 0.0026312708, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4519,7 +4601,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  name: Sniper Tower
+  woodCost: 2
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &1669206992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4534,7 +4619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.3800539, g: 0, b: 0.3962264, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5433,10 +5518,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 171460343}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5452,6 +5537,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 171460343}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5757,10 +5858,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 1184543990}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5773,9 +5874,25 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: Hide
+        - m_Target: {fileID: 1184543990}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: HideTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1184543990}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5923,10 +6040,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1844238765}
-          m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
-          m_MethodName: SetAndShow
-          m_Mode: 5
+        - m_Target: {fileID: 1372029734}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5942,6 +6059,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1844238765}
           m_TargetAssemblyTypeName: ToolTipController, Assembly-CSharp
           m_MethodName: Hide
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1372029734}
+          m_TargetAssemblyTypeName: MouseTowerCreate, Assembly-CSharp
+          m_MethodName: towerDraggedChange
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

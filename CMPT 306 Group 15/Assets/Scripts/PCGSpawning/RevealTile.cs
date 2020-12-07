@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RevealTile : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class RevealTile : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         if (GameControl.instance.cellUnlockAvailable && GameControl.instance.GetGameState() == 0)
         {
             if (rev)
