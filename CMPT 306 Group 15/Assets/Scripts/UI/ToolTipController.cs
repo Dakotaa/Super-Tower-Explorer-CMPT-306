@@ -42,7 +42,6 @@ public class ToolTipController : MonoBehaviour{
 	/* sets the current tooltip text */
 	public void Set(string text) {
 		this.text = text.Replace("\\n", "\n");
-		print(this.text);
 		this.tooltipText.text = this.text;
 		// resize
 		TextGenerationSettings generationSettings = tooltipText.GetGenerationSettings(tooltipText.rectTransform.rect.size);
