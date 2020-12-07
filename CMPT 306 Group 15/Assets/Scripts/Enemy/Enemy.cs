@@ -77,13 +77,14 @@ public class Enemy : MainController {
 
 				//Expand the bounds along the Z axis
 				bounds.Expand(Vector3.forward * 2000);
-				bounds.Expand(1f);
+				bounds.Expand(0.6f);
 				
 				var guo = new GraphUpdateObject(bounds);
 				//guo.addPenalty = 15000;
 				//Debug.Log("update");
 				//Change some settings on the object
 				AstarPath.active.UpdateGraphs(guo);
+				
 			}
 		}
 		
