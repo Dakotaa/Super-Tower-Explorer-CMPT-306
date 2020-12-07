@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 // Class used to move the tower picture in build menu around on screen by clicking
-public class MouseTowerCreate : MonoBehaviour, IPointerClickHandler
+public class MouseTowerCreate : MonoBehaviour
 {
     public bool isTowerDragged = false;
 	public string name;
@@ -14,14 +14,16 @@ public class MouseTowerCreate : MonoBehaviour, IPointerClickHandler
     private Vector3 resetPosition = new Vector3(27.5f, -27.5f);
 	private ToolTipController tooltip;
 	private Inventory inventory;
+    private Image image;
 
-	public void Start() {
+    public void Start() {
 		this.tooltip = ToolTipController.instance;
 		this.inventory = Inventory.instance;
-	}
+        image = gameObject.GetComponentInParent<Image>();
+    }
 
-	// Moves the tower picture when mouse button clicked
-	public void OnPointerClick(PointerEventData eventData)
+    // Moves the tower picture when mouse button clicked
+    public void towerDraggedChange()
     {
         if (!isTowerDragged)
         {
@@ -32,8 +34,8 @@ public class MouseTowerCreate : MonoBehaviour, IPointerClickHandler
             isTowerDragged = false;
         }
     }
-
-	public void ShowTooltip() {
+    
+    public void ShowTooltip() {
 		string resourceCosts = "";
 		if (this.metalCost > 0) {
 			if (this.inventory.GetResourceCount("Iron") >= this.metalCost) {

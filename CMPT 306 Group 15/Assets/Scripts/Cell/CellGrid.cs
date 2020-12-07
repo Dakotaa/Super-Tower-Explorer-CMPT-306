@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CellGrid : MonoBehaviour {
@@ -168,6 +169,11 @@ public class CellGrid : MonoBehaviour {
 		// For when dragged tile is tower
 		GameObject tower = GameObject.Find(towerName);
 		MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			towerCreate.isTowerDragged = false;
+			return;
+		}
 		int woodCount = inventory.GetResourceCount("Wood");
 		int stoneCount = inventory.GetResourceCount("Stone");
 		int metalCount = inventory.GetResourceCount("Iron");
@@ -188,6 +194,10 @@ public class CellGrid : MonoBehaviour {
 			sound.RandomSoundEffect(objectPlaceSounds, tile.transform.position);
 			return;
 		}
+		else
+        {
+			towerCreate.isTowerDragged = false;
+        }
 	}
 
 	private void Update() {
@@ -221,6 +231,10 @@ public class CellGrid : MonoBehaviour {
 
 	private void OnMouseDown() {
 		if (overCell) {
+			if (EventSystem.current.IsPointerOverGameObject())
+			{
+				return;
+			}
 
 			if (currentTile is ResourceTile) {
 				int[] pos = GetPosAtCursor();
