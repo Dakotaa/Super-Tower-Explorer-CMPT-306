@@ -307,7 +307,7 @@ MonoBehaviour:
   resetPenaltyOnPhysics: 1
   updateErosion: 0
   modifyTag: 1
-  setTag: 2
+  setTag: 1
   legacyMode: 0
   serializedVersion: 0
   legacyUseWorldSpace: 0

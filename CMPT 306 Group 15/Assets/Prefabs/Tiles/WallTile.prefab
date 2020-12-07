@@ -222,7 +222,7 @@ MonoBehaviour:
   setWalkability: 0
   applyOnStart: 1
   applyOnScan: 1
-  updatePhysics: 0
+  updatePhysics: 1
   resetPenaltyOnPhysics: 1
   updateErosion: 0
   modifyTag: 1

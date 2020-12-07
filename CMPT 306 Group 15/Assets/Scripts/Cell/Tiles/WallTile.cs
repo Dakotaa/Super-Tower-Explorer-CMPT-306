@@ -12,7 +12,7 @@ public class WallTile : CellTile {
         bounds.Expand(Vector3.forward * 1000);
         
         var guo = new GraphUpdateObject(bounds);
-        guo.addPenalty = 10000;
+        guo.addPenalty = 9000;
         
         //Debug.Log("update");
         //Change some settings on the object

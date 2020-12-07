@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6444854426220212377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699997271620643817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 5199180679944414792
-  points: []
-  convex: 0
-  minBoundsHeight: 1
-  penaltyDelta: 10000
-  modifyWalkability: 0
-  setWalkability: 0
-  applyOnStart: 1
-  applyOnScan: 1
-  updatePhysics: 0
-  resetPenaltyOnPhysics: 1
-  updateErosion: 0
-  modifyTag: 1
-  setTag: 2
-  legacyMode: 0
-  serializedVersion: 0
-  legacyUseWorldSpace: 0
 --- !u!114 &7256865544297760465
 MonoBehaviour:
   m_ObjectHideFlags: 0
