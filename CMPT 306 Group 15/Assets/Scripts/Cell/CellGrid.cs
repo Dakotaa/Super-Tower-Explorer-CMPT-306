@@ -254,8 +254,10 @@ public class CellGrid : MonoBehaviour {
 				Tower towerTile = (Tower) currentTile;
 				if (towerTile.IsUpgradable()) {
 					if (!towerTile.IsMaxLevel()) {
-						if (inventory.GetResourceCount("Iron") >= 1) {
-							inventory.DecreaseResource("Iron", 1);
+						if (inventory.GetResourceCount("Iron") >= towerTile.MetalUpgradeCost() && inventory.GetResourceCount("Stone") >= towerTile.StoneUpgradeCost() && inventory.GetResourceCount("Wood") >= towerTile.WoodUpgradeCost()) {
+							inventory.DecreaseResource("Iron", towerTile.MetalUpgradeCost());
+							inventory.DecreaseResource("Stone", towerTile.StoneUpgradeCost());
+							inventory.DecreaseResource("Wood", towerTile.WoodUpgradeCost());
 							towerTile.IncreaseLevel();
 							sound.RandomSoundEffect(towerUpgradeSounds, currentTile.transform.position);
 						}

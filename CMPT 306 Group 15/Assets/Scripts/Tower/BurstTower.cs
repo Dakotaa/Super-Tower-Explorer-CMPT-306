@@ -10,6 +10,9 @@ public class BurstTower : Tower {
 	public float levelup_damage = 0.1f;
 	public float levelup_bulletVelocity = 1.0f;
 	public float burstInterval = 0.05f;
+	public int levelup_costIncrease_metal = 1;
+	public int levelup_costIncrease_stone = 1;
+	public int levelup_costIncrease_wood = 1;
 	public List<Sprite> bodies = new List<Sprite>();
 	public int numShots = 3;
 	private SpriteRenderer body;
@@ -24,7 +27,7 @@ public class BurstTower : Tower {
 	}
 
 	public override string GetInfo() {
-		string info =	"Level " + this.level + " Burst Tower\n" +
+		string info =	"<b>Level " + this.level + " Burst Tower</b>\n" +
 						"Targeting Speed: " + this.searchInterval.ToString("n2") + "s\n" +
 						"Targeting Range: " + this.searchRange.ToString("n2") + "\n" +
 						"Cooldown: " + this.cooldown.ToString("n2") + "s\n" +
@@ -32,8 +35,7 @@ public class BurstTower : Tower {
 						"Bullet Velocity: " + this.bulletVelocity.ToString("n2");
 
 		if (this.level < this.maxLevel) {
-			info += "\n" +
-					"Click to upgrade (1 metal)";
+			info += "\n\nUpgrade Cost: " + this.UpgradeCosts() + "\n\nClick to upgrade.";
 		}
 
 		return info;
@@ -67,6 +69,9 @@ public class BurstTower : Tower {
 		this.bulletVelocity += this.levelup_bulletVelocity;
 		body.sprite = bodies[this.level - 1];
 		tooltip.Set(this.GetInfo());
+		this.upgradecost_metal += this.levelup_costIncrease_metal;
+		this.upgradecost_stone += this.levelup_costIncrease_stone;
+		this.upgradecost_wood += this.levelup_costIncrease_wood;
 	}
 
 
