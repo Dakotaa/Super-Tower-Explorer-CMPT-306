@@ -79,5 +79,9 @@ public class MouseTowerCreate : MonoBehaviour
         {
             transform.localPosition = resetPosition;
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            isTowerDragged = false;
+        }
     }
 }
