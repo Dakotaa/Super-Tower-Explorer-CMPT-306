@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: 3477373119277170553}
-  - component: {fileID: -8257610337065389567}
   m_Layer: 0
   m_Name: EmptyTile
   m_TagString: Untagged
@@ -45,36 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bd82f8e04b3884aa9923326f262cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8257610337065389567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990654395874869398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 0
-  points: []
-  convex: 1
-  minBoundsHeight: 1
-  penaltyDelta: 0
-  modifyWalkability: 0
-  setWalkability: 0
-  applyOnStart: 1
-  applyOnScan: 1
-  updatePhysics: 0
-  resetPenaltyOnPhysics: 1
-  updateErosion: 1
-  modifyTag: 1
-  setTag: 0
-  legacyMode: 0
-  serializedVersion: 0
-  legacyUseWorldSpace: 0
 --- !u!1 &3606463107304905955
 GameObject:
   m_ObjectHideFlags: 0
