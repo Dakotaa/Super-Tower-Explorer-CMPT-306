@@ -273,11 +273,11 @@ public class CellGrid : MonoBehaviour {
 
 				AddTower("WallTile", wallTile, 0, 0, 0);
 				AddTower("Simple Tower", simpleTowerTile, 0, 0, 1);
-				AddTower("Shotgun Tower", shotgunTowerTile, 0, 1, 1);
-				AddTower("Radial Tower", radialTowerTile, 0, 0, 1);
-				AddTower("Burst Tower", burstTowerTile, 0, 0, 1);
-				AddTower("Heavy Tower", heavyTowerTile, 0, 0, 1);
-				AddTower("Sniper Tower", sniperTowerTile, 1, 0, 1);
+				AddTower("Shotgun Tower", shotgunTowerTile, 1, 0, 1);
+				AddTower("Radial Tower", radialTowerTile, 0, 1, 1);
+				AddTower("Burst Tower", burstTowerTile, 0, 0, 2);
+				AddTower("Heavy Tower", heavyTowerTile, 0, 1, 2);
+				AddTower("Sniper Tower", sniperTowerTile, 2, 0, 1);
 			}
 		}
 	}

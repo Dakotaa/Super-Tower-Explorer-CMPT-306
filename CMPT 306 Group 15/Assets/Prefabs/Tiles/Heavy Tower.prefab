@@ -156,9 +156,9 @@ MonoBehaviour:
   searchInterval: 1
   searchRange: 10
   switchRange: 2.5
-  cooldown: 2
-  damage: 5
-  bulletVelocity: 7
+  cooldown: 1.75
+  damage: 8
+  bulletVelocity: 10
   trackingSpeed: 5
   upgradecost_metal: 2
   upgradecost_stone: 1
@@ -168,7 +168,7 @@ MonoBehaviour:
   levelup_searchInterval: -0.1
   levelup_searchRange: 1
   levelup_cooldown: -0.1
-  levelup_damage: 0.1
+  levelup_damage: 0.5
   levelup_bulletVelocity: 1
   levelup_costIncrease_metal: 1
   levelup_costIncrease_stone: 1

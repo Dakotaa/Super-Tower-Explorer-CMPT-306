@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchInterval: 0.5
-  searchRange: 25
-  switchRange: 2.5
-  cooldown: 2.5
+  searchRange: 30
+  switchRange: 20
+  cooldown: 2
   damage: 3
   bulletVelocity: 50
   trackingSpeed: 40
@@ -166,10 +166,10 @@ MonoBehaviour:
   bullet: {fileID: 4019080549522565384, guid: b3183161b57cc3442a2076827068a837, type: 3}
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
-  levelup_searchRange: 1
-  levelup_cooldown: -0.2
+  levelup_searchRange: 2
+  levelup_cooldown: -0.15
   levelup_damage: 1
-  levelup_bulletVelocity: 1.25
+  levelup_bulletVelocity: 1
   levelup_costIncrease_metal: 1
   levelup_costIncrease_stone: 0
   levelup_costIncrease_wood: 1

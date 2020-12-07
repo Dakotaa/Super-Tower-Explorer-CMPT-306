@@ -131,7 +131,7 @@ MonoBehaviour:
   searchRange: 3
   switchRange: 2
   cooldown: 1
-  damage: 0.25
+  damage: 0.4
   bulletVelocity: 20
   trackingSpeed: 5
   upgradecost_metal: 0

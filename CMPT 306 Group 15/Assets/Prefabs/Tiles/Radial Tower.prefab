@@ -156,7 +156,7 @@ MonoBehaviour:
   searchInterval: 1
   searchRange: 3
   switchRange: 2.5
-  cooldown: 2
+  cooldown: 1.5
   damage: 0.2
   bulletVelocity: 15
   trackingSpeed: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   levelup_searchInterval: -0.1
   levelup_searchRange: 0.1
-  levelup_cooldown: -0.1
+  levelup_cooldown: -0.2
   levelup_damage: 0.05
   levelup_bulletVelocity: 0.5
   levelup_costIncrease_metal: 1
