@@ -110,6 +110,9 @@ MonoBehaviour:
   depletedMetalTile: {fileID: 8021489893860952828, guid: 5fad907881ecfa141852689039666296, type: 3}
   stoneTile: {fileID: 7256865544297760465, guid: c23762d1db2895947b65aec238d02e8c, type: 3}
   depletedStoneTile: {fileID: 6577927611872839111, guid: 90262b869fa07b44a992ce762dfa21c9, type: 3}
+  treeDrop: {fileID: 1132026680157506822, guid: 8a59298de8b3afd4db80b274ca23f86d, type: 3}
+  metalDrop: {fileID: 8818377574873860249, guid: 03617396ce66354409838b215938393c, type: 3}
+  stoneDrop: {fileID: 317948506411014499, guid: fd85bdc7a96dc1a4493e458561b3a062, type: 3}
   harvestRockSounds:
   - {fileID: 8300000, guid: ce1323f17129c744d8e8779babed39d0, type: 3}
   - {fileID: 8300000, guid: 8500f330ca087174cb7ca376308891da, type: 3}
