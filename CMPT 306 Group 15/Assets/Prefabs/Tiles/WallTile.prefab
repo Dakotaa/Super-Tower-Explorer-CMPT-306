@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 2508148236399200503}
   - component: {fileID: 8269899188136154339}
   - component: {fileID: 2601153253187102488}
+  - component: {fileID: 2583955657822578005}
   m_Layer: 8
   m_Name: WallTile
   m_TagString: Wall Tile
@@ -197,8 +198,38 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &2583955657822578005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752777635085768810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 4228016015078836218
+  points: []
+  convex: 0
+  minBoundsHeight: 1
+  penaltyDelta: 10000
+  modifyWalkability: 0
+  setWalkability: 0
+  applyOnStart: 1
+  applyOnScan: 1
+  updatePhysics: 0
+  resetPenaltyOnPhysics: 1
+  updateErosion: 0
+  modifyTag: 1
+  setTag: 2
+  legacyMode: 0
+  serializedVersion: 1
+  legacyUseWorldSpace: 0
 --- !u!1 &3967044823249566540
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,14 +54,16 @@ public class Enemy : MainController {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
-		//Debug.Log("GameObject1 collided with " + col.name);
+		
 
 		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower"))
 		{
-			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
+			Debug.Log("GameObject1 collided with " + col.name);
+			Debug.Log(gameObject.GetComponent<AIPath>().remainingDistance);
+			if (gameObject.GetComponent<AIPath>().remainingDistance > 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
 				
-				//Debug.Log("I am Stopped");
+				Debug.Log("I am Stopped");
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
 				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
@@ -75,10 +77,10 @@ public class Enemy : MainController {
 
 				//Expand the bounds along the Z axis
 				bounds.Expand(Vector3.forward * 2000);
-				bounds.Expand(2);
+				bounds.Expand(1f);
 				
 				var guo = new GraphUpdateObject(bounds);
-
+				//guo.addPenalty = 15000;
 				//Debug.Log("update");
 				//Change some settings on the object
 				AstarPath.active.UpdateGraphs(guo);

@@ -41,6 +41,8 @@ public class Tower : CellTile {
 		// Expand the bounds along the Z axis
 		bounds.Expand(Vector3.forward * 1000);
 		var guo = new GraphUpdateObject(bounds);
+		guo.bounds.Expand(-0.6f);
+		guo.addPenalty = 10000;
 		//Debug.Log("update");
 		// change some settings on the object
 		AstarPath.active.UpdateGraphs(guo);

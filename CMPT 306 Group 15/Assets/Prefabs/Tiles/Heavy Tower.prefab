@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 2041188334951891412}
   - component: {fileID: 5237163708006155529}
   - component: {fileID: 2246684722986960281}
+  - component: {fileID: -5997950443327624530}
   m_Layer: 8
   m_Name: Heavy Tower
   m_TagString: Tower
@@ -173,6 +174,36 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 182f368f88925b246accf43232f61f50, type: 3}
   - {fileID: 21300000, guid: 2804a935b00723f448459db14701b98e, type: 3}
   - {fileID: 21300000, guid: 758f9a502a3615c4fb184226a8cb65e8, type: 3}
+--- !u!114 &-5997950443327624530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990654395874869398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 5199180679944414792
+  points: []
+  convex: 0
+  minBoundsHeight: 1
+  penaltyDelta: 10000
+  modifyWalkability: 0
+  setWalkability: 0
+  applyOnStart: 1
+  applyOnScan: 1
+  updatePhysics: 0
+  resetPenaltyOnPhysics: 1
+  updateErosion: 0
+  modifyTag: 1
+  setTag: 2
+  legacyMode: 0
+  serializedVersion: 0
+  legacyUseWorldSpace: 0
 --- !u!1 &3606463107304905955
 GameObject:
   m_ObjectHideFlags: 0
