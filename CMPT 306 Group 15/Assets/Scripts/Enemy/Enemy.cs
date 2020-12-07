@@ -62,7 +62,7 @@ public class Enemy : MainController {
 			Debug.Log(gameObject.GetComponent<AIPath>().remainingDistance);
 			if (gameObject.GetComponent<AIPath>().remainingDistance > 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
-				
+				var bounds = col.bounds;
 				Debug.Log("I am Stopped");
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
@@ -73,11 +73,11 @@ public class Enemy : MainController {
 				emptyTile.CreateTile(x,y ,emptyTile.emptyTile);
 				
 
-				var bounds = GetComponent<CircleCollider2D>().bounds;
+				//var bounds = GetComponent<CircleCollider2D>().bounds;
 
 				//Expand the bounds along the Z axis
 				bounds.Expand(Vector3.forward * 2000);
-				bounds.Expand(0.6f);
+				//bounds.Expand(0.6f);
 				
 				var guo = new GraphUpdateObject(bounds);
 				//guo.addPenalty = 15000;

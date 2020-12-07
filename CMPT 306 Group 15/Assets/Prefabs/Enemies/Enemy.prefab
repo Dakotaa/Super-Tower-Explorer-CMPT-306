@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1534384089525474764}
   - component: {fileID: 7529175160550042029}
   - component: {fileID: 1712094855081153325}
+  - component: {fileID: -3129929175696913921}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -219,6 +220,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3129929175696913921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666750287146047904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090bec917bbe4c3bbc612ef13f7c4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  useRaycasting: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 768
+  thickRaycast: 1
+  thickRaycastRadius: 0.5
+  use2DPhysics: 1
+  raycastOffset: {x: 0, y: 0, z: 0}
+  useGraphRaycasting: 1
+  quality: 1
 --- !u!1001 &4829979185816441755
 PrefabInstance:
   m_ObjectHideFlags: 0
