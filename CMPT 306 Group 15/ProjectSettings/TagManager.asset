@@ -12,6 +12,11 @@ TagManager:
   - HideTile
   - Terrain
   - CanOpen
+  - Wall
+  - Wall Tile
+  - EnemySpawn
+  - MainCanvas
+  - LoadingScene
   layers:
   - Default
   - TransparentFX

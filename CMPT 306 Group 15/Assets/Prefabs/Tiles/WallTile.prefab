@@ -92,7 +92,7 @@ BoxCollider:
   m_GameObject: {fileID: 286497470144062336}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -138,10 +138,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2508148236399200503}
   - component: {fileID: 8269899188136154339}
-  - component: {fileID: 5308730115982668844}
+  - component: {fileID: 2601153253187102488}
   m_Layer: 8
   m_Name: WallTile
-  m_TagString: Enemy
+  m_TagString: Wall Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f5ff33609e5814cb182044c9a3c2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &5308730115982668844
+--- !u!61 &2601153253187102488
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +183,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.5}
@@ -290,7 +290,7 @@ BoxCollider:
   m_GameObject: {fileID: 3967044823249566540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

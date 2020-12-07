@@ -3,26 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	public float velocity = 50.0f;
-	private Vector3 direction;	
-	public void Setup(Vector3 direction) {
-		this.direction = direction;
-		Destroy(gameObject, 3);	// destroy bullets if they don't hit anything in 3 seconds
+	private Vector3 direction;
+	public GameObject impactParticle;
+	public float lifetime = 2.0f;
+	private Vector3 impactNormal;
+	private float damage;
+	public List<string> obstructions; // tags that will block and destroy the bullet
+	public void Setup(Vector3 direction, float velocity, float damage) {
+		direction.z = 0.0f;
+		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * velocity, direction.y * velocity); // add force to the bullet
+		this.damage = damage;
+		Destroy(gameObject, this.lifetime);	// destroy bullets if they don't hit anything in 2 seconds
 	}
 
-	private void Update() {
-		transform.position += direction * velocity * Time.deltaTime;
-	}
-
-	private void OnCollisionEnter(Collision collision) {
-		if (collision.collider.tag.Equals("Tower")) { // don't destroy when hitting a tower. Will be improved.
-			return;
+	private void OnCollisionEnter2D(Collision2D collision) {
+		string tag = collision.collider.tag;
+		if (obstructions.Contains(tag)) {
+			impactParticle = Instantiate(impactParticle, new Vector3(transform.position.x, transform.position.y, -0.3f), Quaternion.LookRotation(collision.contacts[0].normal)) as GameObject;
+			Destroy(impactParticle, 1);
+			Destroy(gameObject);
 		}
-		if (collision.collider.tag.Equals("Enemy")) {	// damage/kill enemies
+		if (collision.collider.tag.Equals("Enemy")) {   // damage/kill enemies
 			Enemy victim = collision.collider.gameObject.GetComponent<Enemy>();
-			victim.Kill();
+
+			victim.Hurt(this.damage); //change this when ready
+
+			if (victim.GetHealth() <= 0)
+            {
+				victim.Kill(true);
+				Destroy(gameObject);
+            }
+            else
+            {
+				Destroy(gameObject);
+            }	
 		}
-		Destroy(gameObject);
 	}
 
 
