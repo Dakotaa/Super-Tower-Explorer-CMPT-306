@@ -263,7 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 1
+  metalCost: 1
 --- !u!114 &171460344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 1
+  metalCost: 0
 --- !u!1 &383558567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,7 +2670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &1159837900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2870,7 +2876,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 1
 --- !u!1 &1246712222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3362,7 +3370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &1372029735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3679,7 +3689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 0
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &1557195663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3879,7 +3891,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTowerDragged: 0
-  resourceCost: 1
+  woodCost: 1
+  stoneCost: 0
+  metalCost: 1
 --- !u!114 &1669206992
 MonoBehaviour:
   m_ObjectHideFlags: 0
