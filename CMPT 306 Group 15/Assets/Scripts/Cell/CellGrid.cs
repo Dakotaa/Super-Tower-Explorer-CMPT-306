@@ -162,43 +162,36 @@ public class CellGrid : MonoBehaviour {
 		return new int[] { xTile, yTile };
 	}
 
-	private void AddTower(string towerName, CellTile tile, string resource, int resourceIncrease)
+	private void AddTower(string towerName, CellTile tile,
+		int woodIncrease, int stoneIncrease, int metalIncrease)
     {
 		// For when dragged tile is tower
 		GameObject tower = GameObject.Find(towerName);
 		MouseTowerCreate towerCreate = tower.GetComponent<MouseTowerCreate>();
-		int resourceCount = inventory.GetResourceCount(resource);
-		int resourceCost = towerCreate.resourceCost;
-		if (overCell && (towerCreate.isTowerDragged) && (resourceCount >= resourceCost) && (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
+		int woodCount = inventory.GetResourceCount("Wood");
+		int stoneCount = inventory.GetResourceCount("Stone");
+		int metalCount = inventory.GetResourceCount("Iron");
+		int woodCost = towerCreate.woodCost;
+		int stoneCost = towerCreate.stoneCost;
+		int metalCost = towerCreate.metalCost;
+		if (overCell && (towerCreate.isTowerDragged) && (woodCount >= woodCost)
+			&& (stoneCount >= stoneCost) && (metalCount >= metalCost) 
+			&& (GetTileAtCursor().GetType() == typeof(EmptyTile))) // Checks if tower is being dragged from menu and over cell
 		{
 			PlaceTile(GetPosAtCursor(), tile);
-			inventory.DecreaseResource(resource, resourceCost);
-			//towerCreate.isTowerDragged = false;
-			towerCreate.resourceCost += resourceIncrease;
+			inventory.DecreaseResource("Wood", woodCost);
+			inventory.DecreaseResource("Stone", stoneCost);
+			inventory.DecreaseResource("Iron", metalCost);
+			towerCreate.woodCost += woodIncrease;
+			towerCreate.stoneCost += stoneIncrease;
+			towerCreate.metalCost += metalIncrease;
 			sound.RandomSoundEffect(objectPlaceSounds, tile.transform.position);
 			return;
-		}
-		if (GetTileAtCursor().GetType() != typeof(EmptyTile))
-		{
-			//towerCreate.isTowerDragged = false;
 		}
 	}
 
 	private void Update() {
-
 		currentTile = GetTileAtCursor();
-		/*if (Input.GetMouseButtonUp(0)) // Code to drop/place tiles
-		{
-			if (GetTileAtCursor() == null)
-            {
-				return;
-            }
-
-			AddTower("WallTile", wallTile, "Stone", 0);
-			AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
-			AddTower("Shotgun Tower", radialTowerTile, "Iron", 1);
-		}*/
-
 		// handling checking which type of tile the cursor is over
 		if (currentTile != null) {
 			// check if this is a different tile
@@ -276,13 +269,13 @@ public class CellGrid : MonoBehaviour {
 					return;
 				}
 
-				AddTower("WallTile", wallTile, "Stone", 0);
-				AddTower("Simple Tower", simpleTowerTile, "Iron", 1);
-				AddTower("Shotgun Tower", shotgunTowerTile, "Iron", 1);
-				AddTower("Radial Tower", radialTowerTile, "Iron", 1);
-				AddTower("Burst Tower", burstTowerTile, "Iron", 1);
-				AddTower("Heavy Tower", heavyTowerTile, "Iron", 1);
-				AddTower("Sniper Tower", sniperTowerTile, "Iron", 1);
+				AddTower("WallTile", wallTile, 0, 0, 0);
+				AddTower("Simple Tower", simpleTowerTile, 0, 0 , 1);
+				AddTower("Shotgun Tower", shotgunTowerTile, 0, 1, 1);
+				AddTower("Radial Tower", radialTowerTile, 0, 0, 1);
+				AddTower("Burst Tower", burstTowerTile, 0, 0, 1);
+				AddTower("Heavy Tower", heavyTowerTile, 0, 0, 1);
+				AddTower("Sniper Tower", sniperTowerTile, 1, 0, 1);
 			}
 		}
 	}
