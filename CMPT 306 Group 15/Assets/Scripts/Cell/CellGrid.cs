@@ -270,7 +270,7 @@ public class CellGrid : MonoBehaviour {
 				}
 
 				AddTower("WallTile", wallTile, 0, 0, 0);
-				AddTower("Simple Tower", simpleTowerTile, 0, 0 , 1);
+				AddTower("Simple Tower", simpleTowerTile, 0, 0, 1);
 				AddTower("Shotgun Tower", shotgunTowerTile, 0, 1, 1);
 				AddTower("Radial Tower", radialTowerTile, 0, 0, 1);
 				AddTower("Burst Tower", burstTowerTile, 0, 0, 1);
