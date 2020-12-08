@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391b46cddd60f114db808ed6a0ac1ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXPWorth: 2
+  EXPWorth: 1
   damage: -2
   health: 1.5
 --- !u!58 &7529175160550042029
