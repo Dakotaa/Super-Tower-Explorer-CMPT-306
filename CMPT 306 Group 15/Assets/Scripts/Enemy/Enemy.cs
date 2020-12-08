@@ -12,7 +12,7 @@ public class Enemy : MainController {
 	public int damage = -5;
 	public float health = 1;
 	private float maxHealth;
-	
+	bool broken;
 
 	private void Start() {
 		maxHealth = health;
@@ -51,45 +51,74 @@ public class Enemy : MainController {
 		health = health - dam;
     }
 
-	void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+    void OnTriggerStay2D(Collider2D col)
 	{
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
-		
+		//Debug.Log("GameObject1 collided with " + col.name);
 
 		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower"))
 		{
-			Debug.Log("GameObject1 collided with " + col.name);
-			Debug.Log(gameObject.GetComponent<AIPath>().remainingDistance);
+			
+			//Debug.Log(gameObject.GetComponent<AIPath>().remainingDistance);
 			if (gameObject.GetComponent<AIPath>().remainingDistance > 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
 				var bounds = col.bounds;
-				Debug.Log("I am Stopped");
+				//Debug.Log("I am Stopped");
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
 				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
-
-				Destroy(col.gameObject);
-
-				emptyTile.CreateTile(x,y ,emptyTile.emptyTile);
 				
+				StartCoroutine(BasicWall());
+				//Debug.Log(broken);
 
-				//var bounds = GetComponent<CircleCollider2D>().bounds;
+                if (broken)
+                {
+					Debug.Log("Breaking");
+					Destroy(col.gameObject);
 
-				//Expand the bounds along the Z axis
-				bounds.Expand(Vector3.forward * 2000);
-				//bounds.Expand(0.6f);
-				
-				var guo = new GraphUpdateObject(bounds);
-				//guo.addPenalty = 15000;
-				//Debug.Log("update");
-				//Change some settings on the object
-				AstarPath.active.UpdateGraphs(guo);
-				
+					emptyTile.CreateTile(x, y, emptyTile.emptyTile);
+
+
+					//var bounds = GetComponent<CircleCollider2D>().bounds;
+
+					//Expand the bounds along the Z axis
+					bounds.Expand(Vector3.forward * 2000);
+					//bounds.Expand(0.6f);
+
+					var guo = new GraphUpdateObject(bounds);
+					//guo.addPenalty = 15000;
+					//Debug.Log("update");
+					//Change some settings on the object
+					AstarPath.active.UpdateGraphs(guo);
+
+				}
+
+                else
+                {
+
+                }
+
 			}
 		}
 		
 
     }
+
+	IEnumerator BasicWall()
+	{
+		//broken = false;
+		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
+		//yield on a new YieldInstruction that waits for 5 seconds.
+		yield return new WaitForSeconds(3);
+		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+		broken = true;
+
+	}
 
 	public void ReachedDestination()
     {
