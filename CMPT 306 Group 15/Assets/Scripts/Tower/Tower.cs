@@ -12,9 +12,13 @@ public class Tower : CellTile {
 	public float damage = 1.0f; // shot damage
 	public float bulletVelocity = 5.0f;
 	public float trackingSpeed = 5.0f;
+	public int upgradecost_metal = 1;
+	public int upgradecost_stone = 1;
+	public int upgradecost_wood = 1;
 	protected bool upgradable = false;
 	protected int level = 1;
 	protected int maxLevel = 5;
+	private Inventory inventory;
 
 	// prefabs and objects
 	public Bullet bullet;
@@ -29,7 +33,6 @@ public class Tower : CellTile {
 	protected Quaternion qTo;
 
 	public ToolTipController tooltip;
-
 
 	public virtual void Start() {
 		target = null; // no initial target
@@ -47,6 +50,7 @@ public class Tower : CellTile {
 		// change some settings on the object
 		AstarPath.active.UpdateGraphs(guo);
 		tooltip = ToolTipController.instance;
+		inventory = Inventory.instance;
 	}
 
 	public virtual void Update() {
@@ -102,6 +106,18 @@ public class Tower : CellTile {
 		}
 	}
 
+	public int MetalUpgradeCost() {
+		return this.upgradecost_metal;
+	}
+
+	public int StoneUpgradeCost() {
+		return this.upgradecost_stone;
+	}
+
+	public int WoodUpgradeCost() {
+		return this.upgradecost_wood;
+	}
+
 	/* returns a string of information about the tower to be used for tooltips */
 	public override string GetInfo() {
 		string info =	"Tower\n" +
@@ -111,6 +127,35 @@ public class Tower : CellTile {
 						"Damage: " + this.damage.ToString("n2") + "\n" +
 						"Bullet Velocity: " + this.bulletVelocity.ToString("n2");
 		return info;
+	}
+
+	protected string UpgradeCosts() {
+		if (inventory == null) {
+			return "";
+		}
+		string costs = "";
+		if (this.upgradecost_metal > 0) {
+			if (inventory.GetResourceCount("Iron") >= this.upgradecost_metal) {
+				costs += "\n<color=green> - Metal x" + this.upgradecost_metal + "</color>";
+			} else {
+				costs += "\n -<color=maroon> Metal x" + this.upgradecost_metal + "</color>";
+			}
+		}
+		if (this.upgradecost_stone > 0) {
+			if (inventory.GetResourceCount("Stone") >= this.upgradecost_stone) {
+				costs += "\n<color=green> - Stone x" + this.upgradecost_stone + "</color>";
+			} else {
+				costs += "\n -<color=maroon> Stone x" + this.upgradecost_stone + "</color>";
+			}
+		}
+		if (this.upgradecost_wood > 0) {
+			if (inventory.GetResourceCount("Wood") >= this.upgradecost_wood) {
+				costs += "\n<color=green> - Wood x" + this.upgradecost_wood + "</color>";
+			} else {
+				costs += "\n -<color=maroon> Wood x" + this.upgradecost_wood + "</color>";
+			}
+		}
+		return costs;
 	}
 
 	public bool IsUpgradable() {
