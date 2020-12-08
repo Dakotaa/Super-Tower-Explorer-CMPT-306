@@ -6177,12 +6177,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControl: {fileID: 0}
-  enemyPrefab: {fileID: 1534384089525474764, guid: 291ebdc27dc72804ca92005218ac3460, type: 3}
-  strongEnemy: {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
-  fastEnemy: {fileID: 6752098242947427876, guid: 9689d667d0bf5f04da88ab61a6aba461, type: 3}
+  easyEnemies:
+  - {fileID: 1534384089525474764, guid: 291ebdc27dc72804ca92005218ac3460, type: 3}
+  mediumEnemies:
+  - {fileID: 6752098242947427876, guid: 9689d667d0bf5f04da88ab61a6aba461, type: 3}
+  hardEnemies:
+  - {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
   spawnPoints: []
   countdown: 5
   enemySpawnInterval: 0.75
+  mediumEnemyDivisor: 5
+  hardEnemyDivisor: 20
 --- !u!114 &1859735134
 MonoBehaviour:
   m_ObjectHideFlags: 0
