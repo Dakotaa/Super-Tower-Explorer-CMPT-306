@@ -67,7 +67,7 @@ public class RoomTemplates : MonoBehaviour
         else if (done)
         {
             Destroy(load.gameObject);
-			Time.timeScale = 1f;
+			if (Time.timeScale == 5f) Time.timeScale = 1f;
         }
     }
 

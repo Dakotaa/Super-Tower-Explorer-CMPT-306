@@ -60,11 +60,7 @@ public class SoundManager : MonoBehaviour {
 		source.pitch = pitch;
 
 		// set the speed to 1 to play the sound, then set it back to what it was
-		int savedSpeed = speed.GetSpeed();
-		speed.SetSpeed(1);
 		source.Play();
-		print(savedSpeed);
-		speed.SetSpeed(savedSpeed);
 
 		Destroy(go, clip.length);
 		return source;
@@ -98,11 +94,7 @@ public class SoundManager : MonoBehaviour {
 		source.volume = volume;
 		source.pitch = pitch;
 
-		int savedSpeed = speed.GetSpeed();
-		speed.SetSpeed(1);
 		source.Play();
-		print(savedSpeed);
-		speed.SetSpeed(savedSpeed);
 
 		Destroy(go, clip.length);
 		return source;
