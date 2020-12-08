@@ -40,6 +40,10 @@ public class SpeedControl : MonoBehaviour {
 		}
 	}
 
+	public int GetSpeed() {
+		return this.speedModifier;
+	}
+
 	public void SetSpeed(int speed) {
 		this.speedModifier = speed;
 		Time.timeScale = speedModifier;

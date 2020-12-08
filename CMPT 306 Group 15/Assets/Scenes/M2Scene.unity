@@ -3965,7 +3965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 6, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1339349434
@@ -5173,10 +5173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c9a633c6768f140967335026380d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
   waveNumber: 0
   restartDelay: 1
   maxHealth: 100
   cellUnlockAvailable: 0
+  sound_levelUp: {fileID: 8300000, guid: 3d10521bf28e2494ab910f89d9c39962, type: 3}
+  sound_unlockCell: {fileID: 8300000, guid: 502ec9934d3f9ad4786dae5b60e3baf6, type: 3}
 --- !u!114 &1859735133
 MonoBehaviour:
   m_ObjectHideFlags: 0

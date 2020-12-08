@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour {
 	/* instance variables */
 	public static GameControl instance;
+	public SoundManager sound;
 
 	/* game management variables */
 	private bool gameHasEnded = false; //current game state when starting
@@ -25,6 +26,8 @@ public class GameControl : MonoBehaviour {
 	private float EXP = 0;  // player's current EXP towards the next cell unlock
 	private float EXPForNextLevel = 5;    // required EXP for the next cell unlock
 	public bool cellUnlockAvailable = false;
+	public AudioClip sound_levelUp;
+	public AudioClip sound_unlockCell;
 
 	#region Singleton
 
@@ -37,6 +40,7 @@ public class GameControl : MonoBehaviour {
 		instance = this;
 
 		this.health = this.maxHealth; // start with full health
+		this.sound = SoundManager.Instance;
 	}
 
 	#endregion
@@ -175,6 +179,7 @@ public class GameControl : MonoBehaviour {
 		}
 		if (this.EXP >= this.EXPForNextLevel) {
 			cellUnlockAvailable = true;
+			this.sound.Play(this.sound_levelUp, GameObject.Find("Canvas").transform, 0.75f);
 		}
 		if (OnEXPChangedCallback != null) OnEXPChangedCallback.Invoke();
 	}
@@ -188,6 +193,7 @@ public class GameControl : MonoBehaviour {
 	}
 
 	public void LevelComplete() {
+		this.sound.Play(this.sound_unlockCell, GameObject.Find("Canvas").transform, 0.5f);
 		this.level++;
 		this.cellUnlockAvailable = false;
 		this.EXP = 0;
