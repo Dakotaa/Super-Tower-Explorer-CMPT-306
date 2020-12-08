@@ -75,7 +75,6 @@ public class RevealTile : MonoBehaviour
             }
             else
             {
-                print("hi");
                 val--;
                 sprite.color = new Color32(val, val, val, 255);
                 count--;
