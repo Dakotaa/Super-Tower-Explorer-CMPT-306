@@ -30,8 +30,10 @@ public class Bullet : MonoBehaviour {
 
 			if (victim.GetHealth() <= 0)
             {
-				victim.Kill(true);
-				Destroy(gameObject);
+				if (!victim.IsDead()) {
+					victim.Kill(true);
+					Destroy(gameObject);
+				}
             }
             else
             {
