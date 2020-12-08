@@ -23,19 +23,16 @@ public class WaveControl : MonoBehaviour
 	#endregion
 
 	public GameControl gameControl = GameControl.instance;
-	public Enemy enemyPrefab;
 
-	public Enemy strongEnemy; //test
-
-	public Enemy fastEnemy;
-
-	public Enemy ghostEnemy;
-
-	public Enemy spawnEnemy;
+	public List<Enemy> easyEnemies;
+	public List<Enemy> mediumEnemies;
+	public List<Enemy> hardEnemies;
 	
 	public List<Transform> spawnPoints = new List<Transform>(); // enemy spawn points
     public int countdown = 5; // countdown from round start to enemy spawn
 	public float enemySpawnInterval = 0.5f;
+	public int mediumEnemyDivisor = 5;
+	public int hardEnemyDivisor = 20;
 	private int waveEnemyCount; // the total overall enemy count for this wave
 	private int waveEnemiesSpawned; // the number of enemies spawned so far this wave
 
@@ -71,14 +68,33 @@ public class WaveControl : MonoBehaviour
 				AstarPath.active.Scan();
 				scan = false;
 			}
-			// spawn enemies (placeholder)
-			// TODO: Different enemies spawning based on wave
+
 			waveEnemyCount = gameControl.GetWaveNumber() * gameControl.GetWaveNumber();
 			waveEnemiesSpawned = 0;
+			int waveMediumEnemyCount = waveEnemyCount / this.mediumEnemyDivisor;
+			int waveHardEnemyCount = waveEnemyCount / this.hardEnemyDivisor;
+			int hardEnemiesSpawned = 0;
+			int mediumEnemiesSpawned = 0;
 			for (int i = 0; i < waveEnemyCount; i++) {
-				SpawnEnemy();
+				print(waveMediumEnemyCount);
+				print(waveHardEnemyCount);
+				Enemy enemy;
+				if (hardEnemiesSpawned < waveHardEnemyCount) {
+					int index = (int)Random.Range(0, hardEnemies.Count);
+					enemy = hardEnemies[index];
+					hardEnemiesSpawned++;
+				} else if (mediumEnemiesSpawned < waveMediumEnemyCount) {
+					int index = (int)Random.Range(0, mediumEnemies.Count);
+					enemy = mediumEnemies[index];
+					mediumEnemiesSpawned++;
+				} else {
+					int index = (int)Random.Range(0, easyEnemies.Count);
+					enemy = easyEnemies[index];
+				}
+				SpawnEnemy(enemy);
 				yield return new WaitForSeconds(enemySpawnInterval / (float) spawnPoints.Count);
 			}
+
 		} else {
 			Debug.Log("Error: wave started from state other than 0.");
 		}
@@ -94,23 +110,9 @@ public class WaveControl : MonoBehaviour
 		if (onWaveFinishedCallback != null) onWaveFinishedCallback.Invoke();
 	}
 
-    private void SpawnEnemy() {
-		// spawn this enemy at a random spawn point in the list
+    private void SpawnEnemy(Enemy enemy) {
 		int index = (int) Random.Range(0, spawnPoints.Count);
-		// instantiate the enemy and add it to the enemy list
-
-		gameControl.AddEnemy(Instantiate(fastEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
-
-		gameControl.AddEnemy(Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation));
-
-		gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));//test
-
-		gameControl.AddEnemy(Instantiate(ghostEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
-
-		gameControl.AddEnemy(Instantiate(spawnEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
-
-
-
+		gameControl.AddEnemy(Instantiate(enemy, spawnPoints[index].position, spawnPoints[index].rotation));
 		waveEnemiesSpawned++;
 	}
 
