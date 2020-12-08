@@ -113,7 +113,7 @@ public class Enemy : MainController {
 		//broken = false;
 		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(2);
 		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
 		broken = true;
