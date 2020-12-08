@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc61a977a27e32e4b8f30f6cb9a5156d, type: 2}
+  - {fileID: 2100000, guid: ffa06b2d9988f4e4da348e6210b2c0ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,8 +143,8 @@ GameObject:
   - component: {fileID: 1723928736477867061}
   - component: {fileID: 3562264484389662384}
   m_Layer: 8
-  m_Name: WallTile
-  m_TagString: Wall Tile
+  m_Name: WoodWallTile
+  m_TagString: Wood Wall Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f5ff33609e5814cb182044c9a3c2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallType: Stone Wall
+  wallType: Wood Wall
 --- !u!61 &2601153253187102488
 BoxCollider2D:
   m_ObjectHideFlags: 0

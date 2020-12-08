@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WallTile : CellTile {
+	public string wallType;
     private void Start()
     {
         var bounds = GetComponent<BoxCollider2D>().bounds;
@@ -20,7 +21,7 @@ public class WallTile : CellTile {
     }
 
 	public override string GetInfo() {
-		return "Wall Tile";
+		return wallType;
 	}
 
 }
