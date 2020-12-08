@@ -27,20 +27,28 @@ public class SpeedControl : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetKeyDown("1")) {
-			this.SetSpeed(1);
+			this.speedModifier = 1;
+			Time.timeScale = speedModifier;
 			sound.Play(speed1, this.transform, 1.0f, 1.0f);
 		}
 		if (Input.GetKeyDown("2")) {
-			this.SetSpeed(2);
+			this.speedModifier = 2;
+			Time.timeScale = speedModifier;
 			sound.Play(speed2, this.transform, 1.0f, 1.2f);
 		}
 		if (Input.GetKeyDown("3")) {
-			this.SetSpeed(3);
+			this.speedModifier = 3;
+			Time.timeScale = speedModifier;
 			sound.Play(speed3, this.transform, 1.0f, 1.5f);
 		}
 	}
 
+	public int GetSpeed() {
+		return this.speedModifier;
+	}
+
 	public void SetSpeed(int speed) {
+		print("Set speed to " + speed);
 		this.speedModifier = speed;
 		Time.timeScale = speedModifier;
 	}

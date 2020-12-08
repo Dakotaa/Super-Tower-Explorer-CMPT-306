@@ -41,6 +41,7 @@ public class RoomTemplates : MonoBehaviour
     {
         load = GameObject.FindGameObjectWithTag("LoadingScene");
         InvokeRepeating("ReBuild", 0.1f, 0.1f);
+		Time.timeScale = 5f;
     }
 
     private void ReBuild()
@@ -66,6 +67,7 @@ public class RoomTemplates : MonoBehaviour
         else if (done)
         {
             Destroy(load.gameObject);
+			if (Time.timeScale == 5f) Time.timeScale = 1f;
         }
     }
 
