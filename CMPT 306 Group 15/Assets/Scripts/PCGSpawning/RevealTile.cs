@@ -8,6 +8,10 @@ public class RevealTile : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     public GameObject cell;
+    SpriteRenderer sprite;
+    bool down = false;
+    byte val = 34;
+    int count = 0;
 
     public GameObject mytile;
 
@@ -17,6 +21,7 @@ public class RevealTile : MonoBehaviour
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        sprite = GetComponent<SpriteRenderer>();
         rev = false;
     }
 
@@ -51,6 +56,39 @@ public class RevealTile : MonoBehaviour
         if(other.CompareTag("CanOpen"))
         {
             rev = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (GameControl.instance.cellUnlockAvailable && GameControl.instance.GetGameState() == 0 && rev)
+        {
+            if (!down)
+            {
+                val++;
+                sprite.color = new Color32(val, val, val, 255);
+                count++;
+                if (count == 150)
+                {
+                    down = true;
+                }
+            }
+            else
+            {
+                print("hi");
+                val--;
+                sprite.color = new Color32(val, val, val, 255);
+                count--;
+                if (count == 0)
+                {
+                    down = false;
+                }
+            }
+
+        }
+        else
+        {
+            sprite.color = new Color32(34, 34, 34, 255);
         }
     }
 }
