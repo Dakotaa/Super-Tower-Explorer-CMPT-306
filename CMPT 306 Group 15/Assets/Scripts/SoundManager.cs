@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour {
 		// set the speed to 1 to play the sound, then set it back to what it was
 		source.Play();
 
-		Destroy(go, clip.length);
+		Destroy(go, clip.length * Time.timeScale);
 		return source;
 	}
 
@@ -96,7 +96,7 @@ public class SoundManager : MonoBehaviour {
 
 		source.Play();
 
-		Destroy(go, clip.length);
+		Destroy(go, clip.length * Time.timeScale);
 		return source;
 	}
 
