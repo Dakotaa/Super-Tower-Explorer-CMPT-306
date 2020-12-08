@@ -6181,6 +6181,7 @@ MonoBehaviour:
   strongEnemy: {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
   fastEnemy: {fileID: 6752098242947427876, guid: 9689d667d0bf5f04da88ab61a6aba461, type: 3}
   ghostEnemy: {fileID: 7520551721668121033, guid: 2ffb0b6e48e2b644ea3e01c281b835ba, type: 3}
+  spawnEnemy: {fileID: 8659080193049417379, guid: 0c409a23354695c4ca13c25de251b4d2, type: 3}
   spawnPoints: []
   countdown: 5
   enemySpawnInterval: 0.75

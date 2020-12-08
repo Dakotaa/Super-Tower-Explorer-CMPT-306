@@ -30,6 +30,8 @@ public class WaveControl : MonoBehaviour
 	public Enemy fastEnemy;
 
 	public Enemy ghostEnemy;
+
+	public Enemy spawnEnemy;
 	
 	public List<Transform> spawnPoints = new List<Transform>(); // enemy spawn points
     public int countdown = 5; // countdown from round start to enemy spawn
@@ -98,13 +100,14 @@ public class WaveControl : MonoBehaviour
 		// instantiate the enemy and add it to the enemy list
 
 		gameControl.AddEnemy(Instantiate(fastEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
-		gameControl.AddEnemy(Instantiate(fastEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
 
 		gameControl.AddEnemy(Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation));
 
 		gameControl.AddEnemy(Instantiate(strongEnemy, spawnPoints[index].position, spawnPoints[index].rotation));//test
 
 		gameControl.AddEnemy(Instantiate(ghostEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
+
+		gameControl.AddEnemy(Instantiate(spawnEnemy, spawnPoints[index].position, spawnPoints[index].rotation));
 
 
 
