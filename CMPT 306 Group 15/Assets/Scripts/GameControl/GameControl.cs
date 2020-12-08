@@ -205,6 +205,6 @@ public class GameControl : MonoBehaviour {
 	 * Calculates the EXP needed for the next level.
 	 */
 	private float CalcNextLevel() {
-		return this.EXPForNextLevel * 2.0f;
+		return Mathf.Floor(Mathf.Pow(this.EXPForNextLevel, 1.3f));
 	}
 }
