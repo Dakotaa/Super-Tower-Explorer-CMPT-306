@@ -17,6 +17,8 @@ TagManager:
   - EnemySpawn
   - MainCanvas
   - LoadingScene
+  - Metal Wall Tile
+  - Wood Wall Tile
   layers:
   - Default
   - TransparentFX

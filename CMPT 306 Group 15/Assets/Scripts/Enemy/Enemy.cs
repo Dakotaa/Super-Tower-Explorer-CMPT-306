@@ -60,7 +60,7 @@ public class Enemy : MainController {
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
 		
 
-		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower")) //add more tags here
+		if (col.CompareTag("Wall Tile") || col.CompareTag("Wood Wall Tile") || col.CompareTag("Metal Wall Tile") || col.CompareTag("Tower")) //add more tags here
 		{
 			
 			
@@ -71,9 +71,15 @@ public class Enemy : MainController {
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
 				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
-				
+
 				//add more couroutines for different tags (maybe if statements?)
-				StartCoroutine(BasicWall());
+				if (col.CompareTag("Wall Tile")) {
+					StartCoroutine(StoneWall());
+				} else if (col.CompareTag("Wood Wall Tile")) {
+					StartCoroutine(WoodWall());
+				} else if (col.CompareTag("Metal Wall Tile")) {
+					StartCoroutine(MetalWall());
+				}
 				
 
                 if (broken)
@@ -101,16 +107,20 @@ public class Enemy : MainController {
 
     }
 
-	IEnumerator BasicWall()
-	{
-		//broken = false;
-		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
-		//yield on a new YieldInstruction that waits for 5 seconds.
+	IEnumerator WoodWall() {
 		yield return new WaitForSeconds(2);
-		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
 		broken = true;
+	}
 
+	IEnumerator StoneWall()
+	{
+		yield return new WaitForSeconds(3);
+		broken = true;
+	}
+
+	IEnumerator MetalWall() {
+		yield return new WaitForSeconds(5);
+		broken = true;
 	}
 
 	public void ReachedDestination()

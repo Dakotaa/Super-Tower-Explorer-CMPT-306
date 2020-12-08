@@ -99,6 +99,8 @@ MonoBehaviour:
   size: 13
   emptyTile: {fileID: 3477373119277170553, guid: 2e6b65e7c2c46b044a8495ffa5f1356a, type: 3}
   wallTile: {fileID: 8269899188136154339, guid: 065a1a7e17bde924e80968e0d8effc60, type: 3}
+  woodWallTile: {fileID: 8269899188136154339, guid: cce5475998e548f4a9196b98dc0227b0, type: 3}
+  metalWallTile: {fileID: 8269899188136154339, guid: fa0db74aaa5f7f74db8ea5cb64094cd1, type: 3}
   simpleTowerTile: {fileID: 1168917106947082120, guid: 68f9261bb5666044ab90c873897d62af, type: 3}
   shotgunTowerTile: {fileID: 6626792943795252599, guid: 749311edd770b544794efb8c0402509b, type: 3}
   radialTowerTile: {fileID: 1762996226091076204, guid: af9cc6f9fd99f764c9f9b31a0b97309f, type: 3}
