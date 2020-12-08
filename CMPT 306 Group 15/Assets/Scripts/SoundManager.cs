@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour {
 	// Singleton instance.
 	public static SoundManager Instance = null;
 
+	private SpeedControl speed;
+
 	// Initialize the singleton instance.
 	private void Awake() {
 		// If there is not already an instance of SoundManager, set it to this.
@@ -24,6 +26,8 @@ public class SoundManager : MonoBehaviour {
 		else if (Instance != this) {
 			Destroy(gameObject);
 		}
+
+		this.speed = SpeedControl.instance;
 	}
 
 	public AudioSource Play(AudioClip clip, Transform emitter) {
@@ -54,7 +58,14 @@ public class SoundManager : MonoBehaviour {
 		source.clip = clip;
 		source.volume = volume;
 		source.pitch = pitch;
+
+		// set the speed to 1 to play the sound, then set it back to what it was
+		int savedSpeed = speed.GetSpeed();
+		speed.SetSpeed(1);
 		source.Play();
+		print(savedSpeed);
+		speed.SetSpeed(savedSpeed);
+
 		Destroy(go, clip.length);
 		return source;
 	}
@@ -86,7 +97,13 @@ public class SoundManager : MonoBehaviour {
 		source.clip = clip;
 		source.volume = volume;
 		source.pitch = pitch;
+
+		int savedSpeed = speed.GetSpeed();
+		speed.SetSpeed(1);
 		source.Play();
+		print(savedSpeed);
+		speed.SetSpeed(savedSpeed);
+
 		Destroy(go, clip.length);
 		return source;
 	}
