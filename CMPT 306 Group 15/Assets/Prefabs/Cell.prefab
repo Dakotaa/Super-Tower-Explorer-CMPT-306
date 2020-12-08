@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 768236566367080351}
   - component: {fileID: 768236566367080349}
   - component: {fileID: 7709715516808014046}
-  - component: {fileID: 5511763869637645886}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -146,33 +145,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5511763869637645886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768236566367080346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efee954c69f0d421086729bb8df1137f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 0
-  points: []
-  convex: 1
-  minBoundsHeight: 1
-  penaltyDelta: 0
-  modifyWalkability: 0
-  setWalkability: 0
-  applyOnStart: 1
-  applyOnScan: 1
-  updatePhysics: 0
-  resetPenaltyOnPhysics: 1
-  updateErosion: 1
-  modifyTag: 1
-  setTag: 0
-  legacyMode: 0
-  serializedVersion: 0
-  legacyUseWorldSpace: 0
