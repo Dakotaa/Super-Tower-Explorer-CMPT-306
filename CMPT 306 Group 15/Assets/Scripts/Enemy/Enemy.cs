@@ -12,7 +12,7 @@ public class Enemy : MainController {
 	public int damage = -5;
 	public float health = 1;
 	private float maxHealth;
-	
+	bool broken;
 
 	private void Start() {
 		maxHealth = health;
@@ -51,42 +51,67 @@ public class Enemy : MainController {
 		health = health - dam;
     }
 
-	void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+    void OnTriggerStay2D(Collider2D col)
 	{
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
-		//Debug.Log("GameObject1 collided with " + col.name);
+		
 
-		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower"))
+		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower")) //add more tags here
 		{
-			if (gameObject.GetComponent<AIPath>().remainingDistance < 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
+			
+			
+			if (gameObject.GetComponent<AIPath>().remainingDistance > 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
-				
-				//Debug.Log("I am Stopped");
+				var bounds = col.bounds;
+
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
 				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
-
-				Destroy(col.gameObject);
-
-				emptyTile.CreateTile(x,y ,emptyTile.emptyTile);
+				
+				//add more couroutines for different tags (maybe if statements?)
+				StartCoroutine(BasicWall());
 				
 
-				var bounds = GetComponent<CircleCollider2D>().bounds;
+                if (broken)
+                {
+					//Debug.Log("Breaking");
+					Destroy(col.gameObject);
 
-				//Expand the bounds along the Z axis
-				bounds.Expand(Vector3.forward * 2000);
-				bounds.Expand(2);
-				
-				var guo = new GraphUpdateObject(bounds);
+					emptyTile.CreateTile(x, y, emptyTile.emptyTile);
 
-				//Debug.Log("update");
-				//Change some settings on the object
-				AstarPath.active.UpdateGraphs(guo);
+
+					//var bounds = GetComponent<CircleCollider2D>().bounds;
+
+					//Expand the bounds along the Z axis
+					bounds.Expand(Vector3.forward * 2000);
+					//bounds.Expand(0.6f);
+
+					var guo = new GraphUpdateObject(bounds);
+					AstarPath.active.UpdateGraphs(guo);
+
+				}
+
 			}
 		}
 		
 
     }
+
+	IEnumerator BasicWall()
+	{
+		//broken = false;
+		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
+		//yield on a new YieldInstruction that waits for 5 seconds.
+		yield return new WaitForSeconds(2);
+		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+		broken = true;
+
+	}
 
 	public void ReachedDestination()
     {
