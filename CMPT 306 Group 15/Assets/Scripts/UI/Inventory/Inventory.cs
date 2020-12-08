@@ -22,14 +22,6 @@ public class Inventory : MonoBehaviour {
 
 	#endregion
 
-	void Update() {
-		if (Input.GetKeyDown("space")) {
-			IncreaseResource("Stone", 1);
-			IncreaseResource("Iron", 2);
-			IncreaseResource("Wood", 3);
-		}
-	}
-
 	// Callback which is triggered when
 	// an item gets added/removed.
 	public delegate void OnItemChanged();
