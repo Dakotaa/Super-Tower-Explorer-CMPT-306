@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
       propertyPath: EXPWorth
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
       propertyPath: damage
@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621096384244025646, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
       propertyPath: health
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5835553763266405173, guid: 8f5b8f35fa3340e419ee1c63acde0769, type: 3}
       propertyPath: m_Name

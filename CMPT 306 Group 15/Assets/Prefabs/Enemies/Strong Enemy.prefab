@@ -136,7 +136,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 0.75
+  maxSpeed: 1
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -180,9 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391b46cddd60f114db808ed6a0ac1ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXPWorth: 5
+  EXPWorth: 2
   damage: -5
-  health: 10
+  health: 4
 --- !u!58 &3440795968876711337
 CircleCollider2D:
   m_ObjectHideFlags: 0

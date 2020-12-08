@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 35dbab60d8cb1dd439ed3243fb15e2bf, type: 3}
     - target: {fileID: 1534384089525474764, guid: 291ebdc27dc72804ca92005218ac3460, type: 3}
       propertyPath: health
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1534384089525474764, guid: 291ebdc27dc72804ca92005218ac3460, type: 3}
       propertyPath: EXPWorth
