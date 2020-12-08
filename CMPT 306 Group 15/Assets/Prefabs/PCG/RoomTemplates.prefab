@@ -75,6 +75,10 @@ MonoBehaviour:
   - {fileID: 6782799370432317495, guid: 21bc91fa4816546b19735f4f0b52e880, type: 3}
   - {fileID: 1595296920084526497, guid: 198479d5d8efb44e686b955a35944a7a, type: 3}
   - {fileID: 1061078063411055915, guid: f665ce815a8d44f1c8fb526bbfeea5c2, type: 3}
+  DownOpen: []
+  LeftOpen: []
+  UpOpen: []
+  RightOpen: []
   Terrains:
   - {fileID: 8319481555809579171, guid: 452418e4e5fe74411b8b1c81e0066677, type: 3}
   - {fileID: 4289530784395641130, guid: 6cf4fce880be24df6ab344f199891af9, type: 3}
@@ -83,6 +87,7 @@ MonoBehaviour:
   - {fileID: 5199563970034117460, guid: ae4581842d32f4263b1a41ec41ef86d3, type: 3}
   - {fileID: 6037206406816736946, guid: bbda902ce0c2d448e9564a032bdd50ca, type: 3}
   ClosedRoom: {fileID: 1486926888991929894, guid: 92a46696d4ccf4feb9c630b24df04794, type: 3}
+  HideRoom: {fileID: 0}
   RoomLow: 25
   RoomHigh: 45
   RoomCount: -40
