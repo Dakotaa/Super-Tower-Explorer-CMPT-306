@@ -58,26 +58,27 @@ public class Enemy : MainController {
     void OnTriggerStay2D(Collider2D col)
 	{
 		CellGrid emptyTile = col.gameObject.GetComponentInParent<CellGrid>();
-		//Debug.Log("GameObject1 collided with " + col.name);
+		
 
-		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower"))
+		if (col.CompareTag("Wall Tile") || col.CompareTag("Tower")) //add more tags here
 		{
 			
-			//Debug.Log(gameObject.GetComponent<AIPath>().remainingDistance);
+			
 			if (gameObject.GetComponent<AIPath>().remainingDistance > 1.1  || gameObject.GetComponent<AIPath>().reachedEndOfPath)
 			{
 				var bounds = col.bounds;
-				//Debug.Log("I am Stopped");
+
 				emptyTile.GetPosAtCoord(col.gameObject.transform.position);
 				int x = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[0];
 				int y = emptyTile.GetPosAtCoord(col.gameObject.transform.position)[1];
 				
+				//add more couroutines for different tags (maybe if statements?)
 				StartCoroutine(BasicWall());
-				//Debug.Log(broken);
+				
 
                 if (broken)
                 {
-					Debug.Log("Breaking");
+					//Debug.Log("Breaking");
 					Destroy(col.gameObject);
 
 					emptyTile.CreateTile(x, y, emptyTile.emptyTile);
@@ -90,17 +91,9 @@ public class Enemy : MainController {
 					//bounds.Expand(0.6f);
 
 					var guo = new GraphUpdateObject(bounds);
-					//guo.addPenalty = 15000;
-					//Debug.Log("update");
-					//Change some settings on the object
 					AstarPath.active.UpdateGraphs(guo);
 
 				}
-
-                else
-                {
-
-                }
 
 			}
 		}
