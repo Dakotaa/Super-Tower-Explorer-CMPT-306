@@ -13,5 +13,14 @@ Start off by collecting resources on the starting tile. Use these to build a tow
 - Zoom in/out with the scroll wheel.
 - Change the game speed with the 1, 2, and 3 keys.
 
+# Gameplay Images
+### Collect Resources
+![Game start - collecting resources](https://i.imgur.com/SJCUunG.png)
+### Create towers to defeat enemies
+![Shooting enemies](https://i.imgur.com/WmLLbC6.png)
+### Build defenses to slow down enemies
+![Building defenses](https://i.imgur.com/kqGFean.png)
+### Unlock map cells to earn more resources
+![Unlocking the map](https://i.imgur.com/uORekYI.png)
 # Gameplay Video
 https://www.youtube.com/watch?v=la37zNKIbec
